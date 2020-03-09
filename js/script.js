@@ -28,7 +28,7 @@ var sliderSimple = d3
       .transition(20)
       .attr('transform', (d, i) => {
         let translatex = (width/2 - d["Infected"].indexOf(d["Infected"].find(e => e["Num"] > val))*rectsize + separatorlinewidth/2)
-        if (val > d["Infected"][d["Infected"].length - 1]["Num"]) return 'translate(10, '+(i*cellheight)+')'
+        if (val > d["Infected"][d["Infected"].length - 1]["Num"]) return 'translate('+ -width +', '+(i*cellheight)+')'
         return 'translate(' + translatex + ', '+(i*cellheight)+')'
     })
   });
