@@ -52,14 +52,19 @@ let svg = d3.select('body').append('svg')
   .attr('height', height)
   .style('margin-top', '10px')
 
+let sliderscale = d3.scaleLog()
+  .domain([1, 10000])
+
 var sliderSimple = d3
-  .sliderBottom()
-  .min(0)
-  .max(2000)
+  .sliderBottom(sliderscale)
+  //.min(0)
+  //.max(2000)
   .width(sliderwidth)
-  .ticks(5)
+  .tickFormat(d3.format(".0s"))
+  .ticks(10)
   .default(300)
   .on('onchange', val => {
+    //val = Math.log(val);
     d3.select('p#value-simple').text(d3.format('')(val));
 
       d3.selectAll('.barchart')
@@ -83,6 +88,11 @@ var sliderSimple = d3
     .attr('transform', 'translate('+(width/2 - sliderwidth/2)+',30)');
 
   gSimple.call(sliderSimple);
+
+  tickvaluearray = [1, 10, 100, 1000, 10000]
+
+  d3.selectAll('.tick').filter(d => tickvaluearray.indexOf(d) == -1).attr('opacity', 0)
+
 
 let pop_values = {
   "Mainland China": 1378665000,
@@ -173,7 +183,7 @@ d3.csv('time_series_19-covid-Confirmed.csv')
     let tmplist = getInfected(data)
     tmplist = tmplist.filter(d => d["Country"] != "Others" && d["Country"] != "Mainland China")
     tmplist = tmplist.filter(d => d["Infected"][d["Infected"].length - 1]["Num"] > cutoffnum)
-    tmplist = tmplist.sort((a, b) => a["Infected"][a["Infected"].length - 1]["Num"] < b["Infected"][b["Infected"].length - 1]["Num"])
+    tmplist = tmplist.sort((a, b) => a["Infected"][a["Infected"].length - 1]["Num"] < b["Infected"][b["Infected"].length - 1]["Num"]? 1: -1)
 
     barcharts = chartg.selectAll('.barchart')
       .data(tmplist)
@@ -222,7 +232,6 @@ d3.csv('time_series_19-covid-Confirmed.csv')
       .attr('y', d => scale(deathlist.find(e => d["Country"] == e["Country"])["Infected"].find(e => e["Date"] == d["Date"])["Num"]))
       .attr('height', d => scale(recoveredlist.find(e => d["Country"] == e["Country"])["Infected"].find(e => e["Date"] == d["Date"])["Num"]))
       .attr('fill', '#00B9BD')
-
 
     rectsection.append("text")
       .text(d => {
