@@ -48,7 +48,7 @@ var sliderSimple = d3
   .max(2000)
   .width(sliderwidth)
   .ticks(5)
-  .default(400)
+  .default(300)
   .on('onchange', val => {
     d3.select('p#value-simple').text(d3.format('')(val));
 
@@ -171,25 +171,25 @@ d3.csv('time_series_19-covid-Confirmed.csv')
     svg.append('path')
       .attr('d', d3line([[width/2 + rectsize*7, 80],[width/2 + rectsize*7, height]]))
       .style('stroke-dasharray', '3 3')
-      .attr('stroke', '#ddd')
+      .attr('stroke', '#eee')
       .attr('stroke-width', separatorlinewidth)
 
     svg.append('path')
-      .attr('d', d3line([[width/2 + rectsize*14, 80],[width/2 + rectsize*7, height]]))
+      .attr('d', d3line([[width/2 + rectsize*14, 80],[width/2 + rectsize*14, height]]))
       .style('stroke-dasharray', '3 3')
-      .attr('stroke', '#ddd')
+      .attr('stroke', '#eee')
       .attr('stroke-width', separatorlinewidth)
 
     svg.append('path')
       .attr('d', d3line([[width/2 - rectsize*7, 80],[width/2 - rectsize*7, height]]))
       .style('stroke-dasharray', '3 3')
-      .attr('stroke', '#ddd')
+      .attr('stroke', '#eee')
       .attr('stroke-width', separatorlinewidth)
 
     svg.append('path')
-      .attr('d', d3line([[width/2 - rectsize*14, 80],[width/2 - rectsize*7, height]]))
+      .attr('d', d3line([[width/2 - rectsize*14, 80],[width/2 - rectsize*14, height]]))
       .style('stroke-dasharray', '3 3')
-      .attr('stroke', '#ddd')
+      .attr('stroke', '#eee')
       .attr('stroke-width', separatorlinewidth)
 
     barcharts = chartg.selectAll('.barchart')
