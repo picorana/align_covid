@@ -11,6 +11,9 @@ let separatorlinewidth = 2
 let sliderwidth = 500
 let animating = false
 
+let translatenum = 300
+let cutoffnum = 300
+
 var isMobile = false; //initiate as false
 // device detection
 if(/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|ipad|iris|kindle|Android|Silk|lge |maemo|midp|mmp|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows (ce|phone)|xda|xiino/i.test(navigator.userAgent)
@@ -65,21 +68,12 @@ var sliderSimple = d3
             animating = true
             let translatex = (width/2 - d["Infected"].indexOf(d["Infected"].find(e => e["Num"] > val))*rectsize + separatorlinewidth/2)
             if (val > d["Infected"][d["Infected"].length - 1]["Num"]) return 'translate('+ 10 +', '+(i*cellheight)+')'
-            let group = d3.selectAll('.barchart').filter(d => d["Infected"][d["Infected"].length - 1]["Num"] > val)
-            let index = i
-            //group.each((e,j) => {if(e["Country"] == d["Country"]) index=j})
-            return 'translate(' + translatex + ', '+(index*cellheight)+')'
+            return 'translate(' + translatex + ', '+(i*cellheight)+')'
       })
       .attr('opacity', (d, i) => {
         if(val > d["Infected"][d["Infected"].length - 1]["Num"]) return 0.3
         else return 1
       })
-      // d3.selectAll('.barchart')
-      //   .transition(1000)
-      //   .attr('opacity', (d, i) => {
-      //     if(val > d["Infected"][d["Infected"].length - 1]["Num"]) return 0.5
-      //     else return 1
-      //   })
       svg.attr('height', d3.selectAll('.barchart').filter(d => d["Infected"][d["Infected"].length - 1]["Num"]).size() * cellheight + cellheight)
 
   });
@@ -124,44 +118,43 @@ let events = {
   }
 }
 
+let getInfected = (data) => {
+  let tmpdict = {}
+  for (let record of data){
+    let groupby = record["Country/Region"]
+    if (tmpdict[groupby] == undefined) tmpdict[groupby] = []
+    tmpdict[groupby].push(record)
+  }
+  //console.log(tmpdict)
+  let tmplist = []
+  for (let country in tmpdict){
+    let countryobj = {"Country" : country, "Infected":[]}
+    let datedict = {}
+    for (let record of tmpdict[country]) {
+      for (let date in record){
+        if (date == "Province/State" || date == "Country/Region" || date == "Lat" || date == "Long") continue
+        if (datedict[date] == undefined) datedict[date] = 0
+        datedict[date] += parseFloat(record[date])
+      }
+    }
+    for (let elem in datedict){
+      let num = datedict[elem]
+      //if (pop_values[country] != undefined) num = num/pop_values[country]
+      countryobj["Infected"].push({"Date":elem, "Num":num, "Country":country})
+    }
+    tmplist.push(countryobj)
+  }
+
+  return tmplist
+}
 
 
 d3.csv('time_series_19-covid-Confirmed.csv')
   .then((data) => {
-    let tmpdict = {}
-    for (let record of data){
-      let groupby = record["Country/Region"]
-      if (tmpdict[groupby] == undefined) tmpdict[groupby] = []
-      tmpdict[groupby].push(record)
-    }
-    //console.log(tmpdict)
-    let tmplist = []
-    for (let country in tmpdict){
-      let countryobj = {"Country" : country, "Infected":[]}
-      let datedict = {}
-      for (let record of tmpdict[country]) {
-        for (let date in record){
-          if (date == "Province/State" || date == "Country/Region" || date == "Lat" || date == "Long") continue
-          if (datedict[date] == undefined) datedict[date] = 0
-          datedict[date] += parseFloat(record[date])
-        }
-      }
-      for (let elem in datedict){
-        let num = datedict[elem]
-        //if (pop_values[country] != undefined) num = num/pop_values[country]
-        countryobj["Infected"].push({"Date":elem, "Num":num, "Country":country})
-      }
-      tmplist.push(countryobj)
-    }
-
-    let translatenum = 300
-    let cutoffnum = 300
-
-    tmplist = tmplist.filter(d => d["Country"] != "Others" && d["Country"] != "Mainland China")
-    tmplist = tmplist.filter(d => d["Infected"][d["Infected"].length - 1]["Num"] > cutoffnum)
-    tmplist = tmplist.sort((a, b) => a["Infected"][a["Infected"].length - 1]["Num"] < b["Infected"][b["Infected"].length - 1]["Num"])
-    //tmplist = tmplist.filter(d => pop_values[d["Country"]] != undefined)
-
+    d3.csv('time_series_19-covid-Recovered.csv')
+      .then((datarecovered) => {
+        d3.csv('time_series_19-covid-Deaths.csv')
+          .then((datadeaths) => {
     let d3line = d3.line()
         .x(d => d[0])
         .y(d => d[1]);
@@ -169,35 +162,18 @@ d3.csv('time_series_19-covid-Confirmed.csv')
     let chartg = svg.append('g')
       .attr('transform', 'translate(0,200)')
 
-    svg.append('path')
-      .attr('d', d3line([[width/2, 80],[width/2, height]]))
-      .style('stroke-dasharray', '5 5')
-      .attr('stroke', '#aaa')
-      .attr('stroke-width', separatorlinewidth)
+    for (i in [...new Array(5)]){
+      svg.append('path')
+        .attr('d', d3line([[width/2 + rectsize*(2-i)*7, 80],[width/2 + rectsize*(2-i)*7, height]]))
+        .style('stroke-dasharray', i==2? '5 5':'3 3')
+        .attr('stroke', i==2? '#aaa' : '#eee')
+        .attr('stroke-width', separatorlinewidth)
+    }
 
-    svg.append('path')
-      .attr('d', d3line([[width/2 + rectsize*7, 80],[width/2 + rectsize*7, height]]))
-      .style('stroke-dasharray', '3 3')
-      .attr('stroke', '#eee')
-      .attr('stroke-width', separatorlinewidth)
-
-    svg.append('path')
-      .attr('d', d3line([[width/2 + rectsize*14, 80],[width/2 + rectsize*14, height]]))
-      .style('stroke-dasharray', '3 3')
-      .attr('stroke', '#eee')
-      .attr('stroke-width', separatorlinewidth)
-
-    svg.append('path')
-      .attr('d', d3line([[width/2 - rectsize*7, 80],[width/2 - rectsize*7, height]]))
-      .style('stroke-dasharray', '3 3')
-      .attr('stroke', '#eee')
-      .attr('stroke-width', separatorlinewidth)
-
-    svg.append('path')
-      .attr('d', d3line([[width/2 - rectsize*14, 80],[width/2 - rectsize*14, height]]))
-      .style('stroke-dasharray', '3 3')
-      .attr('stroke', '#eee')
-      .attr('stroke-width', separatorlinewidth)
+    let tmplist = getInfected(data)
+    tmplist = tmplist.filter(d => d["Country"] != "Others" && d["Country"] != "Mainland China")
+    tmplist = tmplist.filter(d => d["Infected"][d["Infected"].length - 1]["Num"] > cutoffnum)
+    tmplist = tmplist.sort((a, b) => a["Infected"][a["Infected"].length - 1]["Num"] < b["Infected"][b["Infected"].length - 1]["Num"])
 
     barcharts = chartg.selectAll('.barchart')
       .data(tmplist)
@@ -216,10 +192,37 @@ d3.csv('time_series_19-covid-Confirmed.csv')
       .attr("class", "rectsection")
       .attr("transform", (d, i) => "translate("+i*rectsize+",0)")
 
+    let logScale = d3.scaleSymlog()
+    .domain([0, 20000])
+    .range([0, cellheight*0.8]);
+
+    let linearScale = d3.scaleLinear()
+    .domain([0, 10000])
+    .range([0, cellheight*0.8])
+
+    let scale = linearScale
+
     rectsection.append("rect")
       .attr("width", rectsize*.9)
-      .attr("height", d => d["Num"]*heightscale)
-      .attr("fill", "orange")
+      .attr("height", d => scale(d["Num"]))
+      .attr("fill", "#FB6900")
+
+    let deathlist = getInfected(datadeaths)
+    let recoveredlist = getInfected(datarecovered)
+
+    svg.selectAll('.barchart').selectAll('.rectsection')
+      .append('rect')
+      .attr('width', rectsize*.9)
+      .attr('height', d => scale(deathlist.find(e => d["Country"] == e["Country"])["Infected"].find(e => e["Date"] == d["Date"])["Num"]))
+      .attr('fill', '#004853')
+
+    svg.selectAll('.barchart').selectAll('.rectsection')
+      .append('rect')
+      .attr('width', rectsize*.9)
+      .attr('y', d => scale(deathlist.find(e => d["Country"] == e["Country"])["Infected"].find(e => e["Date"] == d["Date"])["Num"]))
+      .attr('height', d => scale(recoveredlist.find(e => d["Country"] == e["Country"])["Infected"].find(e => e["Date"] == d["Date"])["Num"]))
+      .attr('fill', '#00B9BD')
+
 
     rectsection.append("text")
       .text(d => {
@@ -228,8 +231,7 @@ d3.csv('time_series_19-covid-Confirmed.csv')
       .attr("transform", "rotate(-90)")
       .attr("font-family", "Arial")
       .attr("font-size", "small")
-      //.attr("font-weight", "bold")
-      .attr("x", d => d["Num"] < 5000? -d["Num"]*heightscale - 50 : -10)
+      .attr("x", d => d["Num"] < 5000? -scale(d["Num"]) - 50 : -10)
       .attr("y", +rectsize*3/4)
       .attr("fill", d => d["Num"] < 5000? "gray" : "white")
       .attr("text-anchor", d=> d["Num"] != 5000? "end" : "start")
@@ -249,7 +251,7 @@ d3.csv('time_series_19-covid-Confirmed.csv')
       .attr("font-family", "Arial")
       .attr("font-size", "x-small")
       .attr("y", +rectsize*3/4)
-      .attr("x", d => -d["Num"]*heightscale - 10)
+      .attr("x", d => -scale(d["Num"]) - 10)
       .attr("fill", "gray")
       .attr('text-anchor', 'end')
 
@@ -279,12 +281,6 @@ d3.csv('time_series_19-covid-Confirmed.csv')
 
       svg.attr('height', d3.selectAll('.barchart').filter(d => d["Infected"][d["Infected"].length - 1]["Num"]).size() * cellheight + cellheight)
 
-      //.data(d => d["Infected"])
-      //.data(d[0])
-      //.attr('transform', (d, i) => console.log(d))
-      // .attr('width', 10)
-      // .attr('height', 10)
-      // .attr('fill', 'gray')
-      // .attr('y', (d, i) => i*20)
-
+  })
+  })
   })
