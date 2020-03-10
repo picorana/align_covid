@@ -250,11 +250,12 @@ d3.csv('time_series_19-covid-Confirmed.csv')
       .append('text')
       .attr("font-family", "Arial")
       .attr("y", cellheight/4)
-      .attr("x", d => Math.max(0, d["Infected"].indexOf(d["Infected"].find(e => e["Num"] > 0))*rectsize))
+      .attr("x", d => d["Infected"].indexOf(d["Infected"].find(e => e["Num"] > 0))*rectsize + rectsize*5)
       .attr("fill", "#aaa")
       .attr("font-size", "2em")
       .attr("font-weight", "bold")
       .text(d => d["Country"])
+
 
       svg.attr('height', d3.selectAll('.barchart').filter(d => d["Infected"][d["Infected"].length - 1]["Num"]).size() * cellheight + cellheight)
 
