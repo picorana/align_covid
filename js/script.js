@@ -128,14 +128,32 @@ let events = {
   }
 }
 
+let getDataFromAltState = (data, record, firstName, secondName) => {
+  r = {"Country/Region": firstName}
+  altstate = data.find(r => r["Country/Region"] == secondName)
+  for (let date in record){
+    if (date == "Province/State" || date == "Country/Region" || date == "Lat" || date == "Long") continue
+    else r[date] = parseFloat(record[date]) + parseFloat(altstate[date])
+    if (record[date] == "") r[date] = parseInt(altstate[date])
+  }
+  return r
+}
+
 let getInfected = (data) => {
   let tmpdict = {}
   for (let record of data){
+
+    if (record["Country/Region"] == "Iran") record = getDataFromAltState(data, record, "Iran", "Iran (Islamic Republic of)")
+    if (record["Country/Region"] == "Iran (Islamic Republic of)") continue
+
+    if (record["Country/Region"] == "South Korea") record = getDataFromAltState(data, record, "South Korea", "Republic of Korea")
+    if (record["Country/Region"] == "Republic of Korea") continue
+
     let groupby = record["Country/Region"]
     if (tmpdict[groupby] == undefined) tmpdict[groupby] = []
     tmpdict[groupby].push(record)
   }
-  //console.log(tmpdict)
+
   let tmplist = []
   for (let country in tmpdict){
     let countryobj = {"Country" : country, "Infected":[]}
@@ -144,6 +162,7 @@ let getInfected = (data) => {
       for (let date in record){
         if (date == "Province/State" || date == "Country/Region" || date == "Lat" || date == "Long") continue
         if (datedict[date] == undefined) datedict[date] = 0
+        if (record[date] == "") continue
         datedict[date] += parseFloat(record[date])
       }
     }
@@ -220,18 +239,61 @@ d3.csv('time_series_19-covid-Confirmed.csv')
     let deathlist = getInfected(datadeaths)
     let recoveredlist = getInfected(datarecovered)
 
-    svg.selectAll('.barchart').selectAll('.rectsection')
+    rectsection
       .append('rect')
       .attr('width', rectsize*.9)
       .attr('height', d => scale(deathlist.find(e => d["Country"] == e["Country"])["Infected"].find(e => e["Date"] == d["Date"])["Num"]))
       .attr('fill', '#004853')
 
-    svg.selectAll('.barchart').selectAll('.rectsection')
+    rectsection
       .append('rect')
       .attr('width', rectsize*.9)
       .attr('y', d => scale(deathlist.find(e => d["Country"] == e["Country"])["Infected"].find(e => e["Date"] == d["Date"])["Num"]))
       .attr('height', d => scale(recoveredlist.find(e => d["Country"] == e["Country"])["Infected"].find(e => e["Date"] == d["Date"])["Num"]))
       .attr('fill', '#00B9BD')
+
+    let growthrates = []
+    for (let n in tmplist){
+      countrylist = []
+      country = tmplist[n]["Country"]
+      countryobj = {"Country": country, "Infected":countrylist}
+      for (let ev in tmplist[n]["Infected"]) {
+        if (ev == 0) continue
+        // se cresce da 17 a 20
+        // (20-17) : 20 = x : 100
+        // 100*diff/curr
+        let newval = tmplist[n]["Infected"][ev]["Num"]
+        let oldval = tmplist[n]["Infected"][ev-1]["Num"]
+        let diff = newval - oldval
+        //if (diff == 0) diff = 0.01
+        let val = 100*(diff)/oldval
+        countrylist.push({"Num": val, "Date": tmplist[n]["Infected"][ev]["Date"], "Country":country})
+      }
+      growthrates.push(countryobj)
+    }
+
+    linecharts = barcharts.append('g')
+
+    let linechartscale = d3.scaleLog()
+      .domain([1, 200])
+      .range([-30, -80])
+
+    linecharts.append('path')
+      .attr('d', d => {
+        let grate = growthrates.find(el => el["Country"] == d["Country"])["Infected"]
+        let tmparr = []
+        for (let el in grate){
+          if (isNaN(grate[el]["Num"])) continue
+          if (d["Infected"].find(e => e["Date"] == grate[el]["Date"])["Num"] < 50) continue
+          if (grate[el]["Num"] == 0) continue
+          tmparr.push([(el)*rectsize + rectsize*1.5, linechartscale(grate[el]["Num"])])
+        }
+        return d3line(tmparr)
+      })
+      .attr('stroke', 'red')
+      .attr('stroke-width', 1)
+      .attr('fill', 'none')
+      .attr('opacity', 0.0)
 
     rectsection.append("text")
       .text(d => {
