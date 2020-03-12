@@ -157,62 +157,6 @@ let events = {
 
 }
 
-let states = ["Alaska",
-                  "Alabama",
-                  "Arkansas",
-                  "American Samoa",
-                  "Arizona",
-                  "California",
-                  "Colorado",
-                  "Connecticut",
-                  "District of Columbia",
-                  "Delaware",
-                  "Florida",
-                  "Georgia",
-                  "Guam",
-                  "Hawaii",
-                  "Iowa",
-                  "Idaho",
-                  "Illinois",
-                  "Indiana",
-                  "Kansas",
-                  "Kentucky",
-                  "Louisiana",
-                  "Massachusetts",
-                  "Maryland",
-                  "Maine",
-                  "Michigan",
-                  "Minnesota",
-                  "Missouri",
-                  "Mississippi",
-                  "Montana",
-                  "North Carolina",
-                  " North Dakota",
-                  "Nebraska",
-                  "New Hampshire",
-                  "New Jersey",
-                  "New Mexico",
-                  "Nevada",
-                  "New York",
-                  "Ohio",
-                  "Oklahoma",
-                  "Oregon",
-                  "Pennsylvania",
-                  "Puerto Rico",
-                  "Rhode Island",
-                  "South Carolina",
-                  "South Dakota",
-                  "Tennessee",
-                  "Texas",
-                  "Utah",
-                  "Virginia",
-                  "Virgin Islands",
-                  "Vermont",
-                  "Washington",
-                  "Wisconsin",
-                  "West Virginia",
-                  "Wyoming"]
-
 let getDataFromAltState = (data, record, firstName, secondName) => {
   r = {"Country/Region": firstName}
   altstate = data.find(r => r["Country/Region"] == secondName)
@@ -275,6 +219,56 @@ let getInfected = (data, groupbyname, filterbyname) => {
   return tmplist
 }
 
+let filterUS = (data, groupbyname, filterbyname) => {
+  let tmpdict = {}
+  for (let record of data){
+    if (filterbyname != undefined){
+      if (record["Country/Region"] != filterbyname) continue
+    }
+
+    if (record["3/11/20"] == "" && states.indexOf(record["Province/State"]) == -1) delete record["3/11/20"]
+    if (states.indexOf(record["Province/State"]) != -1) delete record["3/10/20"]
+
+    //console.log(record)
+    let groupby = ''
+    if (states.indexOf(record["Province/State"]) == -1 && record["Province/State"] != "Diamond Princess" && record["Province/State"] != "Grand Princess")
+      groupby = state_abbr[record[groupbyname].split(',')[1].trim()]
+    else groupby = record[groupbyname]
+    if (groupby == undefined) continue
+    if (groupby == "Diamond Princess" || groupby == "Grand Princess") continue
+    //console.log(groupby, state_abbr[groupby])
+    if (tmpdict[groupby] == undefined) tmpdict[groupby] = []
+    tmpdict[groupby].push(record)
+  }
+
+  console.log(tmpdict)
+
+  let tmplist = []
+  for (let country in tmpdict){
+    let countryobj = {"Country" : country, "Infected":[]}
+    let datedict = {}
+    for (let record of tmpdict[country]) {
+      for (let date in record){
+
+        //if (date == "3/10/20" && states.indexOf(record["Province/State"]) == -1) continue
+
+        if (date == "Province/State" || date == "Country/Region" || date == "Lat" || date == "Long") continue
+        if (datedict[date] == undefined) datedict[date] = 0
+        if (record[date] == "") continue
+        datedict[date] += parseFloat(record[date])
+      }
+    }
+    for (let elem in datedict){
+      let num = datedict[elem]
+      //if (pop_values[country] != undefined) num = num/pop_values[country]
+      countryobj["Infected"].push({"Date":elem, "Num":num, "Country":country})
+    }
+    tmplist.push(countryobj)
+  }
+
+  return tmplist
+}
+
   let drawGuidelines = () => {
 
     let d3line = d3.line()
@@ -307,10 +301,25 @@ let getInfected = (data, groupbyname, filterbyname) => {
 
         drawGuidelines()
 
-        let tmplist = getInfected(data, groupbyname, filterbyname)
-        tmplist = tmplist.filter(d => d["Country"] != "Others" && d["Country"] != "Mainland China" && d["Country"] != "China" && d["Country"] != "Cruise Ship")
-        tmplist = tmplist.filter(d => d["Infected"][d["Infected"].length - 1]["Num"] > cutoffnum)
-        tmplist = tmplist.sort((a, b) => a["Infected"][a["Infected"].length - 1]["Num"] < b["Infected"][b["Infected"].length - 1]["Num"]? 1: -1)
+        let tmplist = []
+        let deathlist = []
+        let recoveredlist = []
+
+        if (filterbyname == "US"){
+          tmplist = filterUS(data, groupbyname, filterbyname)
+          tmplist = tmplist.filter(d => d["Infected"][d["Infected"].length - 1]["Num"] > cutoffnum)
+          tmplist = tmplist.sort((a, b) => a["Infected"][a["Infected"].length - 1]["Num"] < b["Infected"][b["Infected"].length - 1]["Num"]? 1: -1)
+          deathlist = filterUS(datadeaths, groupbyname, filterbyname)
+          recoveredlist = filterUS(datarecovered, groupbyname, filterbyname)
+        } else {
+          tmplist = getInfected(data, groupbyname, filterbyname)
+          tmplist = tmplist.filter(d => d["Country"] != "Others" && d["Country"] != "Mainland China" && d["Country"] != "China" && d["Country"] != "Cruise Ship")
+          tmplist = tmplist.filter(d => d["Infected"][d["Infected"].length - 1]["Num"] > cutoffnum)
+          tmplist = tmplist.sort((a, b) => a["Infected"][a["Infected"].length - 1]["Num"] < b["Infected"][b["Infected"].length - 1]["Num"]? 1: -1)
+
+          deathlist = getInfected(datadeaths, groupbyname, filterbyname)
+          recoveredlist = getInfected(datarecovered, groupbyname, filterbyname)
+        }
 
         barcharts = chartg.selectAll('.barchart')
           .data(tmplist)
@@ -335,9 +344,6 @@ let getInfected = (data, groupbyname, filterbyname) => {
           .attr("width", rectsize*.9)
           .attr("height", d => scale(d["Num"]))
           .attr("fill", "#FB6900")
-
-        let deathlist = getInfected(datadeaths, groupbyname, filterbyname)
-        let recoveredlist = getInfected(datarecovered, groupbyname, filterbyname)
 
         rectsection
           .append('rect')
@@ -491,15 +497,15 @@ let getInfected = (data, groupbyname, filterbyname) => {
   }
 
   let drawUS = () => {
-    let translatenum = 2
-    let cutoffnum = 2
+    let translatenum = 20
+    let cutoffnum = 20
 
     let logScale = d3.scaleSymlog()
     .domain([0, 1000])
     .range([0, cellheight*0.8]);
 
     let linearScale = d3.scaleLinear()
-    .domain([0, 1000])
+    .domain([0, 500])
     .range([0, cellheight*0.8])
 
     fileCases = 'data/time_series_19-covid-Confirmed.csv'
