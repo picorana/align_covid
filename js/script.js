@@ -11,9 +11,6 @@ let separatorlinewidth = 2
 let sliderwidth = 500
 let animating = false
 
-let translatenum = 300
-let cutoffnum = 300
-
 var isMobile = false; //initiate as false
 // device detection
 if(/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|ipad|iris|kindle|Android|Silk|lge |maemo|midp|mmp|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows (ce|phone)|xda|xiino/i.test(navigator.userAgent)
@@ -128,6 +125,62 @@ let events = {
   }
 }
 
+let states = ["Alaska",
+                  "Alabama",
+                  "Arkansas",
+                  "American Samoa",
+                  "Arizona",
+                  "California",
+                  "Colorado",
+                  "Connecticut",
+                  "District of Columbia",
+                  "Delaware",
+                  "Florida",
+                  "Georgia",
+                  "Guam",
+                  "Hawaii",
+                  "Iowa",
+                  "Idaho",
+                  "Illinois",
+                  "Indiana",
+                  "Kansas",
+                  "Kentucky",
+                  "Louisiana",
+                  "Massachusetts",
+                  "Maryland",
+                  "Maine",
+                  "Michigan",
+                  "Minnesota",
+                  "Missouri",
+                  "Mississippi",
+                  "Montana",
+                  "North Carolina",
+                  " North Dakota",
+                  "Nebraska",
+                  "New Hampshire",
+                  "New Jersey",
+                  "New Mexico",
+                  "Nevada",
+                  "New York",
+                  "Ohio",
+                  "Oklahoma",
+                  "Oregon",
+                  "Pennsylvania",
+                  "Puerto Rico",
+                  "Rhode Island",
+                  "South Carolina",
+                  "South Dakota",
+                  "Tennessee",
+                  "Texas",
+                  "Utah",
+                  "Virginia",
+                  "Virgin Islands",
+                  "Vermont",
+                  "Washington",
+                  "Wisconsin",
+                  "West Virginia",
+                  "Wyoming"]
+
 let getDataFromAltState = (data, record, firstName, secondName) => {
   r = {"Country/Region": firstName}
   altstate = data.find(r => r["Country/Region"] == secondName)
@@ -139,17 +192,27 @@ let getDataFromAltState = (data, record, firstName, secondName) => {
   return r
 }
 
-let getInfected = (data) => {
+let getInfected = (data, groupbyname, filterbyname) => {
   let tmpdict = {}
+  ussum = 0
   for (let record of data){
 
-    if (record["Country/Region"] == "Iran") record = getDataFromAltState(data, record, "Iran", "Iran (Islamic Republic of)")
-    if (record["Country/Region"] == "Iran (Islamic Republic of)") continue
+    if (filterbyname != undefined){
+      if (record["Country/Region"] != filterbyname) continue
+    }
 
-    if (record["Country/Region"] == "South Korea") record = getDataFromAltState(data, record, "South Korea", "Republic of Korea")
-    if (record["Country/Region"] == "Republic of Korea") continue
+    if (record[groupbyname] == "Iran") record = getDataFromAltState(data, record, "Iran", "Iran (Islamic Republic of)")
+    if (record[groupbyname] == "Iran (Islamic Republic of)") continue
 
-    let groupby = record["Country/Region"]
+    if (record[groupbyname] == "Republic of Korea") record = getDataFromAltState(data, record, "Republic of Korea", "Korea, South")
+    if (record[groupbyname] == "Korea, South") continue
+
+    if (record[groupbyname] == "UK") record = getDataFromAltState(data, record, "UK", "United Kingdom")
+    if (record[groupbyname] == "United Kingdom") continue
+
+    if (record["3/11/20"] == "") delete record["3/11/20"]
+
+    let groupby = record[groupbyname]
     if (tmpdict[groupby] == undefined) tmpdict[groupby] = []
     tmpdict[groupby].push(record)
   }
@@ -160,6 +223,9 @@ let getInfected = (data) => {
     let datedict = {}
     for (let record of tmpdict[country]) {
       for (let date in record){
+        if (country == "US"){
+          if (date == "3/10/20" && states.indexOf(record["Province/State"]) == -1) continue
+        }
         if (date == "Province/State" || date == "Country/Region" || date == "Lat" || date == "Long") continue
         if (datedict[date] == undefined) datedict[date] = 0
         if (record[date] == "") continue
@@ -177,19 +243,11 @@ let getInfected = (data) => {
   return tmplist
 }
 
+  let drawGuidelines = () => {
 
-d3.csv('time_series_19-covid-Confirmed.csv')
-  .then((data) => {
-    d3.csv('time_series_19-covid-Recovered.csv')
-      .then((datarecovered) => {
-        d3.csv('time_series_19-covid-Deaths.csv')
-          .then((datadeaths) => {
     let d3line = d3.line()
         .x(d => d[0])
         .y(d => d[1]);
-
-    let chartg = svg.append('g')
-      .attr('transform', 'translate(0,200)')
 
     for (i in [...new Array(5)]){
       svg.append('path')
@@ -198,160 +256,235 @@ d3.csv('time_series_19-covid-Confirmed.csv')
         .attr('stroke', i==2? '#aaa' : '#eee')
         .attr('stroke-width', separatorlinewidth)
     }
+  }
 
-    let tmplist = getInfected(data)
-    tmplist = tmplist.filter(d => d["Country"] != "Others" && d["Country"] != "Mainland China")
-    tmplist = tmplist.filter(d => d["Infected"][d["Infected"].length - 1]["Num"] > cutoffnum)
-    tmplist = tmplist.sort((a, b) => a["Infected"][a["Infected"].length - 1]["Num"] < b["Infected"][b["Infected"].length - 1]["Num"]? 1: -1)
+  let draw = (dataCases, dataRecovered, dataDeaths, translatenum, cutoffnum, scale, groupbyname, filterbyname = undefined) => {
+    d3.csv(dataCases)
+      .then((data) => {
+        d3.csv(dataRecovered)
+          .then((datarecovered) => {
+            d3.csv(dataDeaths)
+              .then((datadeaths) => {
 
-    barcharts = chartg.selectAll('.barchart')
-      .data(tmplist)
-      .enter()
-      .append('g')
-      .attr('class', 'barchart')
-      .attr('transform', (d, i) => {
-          let translatex = width/2 - d["Infected"].indexOf(d["Infected"].find(e => e["Num"] > translatenum))*rectsize + separatorlinewidth/2
-          return 'translate('+translatex+','+ (i*cellheight) +')'
+        let d3line = d3.line()
+            .x(d => d[0])
+            .y(d => d[1]);
+
+        let chartg = svg.append('g')
+          .attr('transform', 'translate(0,200)')
+
+        drawGuidelines()
+
+        let tmplist = getInfected(data, groupbyname, filterbyname)
+        tmplist = tmplist.filter(d => d["Country"] != "Others" && d["Country"] != "Mainland China" && d["Country"] != "China" && d["Country"] != "Cruise Ship")
+        tmplist = tmplist.filter(d => d["Infected"][d["Infected"].length - 1]["Num"] > cutoffnum)
+        tmplist = tmplist.sort((a, b) => a["Infected"][a["Infected"].length - 1]["Num"] < b["Infected"][b["Infected"].length - 1]["Num"]? 1: -1)
+
+        barcharts = chartg.selectAll('.barchart')
+          .data(tmplist)
+          .enter()
+          .append('g')
+          .attr('class', 'barchart')
+          .attr('transform', (d, i) => {
+              let translatex = width/2 - d["Infected"].indexOf(d["Infected"].find(e => e["Num"] > translatenum))*rectsize + separatorlinewidth/2
+              return 'translate('+translatex+','+ (i*cellheight) +')'
+          })
+
+        rectsection = barcharts.selectAll('.rectsection')
+          .data(d => d["Infected"])
+          .enter()
+          .append("g")
+          .attr("class", "rectsection")
+          .attr("transform", (d, i) => "translate("+i*rectsize+",0)")
+
+        //let scale = linearScale
+
+        rectsection.append("rect")
+          .attr("width", rectsize*.9)
+          .attr("height", d => scale(d["Num"]))
+          .attr("fill", "#FB6900")
+
+        let deathlist = getInfected(datadeaths, groupbyname, filterbyname)
+        let recoveredlist = getInfected(datarecovered, groupbyname, filterbyname)
+
+        rectsection
+          .append('rect')
+          .attr('width', rectsize*.9)
+          .attr('height', d => scale(deathlist.find(e => d["Country"] == e["Country"])["Infected"].find(e => e["Date"] == d["Date"])["Num"]))
+          .attr('fill', '#004853')
+
+        rectsection
+          .append('rect')
+          .attr('width', rectsize*.9)
+          .attr('y', d => scale(deathlist.find(e => d["Country"] == e["Country"])["Infected"].find(e => e["Date"] == d["Date"])["Num"]))
+          .attr('height', d => {
+            let numrec = recoveredlist.find(e => d["Country"] == e["Country"])["Infected"].find(e => e["Date"] == d["Date"])["Num"]
+            let numdead = deathlist.find(e => d["Country"] == e["Country"])["Infected"].find(e => e["Date"] == d["Date"])["Num"]
+            return scale(numrec + numdead) - scale(numdead)
+          })
+          .attr('fill', '#00B9BD')
+
+        let growthrates = []
+        for (let n in tmplist){
+          countrylist = []
+          country = tmplist[n]["Country"]
+          countryobj = {"Country": country, "Infected":countrylist}
+          for (let ev in tmplist[n]["Infected"]) {
+            if (ev == 0) continue
+            // se cresce da 17 a 20
+            // (20-17) : 20 = x : 100
+            // 100*diff/curr
+            let newval = tmplist[n]["Infected"][ev]["Num"]
+            let oldval = tmplist[n]["Infected"][ev-1]["Num"]
+            let diff = newval - oldval
+            //if (diff == 0) diff = 0.01
+            let val = 100*(diff)/oldval
+            countrylist.push({"Num": val, "Date": tmplist[n]["Infected"][ev]["Date"], "Country":country})
+          }
+          growthrates.push(countryobj)
+        }
+
+        linecharts = barcharts.append('g')
+
+        let linechartscale = d3.scaleLog()
+          .domain([1, 200])
+          .range([-30, -80])
+
+        linecharts.append('path')
+          .attr('d', d => {
+            let grate = growthrates.find(el => el["Country"] == d["Country"])["Infected"]
+            let tmparr = []
+            for (let el in grate){
+              if (isNaN(grate[el]["Num"])) continue
+              if (d["Infected"].find(e => e["Date"] == grate[el]["Date"])["Num"] < 50) continue
+              if (grate[el]["Num"] == 0) continue
+              tmparr.push([(el)*rectsize + rectsize*1.5, linechartscale(grate[el]["Num"])])
+            }
+            return d3line(tmparr)
+          })
+          .attr('stroke', 'red')
+          .attr('stroke-width', 1)
+          .attr('fill', 'none')
+          .attr('opacity', 0.0)
+
+        rectsection.append("text")
+          .text(d => {
+            if (events[d["Country"]] != undefined && events[d["Country"]][d["Date"].split("/").slice(0,2).join("/")] != undefined) return events[d["Country"]][d["Date"].split("/").slice(0,2).join("/")]
+          })
+          .attr("transform", "rotate(-90)")
+          .attr("font-family", "Arial")
+          .attr("font-size", "small")
+          .attr("x", d => d["Num"] < 5000? -scale(d["Num"]) - 50 : -10)
+          .attr("y", +rectsize*3/4)
+          .attr("fill", d => d["Num"] < 5000? "gray" : "white")
+          .attr("text-anchor", d=> d["Num"] != 5000? "end" : "start")
+
+        rectsection.append("text")
+          .text(d => d["Num"] != 0? d["Date"].split("/").slice(0,2).join("/") : "")
+          .attr("transform", "rotate(-90)")
+          .attr("font-family", "Arial")
+          .attr("font-size", "x-small")
+          .attr("y", +rectsize*3/4)
+          .attr("x", 10)
+          .attr("fill", "gray")
+
+        rectsection.append("text")
+          .text(d => d["Num"] != 0? d["Num"] : "")
+          .attr("transform", "rotate(-90)")
+          .attr("font-family", "Arial")
+          .attr("font-size", "x-small")
+          .attr("y", +rectsize*3/4)
+          .attr("x", d => -scale(d["Num"]) - 10)
+          .attr("fill", "gray")
+          .attr('text-anchor', 'end')
+
+        if (isMobile){
+          for (elem of tmplist){
+            svg
+              .append('text')
+              .attr("font-family", "Arial")
+              .attr("y", tmplist.indexOf(elem)*cellheight + cellheight/2 + 80)
+              .attr("x", 50)
+              .attr("fill", "#aaa")
+              .attr("font-size", "2em")
+              .attr("font-weight", "bold")
+              .text(elem["Country"])
+          }
+        } else {
+          barcharts
+            .append('text')
+            .attr("font-family", "Arial")
+            .attr("y", cellheight/4)
+            .attr("x", d => d["Infected"].indexOf(d["Infected"].find(e => e["Num"] > 0))*rectsize + rectsize)
+            .attr("fill", "#aaa")
+            .attr("font-size", "2em")
+            .attr("font-weight", "bold")
+            .text(d => d["Country"])
+            .attr('stroke', 'white')
+            .attr('stroke-width', 5)
+          barcharts
+            .append('text')
+            .attr("font-family", "Arial")
+            .attr("y", cellheight/4)
+            .attr("x", d => d["Infected"].indexOf(d["Infected"].find(e => e["Num"] > 0))*rectsize + rectsize)
+            .attr("fill", "#aaa")
+            .attr("font-size", "2em")
+            .attr("font-weight", "bold")
+            .text(d => d["Country"])
+        }
+
+          svg.attr('height', d3.selectAll('.barchart').filter(d => d["Infected"][d["Infected"].length - 1]["Num"]).size() * cellheight + cellheight)
+
       })
+      })
+    })
+  }
 
-    rectsection = barcharts.selectAll('.rectsection')
-      .data(d => d["Infected"])
-      .enter()
-      .append("g")
-      .attr("class", "rectsection")
-      .attr("transform", (d, i) => "translate("+i*rectsize+",0)")
+  let drawChina = () => {
+    let translatenum = 300
+    let cutoffnum = 300
 
     let logScale = d3.scaleSymlog()
-    .domain([0, 20000])
+    .domain([0, 80000])
     .range([0, cellheight*0.8]);
 
     let linearScale = d3.scaleLinear()
-    .domain([0, 10000])
+    .domain([0, 80000])
     .range([0, cellheight*0.8])
 
-    let scale = linearScale
+    fileCases = 'data/time_series_19-covid-Confirmed.csv'
+    fileRecovered = 'data/time_series_19-covid-Recovered.csv'
+    fileDeaths = 'data/time_series_19-covid-Deaths.csv'
+    draw(fileCases, fileRecovered, fileDeaths, translatenum, cutoffnum, logScale, "Province/State", "Mainland China")
+  }
 
-    rectsection.append("rect")
-      .attr("width", rectsize*.9)
-      .attr("height", d => scale(d["Num"]))
-      .attr("fill", "#FB6900")
+  let drawUS = () => {
+    let translatenum = 2
+    let cutoffnum = 2
 
-    let deathlist = getInfected(datadeaths)
-    let recoveredlist = getInfected(datarecovered)
+    let logScale = d3.scaleSymlog()
+    .domain([0, 1000])
+    .range([0, cellheight*0.8]);
 
-    rectsection
-      .append('rect')
-      .attr('width', rectsize*.9)
-      .attr('height', d => scale(deathlist.find(e => d["Country"] == e["Country"])["Infected"].find(e => e["Date"] == d["Date"])["Num"]))
-      .attr('fill', '#004853')
+    let linearScale = d3.scaleLinear()
+    .domain([0, 1000])
+    .range([0, cellheight*0.8])
 
-    rectsection
-      .append('rect')
-      .attr('width', rectsize*.9)
-      .attr('y', d => scale(deathlist.find(e => d["Country"] == e["Country"])["Infected"].find(e => e["Date"] == d["Date"])["Num"]))
-      .attr('height', d => scale(recoveredlist.find(e => d["Country"] == e["Country"])["Infected"].find(e => e["Date"] == d["Date"])["Num"]))
-      .attr('fill', '#00B9BD')
+    fileCases = 'data/time_series_19-covid-Confirmed.csv'
+    fileRecovered = 'data/time_series_19-covid-Recovered.csv'
+    fileDeaths = 'data/time_series_19-covid-Deaths.csv'
+    draw(fileCases, fileRecovered, fileDeaths, translatenum, cutoffnum, linearScale, "Province/State", "US")
+  }
 
-    let growthrates = []
-    for (let n in tmplist){
-      countrylist = []
-      country = tmplist[n]["Country"]
-      countryobj = {"Country": country, "Infected":countrylist}
-      for (let ev in tmplist[n]["Infected"]) {
-        if (ev == 0) continue
-        // se cresce da 17 a 20
-        // (20-17) : 20 = x : 100
-        // 100*diff/curr
-        let newval = tmplist[n]["Infected"][ev]["Num"]
-        let oldval = tmplist[n]["Infected"][ev-1]["Num"]
-        let diff = newval - oldval
-        //if (diff == 0) diff = 0.01
-        let val = 100*(diff)/oldval
-        countrylist.push({"Num": val, "Date": tmplist[n]["Infected"][ev]["Date"], "Country":country})
-      }
-      growthrates.push(countryobj)
-    }
+  let drawCountries = () => {
+    let translatenum = 300
+    let cutoffnum = 300
+    let linearScale = d3.scaleLinear()
+    .domain([0, 13000])
+    .range([0, cellheight*0.8])
 
-    linecharts = barcharts.append('g')
-
-    let linechartscale = d3.scaleLog()
-      .domain([1, 200])
-      .range([-30, -80])
-
-    linecharts.append('path')
-      .attr('d', d => {
-        let grate = growthrates.find(el => el["Country"] == d["Country"])["Infected"]
-        let tmparr = []
-        for (let el in grate){
-          if (isNaN(grate[el]["Num"])) continue
-          if (d["Infected"].find(e => e["Date"] == grate[el]["Date"])["Num"] < 50) continue
-          if (grate[el]["Num"] == 0) continue
-          tmparr.push([(el)*rectsize + rectsize*1.5, linechartscale(grate[el]["Num"])])
-        }
-        return d3line(tmparr)
-      })
-      .attr('stroke', 'red')
-      .attr('stroke-width', 1)
-      .attr('fill', 'none')
-      .attr('opacity', 0.0)
-
-    rectsection.append("text")
-      .text(d => {
-        if (events[d["Country"]] != undefined && events[d["Country"]][d["Date"].split("/").slice(0,2).join("/")] != undefined) return events[d["Country"]][d["Date"].split("/").slice(0,2).join("/")]
-      })
-      .attr("transform", "rotate(-90)")
-      .attr("font-family", "Arial")
-      .attr("font-size", "small")
-      .attr("x", d => d["Num"] < 5000? -scale(d["Num"]) - 50 : -10)
-      .attr("y", +rectsize*3/4)
-      .attr("fill", d => d["Num"] < 5000? "gray" : "white")
-      .attr("text-anchor", d=> d["Num"] != 5000? "end" : "start")
-
-    rectsection.append("text")
-      .text(d => d["Num"] != 0? d["Date"].split("/").slice(0,2).join("/") : "")
-      .attr("transform", "rotate(-90)")
-      .attr("font-family", "Arial")
-      .attr("font-size", "x-small")
-      .attr("y", +rectsize*3/4)
-      .attr("x", 10)
-      .attr("fill", "gray")
-
-    rectsection.append("text")
-      .text(d => d["Num"] != 0? d["Num"] : "")
-      .attr("transform", "rotate(-90)")
-      .attr("font-family", "Arial")
-      .attr("font-size", "x-small")
-      .attr("y", +rectsize*3/4)
-      .attr("x", d => -scale(d["Num"]) - 10)
-      .attr("fill", "gray")
-      .attr('text-anchor', 'end')
-
-    if (isMobile){
-      for (elem of tmplist){
-        svg
-          .append('text')
-          .attr("font-family", "Arial")
-          .attr("y", tmplist.indexOf(elem)*cellheight + cellheight/2 + 80)
-          .attr("x", 50)
-          .attr("fill", "#aaa")
-          .attr("font-size", "2em")
-          .attr("font-weight", "bold")
-          .text(elem["Country"])
-      }
-    } else {
-      barcharts
-        .append('text')
-        .attr("font-family", "Arial")
-        .attr("y", cellheight/4)
-        .attr("x", d => d["Infected"].indexOf(d["Infected"].find(e => e["Num"] > 0))*rectsize + rectsize)
-        .attr("fill", "#aaa")
-        .attr("font-size", "2em")
-        .attr("font-weight", "bold")
-        .text(d => d["Country"])
-    }
-
-      svg.attr('height', d3.selectAll('.barchart').filter(d => d["Infected"][d["Infected"].length - 1]["Num"]).size() * cellheight + cellheight)
-
-  })
-  })
-  })
+    fileCases = 'data/time_series_19-covid-Confirmed.csv'
+    fileRecovered = 'data/time_series_19-covid-Recovered.csv'
+    fileDeaths = 'data/time_series_19-covid-Deaths.csv'
+    draw(fileCases, fileRecovered, fileDeaths, translatenum, cutoffnum, linearScale, "Country/Region")
+  }
