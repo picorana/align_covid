@@ -42,6 +42,13 @@ rightinfo.style.top = '20px'
 rightinfo.style.right = '20px'
 topdiv.appendChild(rightinfo)
 
+let centerlinks = document.createElement('div')
+centerlinks.style.textAlign = 'center'
+centerlinks.style.marginTop = '2%'
+centerlinks.style.color = '#888'
+centerlinks.innerHTML = 'See: <a href="https://picorana.github.io/align_covid/">World</a>  ●  <a href="https://picorana.github.io/align_covid/us_states.html">US States</a>'
+topdiv.append(centerlinks)
+
 document.body.appendChild(topdiv)
 
 let svg = d3.select('body').append('svg')
@@ -50,7 +57,7 @@ let svg = d3.select('body').append('svg')
   .style('margin-top', '10px')
 
 let sliderscale = d3.scaleLog()
-  .domain([1, 10000])
+  .domain([1, 15000])
 
 var sliderSimple = d3
   .sliderBottom(sliderscale)
@@ -82,7 +89,7 @@ var sliderSimple = d3
 
   var gSimple = svg
     .append('g')
-    .attr('transform', 'translate('+(width/2 - sliderwidth/2)+',30)');
+    .attr('transform', 'translate('+(width/2 - sliderwidth/2)+',10)');
 
   gSimple.call(sliderSimple);
 
@@ -436,7 +443,7 @@ let filterUS = (data, groupbyname, filterbyname) => {
           .attr("fill", "gray")
           .attr('text-anchor', 'end')
 
-        if (isMobile){
+        if (isMobile || true){
           for (elem of tmplist){
             svg
               .append('text')
