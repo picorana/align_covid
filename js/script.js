@@ -35,7 +35,7 @@ lefttext.style.fontSize = 'small'
 topdiv.appendChild(lefttext)
 
 let rightinfo = document.createElement('div')
-rightinfo.innerHTML = '<a href="https://github.com/picorana/align_covid/issues">Report an issue or incorrect information</a><br><a href="https://github.com/picorana/align_covid">See it on github</a><br>Author: <a href="https://picorana.github.io/">picorana</a>'
+rightinfo.innerHTML = '<a href="https://github.com/picorana/align_covid/issues">Report an issue or incorrect information</a><br><a href="https://github.com/picorana/align_covid" aria-label="Star picorana/align_covid on GitHub">See it on github</a><br>Author: <a href="https://picorana.github.io/">picorana</a><br><a class="github-button" href="https://github.com/picorana" data-size="large" data-show-count="true" aria-label="Follow @picorana on GitHub">Follow @picorana</a><br><a class="github-button" href="https://github.com/picorana/align_covid" data-icon="octicon-star" data-size="large" aria-label="Star picorana/align_covid on GitHub">Star</a>'
 rightinfo.style.position = 'absolute'
 rightinfo.style.textAlign = 'right'
 rightinfo.style.top = '20px'
