@@ -107,22 +107,54 @@ let events = {
     "2/29" : "Declared CDC level 3",
     "3/4" : "Schools mandatory shutdown",
     "3/7" : "North Lockdown",
-    "3/9" : "Statewide lockdown"
+    "3/9" : "Statewide lockdown",
+    "3/11" : "Only bare necessities allowed"
   },
   "Spain": {
     "2/12" : "Mobile World Congress cancelled",
-    "2/24" : "Tenerife lockdown"
+    "2/24" : "Tenerife lockdown",
+    "3/9" : "Schools in Madrid closed",
+    "3/11" : "Events with > 1000 cancelled"
   },
   "Germany": {
     "2/26" : "first school closures",
-    "3/2" : "ECDC threat level high"
+    "3/2" : "ECDC threat level high",
+    "3/10" : "Events with > 1000 cancelled"
   },
   "Iran": {
     "2/28" : "Declared CDC level 3"
   },
   "South Korea": {
     "2/24" : "Declared CDC level 3"
+  },
+  "US" : {
+    "3/10" : "first school closures"
+  },
+  "Switzerland":{
+    "2/28" : "Events with > 1000 cancelled"
+  },
+  "Japan" : {
+    "2/27" : "Mandatory school shutdown"
+  },
+  "Norway" : {
+    "3/10" : "Community transmission reported"
+  },
+  "Netherlands" : {
+    "3/1" : "Community transmission reported",
+    "3/10" : "Large events banned"
+  },
+  "Sweden" : {
+    "3/9" : "Community transmission reported",
+    "3/11" : "Large events banned"
+  },
+  "UK" : {
+    "2/28" : "first school closures",
+  },
+  "Republic of Korea" : {
+    "2/20" : "Military bases lockdown",
+    "2/24" : "CDC level 3",
   }
+
 }
 
 let states = ["Alaska",
