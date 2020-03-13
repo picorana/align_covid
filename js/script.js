@@ -184,14 +184,14 @@ let getInfected = (data, groupbyname, filterbyname) => {
       if (record["Country/Region"] != filterbyname) continue
     }
 
-    if (record[groupbyname] == "Iran") record = getDataFromAltState(data, record, "Iran", "Iran (Islamic Republic of)")
-    if (record[groupbyname] == "Iran (Islamic Republic of)") continue
-
-    if (record[groupbyname] == "Republic of Korea") record = getDataFromAltState(data, record, "Republic of Korea", "Korea, South")
-    if (record[groupbyname] == "Korea, South") continue
-
-    if (record[groupbyname] == "UK") record = getDataFromAltState(data, record, "UK", "United Kingdom")
-    if (record[groupbyname] == "United Kingdom") continue
+    // if (record[groupbyname] == "Iran") record = getDataFromAltState(data, record, "Iran", "Iran (Islamic Republic of)")
+    // if (record[groupbyname] == "Iran (Islamic Republic of)") continue
+    //
+    // if (record[groupbyname] == "Republic of Korea") record = getDataFromAltState(data, record, "Republic of Korea", "Korea, South")
+    // if (record[groupbyname] == "Korea, South") continue
+    //
+    // if (record[groupbyname] == "UK") record = getDataFromAltState(data, record, "UK", "United Kingdom")
+    // if (record[groupbyname] == "United Kingdom") continue
 
     if (record["3/11/20"] == "") delete record["3/11/20"]
 
@@ -525,7 +525,7 @@ let filterUS = (data, groupbyname, filterbyname) => {
     let translatenum = 300
     let cutoffnum = 300
     let linearScale = d3.scaleLinear()
-    .domain([0, 13000])
+    .domain([0, 16000])
     .range([0, cellheight*0.8])
 
     fileCases = 'data/time_series_19-covid-Confirmed.csv'
