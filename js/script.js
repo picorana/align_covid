@@ -234,7 +234,7 @@ let filterUS = (data, groupbyname, filterbyname) => {
     }
 
     if (record["3/11/20"] == "" && states.indexOf(record["Province/State"]) == -1) delete record["3/11/20"]
-    if (states.indexOf(record["Province/State"]) != -1) delete record["3/10/20"]
+    //if (states.indexOf(record["Province/State"]) != -1) delete record["3/10/20"]
 
     //console.log(record)
     let groupby = ''
@@ -247,8 +247,6 @@ let filterUS = (data, groupbyname, filterbyname) => {
     if (tmpdict[groupby] == undefined) tmpdict[groupby] = []
     tmpdict[groupby].push(record)
   }
-
-  console.log(tmpdict)
 
   let tmplist = []
   for (let country in tmpdict){
@@ -272,6 +270,8 @@ let filterUS = (data, groupbyname, filterbyname) => {
     }
     tmplist.push(countryobj)
   }
+
+  console.log(tmplist)
 
   return tmplist
 }
