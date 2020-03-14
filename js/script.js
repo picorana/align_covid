@@ -226,6 +226,32 @@ let getInfected = (data, groupbyname, filterbyname) => {
   return tmplist
 }
 
+let filterItaly = (data, groupbyname, filterbyname) => {
+  let tmpdict = {}
+  for (let record of data){
+    let groupby = record["denominazione_regione"]
+    if (tmpdict[groupby] == undefined) tmpdict[groupby] = []
+    tmpdict[groupby].push(record)
+  }
+
+  let tmplist = []
+  for (let region in tmpdict){
+    let countryobj = {"Country" : region, "Infected":[]}
+    for (let record of tmpdict[region]) {
+      let numvar = 'totale_casi'
+      if (groupbyname == "Confirmed") numvar = 'totale_casi'
+      else if (groupbyname == "Deaths") numvar = "deceduti"
+      else if (groupbyname == "Recovered") numvar = "dimessi_guariti"
+      let date = record["data"].split(' ')[0].split('-').slice(1,3).join('/')
+      countryobj["Infected"].push({"Date": date, "Num":parseInt(record[numvar]), "Country":region})
+    }
+    tmplist.push(countryobj)
+
+  }
+
+  return tmplist
+}
+
 let filterUS = (data, groupbyname, filterbyname) => {
   let tmpdict = {}
   for (let record of data){
@@ -270,8 +296,6 @@ let filterUS = (data, groupbyname, filterbyname) => {
     }
     tmplist.push(countryobj)
   }
-
-  console.log(tmplist)
 
   return tmplist
 }
@@ -318,6 +342,12 @@ let filterUS = (data, groupbyname, filterbyname) => {
           tmplist = tmplist.sort((a, b) => a["Infected"][a["Infected"].length - 1]["Num"] < b["Infected"][b["Infected"].length - 1]["Num"]? 1: -1)
           deathlist = filterUS(datadeaths, groupbyname, filterbyname)
           recoveredlist = filterUS(datarecovered, groupbyname, filterbyname)
+        } else if (filterbyname == "Italy") {
+          tmplist = filterItaly(data, "Confirmed")
+          deathlist = filterItaly(datadeaths, "Deaths")
+          recoveredlist = filterItaly(datarecovered, "Recovered")
+          tmplist = tmplist.filter(d => d["Infected"][d["Infected"].length - 1]["Num"] > cutoffnum)
+          tmplist = tmplist.sort((a, b) => a["Infected"][a["Infected"].length - 1]["Num"] < b["Infected"][b["Infected"].length - 1]["Num"]? 1: -1)
         } else {
           tmplist = getInfected(data, groupbyname, filterbyname)
           tmplist = tmplist.filter(d => d["Country"] != "Others" && d["Country"] != "Mainland China" && d["Country"] != "China" && d["Country"] != "Cruise Ship")
@@ -363,11 +393,17 @@ let filterUS = (data, groupbyname, filterbyname) => {
           .attr('width', rectsize*.9)
           .attr('y', d => scale(deathlist.find(e => d["Country"] == e["Country"])["Infected"].find(e => e["Date"] == d["Date"])["Num"]))
           .attr('height', d => {
-            let numrec = recoveredlist.find(e => d["Country"] == e["Country"])["Infected"].find(e => e["Date"] == d["Date"])["Num"]
-            let numdead = deathlist.find(e => d["Country"] == e["Country"])["Infected"].find(e => e["Date"] == d["Date"])["Num"]
-            return scale(numrec + numdead) - scale(numdead)
+            if (filterbyname == "Italy"){
+              return scale(recoveredlist.find(e => d["Country"] == e["Country"])["Infected"].find(e => e["Date"] == d["Date"])["Num"])
+            } else {
+              let numrec = recoveredlist.find(e => d["Country"] == e["Country"])["Infected"].find(e => e["Date"] == d["Date"])["Num"]
+              let numdead = deathlist.find(e => d["Country"] == e["Country"])["Infected"].find(e => e["Date"] == d["Date"])["Num"]
+              return scale(numrec + numdead) - scale(numdead)
+            }
+
           })
           .attr('fill', '#00B9BD')
+
 
         let growthrates = []
         for (let n in tmplist){
@@ -519,6 +555,19 @@ let filterUS = (data, groupbyname, filterbyname) => {
     fileRecovered = 'data/time_series_19-covid-Recovered.csv'
     fileDeaths = 'data/time_series_19-covid-Deaths.csv'
     draw(fileCases, fileRecovered, fileDeaths, translatenum, cutoffnum, linearScale, "Province/State", "US")
+  }
+
+  let drawItaly = () => {
+    let translatenum = 100
+    let cutoffnum = 30
+    let linearScale = d3.scaleLinear()
+    .domain([0, 9000])
+    .range([0, cellheight*0.8])
+
+    fileCases = 'data/dpc-covid19-ita-regioni.csv'
+    fileRecovered = 'data/dpc-covid19-ita-regioni.csv'
+    fileDeaths = 'data/dpc-covid19-ita-regioni.csv'
+    draw(fileCases, fileRecovered, fileDeaths, translatenum, cutoffnum, linearScale, "", "Italy")
   }
 
   let drawCountries = () => {
