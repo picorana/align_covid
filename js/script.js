@@ -2,8 +2,6 @@
 
 let width = window.innerWidth*0.98
 let height = 5000
-// let height = window.innerWidth*0.98
-// let width = 5000
 let cellheight = 350
 let rectsize = 15
 //let heightscale = 5000000
@@ -20,10 +18,6 @@ if(/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine
     isMobile = true;
 }
 
-let d3line = d3.line()
-    .x(d => d[0])
-    .y(d => d[1]);
-
 let topdiv = document.createElement('div')
 topdiv.style.margin = '20px'
 
@@ -35,7 +29,7 @@ lefttitle.style.fontWeight = 'bold'
 topdiv.appendChild(lefttitle)
 
 let lefttext = document.createElement('div')
-lefttext.innerHTML = "The following chart reports the current state of the coronavirus outbreak in different countries, aligned by number of infected people. Use the slider on top to change the alignment value. <br> A number of relevant events is reported under each subchart. Countries are sorted by current number of infected population. The purpose of the chart is to compare events at different points of the outbreak, and perhaps try to understand what to expect in the next few days. Understanding events while being out of the context is hard, so all help in populating the relevant events is welcome in <a href='https://github.com/picorana/align_covid/issues'>the issues of the repository</a>. <br> Data source: <a href='https://github.com/CSSEGISandData/COVID-19'>https://github.com/CSSEGISandData/COVID-19</a> "
+lefttext.innerHTML = "The following chart reports the current state of the coronavirus outbreak in different countries, aligned by number of infected people. Use the slider on top to change the alignment value. <br> A number of relevant events is reported under each subchart. Countries are sorted by current number of infected population. The purpose of the chart is to compare events at different points of the outbreak, and perhaps try to understand what to expect in the next few days. Understanding events while being out of the context is hard, so all help in populating the relevant events is welcome in <a href='https://github.com/picorana/align_covid/issues'>the issues of the repository</a>. <br> Data source: <a href='https://github.com/CSSEGISandData/COVID-19'>https://github.com/CSSEGISandData/COVID-19</a> and <a href='https://github.com/pcm-dpc/COVID-1'>https://github.com/pcm-dpc/COVID-19</a>"
 lefttext.style.width = '70%'
 lefttext.style.fontSize = 'small'
 topdiv.appendChild(lefttext)
@@ -52,16 +46,71 @@ let centerlinks = document.createElement('div')
 centerlinks.style.textAlign = 'center'
 centerlinks.style.marginTop = '2%'
 centerlinks.style.color = '#888'
-centerlinks.innerHTML = 'See: <a href="https://picorana.github.io/align_covid/">World</a>  ●  <a href="https://picorana.github.io/align_covid/us_states.html">US States</a> ●  <a href="https://picorana.github.io/align_covid/italy.html">Italian Regions</a>'
+centerlinks.innerHTML = 'See: <a href="/">World</a>  ●  <a href="./us_states.html">US States</a> ● <a href="./italy.html">Italian Regions</a>'
 topdiv.append(centerlinks)
+
+let showgrowth = (val) => {
+  if (val){
+    d3.selectAll('.rectbox')
+      .transition(500)
+      .attr('opacity', 0.2)
+    d3.selectAll('.casestext')
+      .transition(500)
+      .attr('opacity', 0.2)
+    d3.selectAll('.eventtext')
+      .transition(500)
+      .attr('opacity', 0.2)
+
+    d3.selectAll('.growthpath')
+      .transition(500)
+      .attr('opacity', 1)
+    d3.selectAll('.growthaxis')
+      .transition(500)
+      .attr('opacity', 1)
+  } else {
+    d3.selectAll('.rectbox')
+      .transition(500)
+      .attr('opacity', 1)
+    d3.selectAll('.casestext')
+      .transition(500)
+      .attr('opacity', 1)
+    d3.selectAll('.eventtext')
+      .transition(500)
+      .attr('opacity', 1)
+
+    d3.selectAll('.growthpath')
+      .transition(500)
+      .attr('opacity', 0)
+    d3.selectAll('.growthaxis')
+      .transition(500)
+      .attr('opacity', 0)
+  }
+}
+
+let optiondiv = document.createElement('div')
+optiondiv.style.textAlign = "center"
+optiondiv.style.marginTop = "10px"
+let optiontext1 = document.createElement('div')
+optiontext1.innerHTML = "Show growth: "
+optiondiv.appendChild(optiontext1)
+let switchlabel = document.createElement('label')
+switchlabel.className = "switch"
+let growthswitch = document.createElement('input')
+growthswitch.type = "checkbox"
+growthswitch.oninput = (input) => showgrowth(input.target.checked)
+let growthspan = document.createElement('span')
+growthspan.className = "rslider round"
+switchlabel.appendChild(growthswitch)
+switchlabel.appendChild(growthspan)
+optiondiv.appendChild(switchlabel)
+topdiv.appendChild(optiondiv)
 
 document.body.appendChild(topdiv)
 
 let svg = d3.select('body').append('svg')
-  //.attr('width', height)
-  //.attr('height', width)
-  //.style('margin-top', '10px')
-  //.attr('transform', 'rotate(90)')
+  .attr('width', width)
+  .attr('height', height)
+  .style('margin-top', '10px')
 
 let sliderscale = d3.scaleLog()
   .domain([1, 15000])
@@ -170,6 +219,10 @@ let events = {
   }
 
 }
+
+let d3line = d3.line()
+    .x(d => d[0])
+    .y(d => d[1]);
 
 let getDataFromAltState = (data, record, firstName, secondName) => {
   r = {"Country/Region": firstName}
@@ -307,11 +360,11 @@ let filterUS = (data, groupbyname, filterbyname) => {
   return tmplist
 }
 
-  let drawGuidelines = (chartg) => {
+  let drawGuidelines = () => {
 
     for (i in [...new Array(5)]){
-      chartg.append('path')
-        .attr('d', d3line([[width/2 + rectsize*(2-i)*7, -1000],[width/2 + rectsize*(2-i)*7, height*2]]))
+      svg.append('path')
+        .attr('d', d3line([[width/2 + rectsize*(2-i)*7, 80],[width/2 + rectsize*(2-i)*7, height]]))
         .style('stroke-dasharray', i==2? '5 5':'3 3')
         .attr('stroke', i==2? '#aaa' : '#eee')
         .attr('stroke-width', separatorlinewidth)
@@ -330,6 +383,11 @@ let filterUS = (data, groupbyname, filterbyname) => {
             .x(d => d[0])
             .y(d => d[1]);
 
+        let chartg = svg.append('g')
+          .attr('transform', 'translate(0,200)')
+
+        drawGuidelines()
+
         let tmplist = []
         let deathlist = []
         let recoveredlist = []
@@ -337,7 +395,7 @@ let filterUS = (data, groupbyname, filterbyname) => {
         if (filterbyname == "US"){
           tmplist = filterUS(data, groupbyname, filterbyname)
           tmplist = tmplist.filter(d => d["Infected"][d["Infected"].length - 1]["Num"] > cutoffnum)
-          tmplist = tmplist.sort((a, b) => a["Infected"][a["Infected"].length - 1]["Num"] > b["Infected"][b["Infected"].length - 1]["Num"]? 1: -1)
+          tmplist = tmplist.sort((a, b) => a["Infected"][a["Infected"].length - 1]["Num"] < b["Infected"][b["Infected"].length - 1]["Num"]? 1: -1)
           deathlist = filterUS(datadeaths, groupbyname, filterbyname)
           recoveredlist = filterUS(datarecovered, groupbyname, filterbyname)
         } else if (filterbyname == "Italy") {
@@ -345,24 +403,16 @@ let filterUS = (data, groupbyname, filterbyname) => {
           deathlist = filterItaly(datadeaths, "Deaths")
           recoveredlist = filterItaly(datarecovered, "Recovered")
           tmplist = tmplist.filter(d => d["Infected"][d["Infected"].length - 1]["Num"] > cutoffnum)
-          tmplist = tmplist.sort((a, b) => a["Infected"][a["Infected"].length - 1]["Num"] > b["Infected"][b["Infected"].length - 1]["Num"]? 1: -1)
+          tmplist = tmplist.sort((a, b) => a["Infected"][a["Infected"].length - 1]["Num"] < b["Infected"][b["Infected"].length - 1]["Num"]? 1: -1)
         } else {
           tmplist = getInfected(data, groupbyname, filterbyname)
           tmplist = tmplist.filter(d => d["Country"] != "Others" && d["Country"] != "Mainland China" && d["Country"] != "China" && d["Country"] != "Cruise Ship")
           tmplist = tmplist.filter(d => d["Infected"][d["Infected"].length - 1]["Num"] > cutoffnum)
-          tmplist = tmplist.sort((a, b) => a["Infected"][a["Infected"].length - 1]["Num"] > b["Infected"][b["Infected"].length - 1]["Num"]? 1: -1)
+          tmplist = tmplist.sort((a, b) => a["Infected"][a["Infected"].length - 1]["Num"] < b["Infected"][b["Infected"].length - 1]["Num"]? 1: -1)
 
           deathlist = getInfected(datadeaths, groupbyname, filterbyname)
           recoveredlist = getInfected(datarecovered, groupbyname, filterbyname)
         }
-
-        let chartg = svg.append('g')
-          .attr('transform', 'translate('+(tmplist.length*cellheight + 50)+', -500)rotate(90)')
-
-        svg.attr('width', tmplist.length*cellheight + 200)
-        .attr('height', window.innerHeight)
-
-        drawGuidelines(chartg)
 
         barcharts = chartg.selectAll('.barchart')
           .data(tmplist)
@@ -383,7 +433,7 @@ let filterUS = (data, groupbyname, filterbyname) => {
 
         //let scale = linearScale
 
-        rectbox = rectsection.append('g')
+        let rectbox = rectsection.append('g')
           .attr('class', 'rectbox')
 
         rectbox.append("rect")
@@ -396,20 +446,27 @@ let filterUS = (data, groupbyname, filterbyname) => {
           .attr('width', rectsize*.9)
           .attr('height', d => {
             if (deathlist.find(e => d["Country"] == e["Country"])["Infected"].find(e => e["Date"] == d["Date"]) == undefined) return 0
-            return scale(deathlist.find(e => d["Country"] == e["Country"])["Infected"].find(e => e["Date"] == d["Date"])["Num"])
+            else return scale(deathlist.find(e => d["Country"] == e["Country"])["Infected"].find(e => e["Date"] == d["Date"])["Num"])
           })
           .attr('fill', '#004853')
+
+        console.log(deathlist)
 
         rectbox
           .append('rect')
           .attr('width', rectsize*.9)
-          .attr('y', d => scale(deathlist.find(e => d["Country"] == e["Country"])["Infected"].find(e => e["Date"] == d["Date"])["Num"]))
+          .attr('y', d => {
+            if (deathlist.find(e => d["Country"] == e["Country"])["Infected"].find(e => e["Date"] == d["Date"]) == undefined) return 0
+            else return scale(deathlist.find(e => d["Country"] == e["Country"])["Infected"].find(e => e["Date"] == d["Date"])["Num"])
+          })
           .attr('height', d => {
             if (filterbyname == "Italy"){
               return scale(recoveredlist.find(e => d["Country"] == e["Country"])["Infected"].find(e => e["Date"] == d["Date"])["Num"])
             } else {
               let numrec = recoveredlist.find(e => d["Country"] == e["Country"])["Infected"].find(e => e["Date"] == d["Date"])["Num"]
-              let numdead = deathlist.find(e => d["Country"] == e["Country"])["Infected"].find(e => e["Date"] == d["Date"])["Num"]
+              let numdead = 0
+              if (deathlist.find(e => d["Country"] == e["Country"])["Infected"].find(e => e["Date"] == d["Date"]) == undefined) numdead = 0
+              else numdead = deathlist.find(e => d["Country"] == e["Country"])["Infected"].find(e => e["Date"] == d["Date"])["Num"]
               return scale(numrec + numdead) - scale(numdead)
             }
 
@@ -423,6 +480,7 @@ let filterUS = (data, groupbyname, filterbyname) => {
           .attr("transform", "rotate(-90)")
           .attr("font-family", "Arial")
           .attr("font-size", "small")
+          .attr('class', 'eventtext')
           .attr("x", d => d["Num"] < 5000? -scale(d["Num"]) - 50 : -10)
           .attr("y", +rectsize*3/4)
           .attr("fill", d => d["Num"] < 5000? "gray" : "white")
@@ -432,7 +490,6 @@ let filterUS = (data, groupbyname, filterbyname) => {
           .text(d => d["Num"] != 0? d["Date"].split("/").slice(0,2).join("/") : "")
           .attr("transform", "rotate(-90)")
           .attr("font-family", "Arial")
-          .attr("class", "datetext")
           .attr("font-size", "x-small")
           .attr("y", +rectsize*3/4)
           .attr("x", 10)
@@ -443,19 +500,19 @@ let filterUS = (data, groupbyname, filterbyname) => {
           .attr("transform", "rotate(-90)")
           .attr("font-family", "Arial")
           .attr("font-size", "x-small")
-          .attr('class', 'casestext')
+          .attr("class", "casestext")
           .attr("y", +rectsize*3/4)
           .attr("x", d => -scale(d["Num"]) - 10)
           .attr("fill", "gray")
           .attr('text-anchor', 'end')
 
         if (isMobile || true){
-          for (elem of tmplist.reverse()){
+          for (elem of tmplist){
             svg
               .append('text')
               .attr("font-family", "Arial")
-              .attr("x", tmplist.indexOf(elem)*cellheight + cellheight/2 + 80)
-              .attr("y", 100)
+              .attr("y", tmplist.indexOf(elem)*cellheight + cellheight/2 + 80)
+              .attr("x", 50)
               .attr("fill", "#aaa")
               .attr("font-size", "2em")
               .attr("font-weight", "bold")
@@ -484,108 +541,88 @@ let filterUS = (data, groupbyname, filterbyname) => {
             .text(d => d["Country"])
         }
 
-          //svg.attr('height', d3.selectAll('.barchart').filter(d => d["Infected"][d["Infected"].length - 1]["Num"]).size() * cellheight + cellheight)
+          svg.attr('height', d3.selectAll('.barchart').filter(d => d["Infected"][d["Infected"].length - 1]["Num"]).size() * cellheight + cellheight)
+          drawGrowthRates(tmplist, scale, rectsection)
 
-          //drawGrowthRates(tmplist, scale, rectsection)
       })
       })
     })
   }
 
   let drawGrowthRates = (tmplist, scale, rectsection) => {
-    d3.selectAll('.rectbox')
-      .attr('opacity', 0.2)
+    // d3.selectAll('.rectbox')
+    //   .attr('opacity', 0.2)
+    //
+    // d3.selectAll('.casestext')
+    //   .attr('opacity', 0.2)
+    //
+    // d3.selectAll('.eventtext')
+    //   .attr('opacity', 0.2)
 
-    d3.selectAll('.casestext')
-      .attr('opacity', 0.2)
-
-    d3.selectAll('.datetext')
-      .attr('opacity', 1)
-
-    let growthrates = []
-    for (let n in tmplist){
-      countrylist = []
-      country = tmplist[n]["Country"]
-      countryobj = {"Country": country, "Infected":countrylist}
-      for (let ev in tmplist[n]["Infected"]) {
-        if (ev == 0) continue
-        // se cresce da 17 a 20
-        // (20-17) : 20 = x : 100
-        // 100*diff/curr
-        let newval = tmplist[n]["Infected"][ev]["Num"]
-        let oldval = tmplist[n]["Infected"][ev-1]["Num"]
-        let diff = newval - oldval
-        //if (diff == 0) diff = 0.01
-        let val = 100*(diff)/oldval
-        countrylist.push({"Num": val, "Date": tmplist[n]["Infected"][ev]["Date"], "Country":country})
-      }
-      growthrates.push(countryobj)
+  let growthrates = []
+  for (let n in tmplist){
+    countrylist = []
+    country = tmplist[n]["Country"]
+    countryobj = {"Country": country, "Infected":countrylist}
+    for (let ev in tmplist[n]["Infected"]) {
+      if (ev == 0) continue
+      // se cresce da 17 a 20
+      // (20-17) : 20 = x : 100
+      // 100*diff/curr
+      let newval = tmplist[n]["Infected"][ev]["Num"]
+      let oldval = tmplist[n]["Infected"][ev-1]["Num"]
+      let diff = newval - oldval
+      //if (diff == 0) diff = 0.01
+      let val = 100*(diff)/oldval
+      countrylist.push({"Num": val, "Date": tmplist[n]["Infected"][ev]["Date"], "Country":country})
     }
-
-    linecharts = barcharts.append('g')
-
-    let linechartscale = d3.scaleLog()
-      .domain([1, 500])
-      .range([0, scale.range()[1]])
-
-    linecharts.append('path')
-      .attr('d', d => {
-        let grate = growthrates.find(el => el["Country"] == d["Country"])["Infected"]
-        let tmparr = []
-        for (let el in grate){
-          if (isNaN(grate[el]["Num"])) continue
-          if (grate[el]["Num"] < linechartscale.domain()[0] || grate[el]["Num"] > linechartscale.domain()[1]) continue
-          if (d["Infected"].find(e => e["Date"] == grate[el]["Date"])["Num"] < 50) continue
-          //if (grate[el]["Num"] == 0) continue
-          tmparr.push([(el)*rectsize + rectsize*1.5, linechartscale(grate[el]["Num"])])
-        }
-        return d3line(tmparr)
-      })
-      .attr('stroke', 'red')
-      .attr('stroke-width', 1)
-      .attr('fill', 'none')
-      .attr('opacity', 1.0)
-
-      rectsection.append('text')
-        .text(d => {
-          if (d["Num"] < 50) return null
-          let grate = growthrates.find(el => el["Country"] == d["Country"])["Infected"]
-          let gdate = grate.find(e => e["Date"] == d["Date"])
-          if (gdate == undefined) return null
-          let num = gdate["Num"]
-          if (isNaN(num)) return null
-          if (num <= 0) return null
-          if (num == Infinity) return null
-          if (num > linechartscale.domain()[1]) return null
-          else return Math.floor(num*10)/10 + '%'
-        })
-        .attr('transform', 'rotate(-90)')
-        .attr('font-size', 'x-small')
-        .attr('x', d => {
-          let grate = growthrates.find(el => el["Country"] == d["Country"])["Infected"]
-          let gdate = grate.find(e => e["Date"] == d["Date"])
-          if (gdate == undefined) return 0
-          let num = gdate["Num"]
-          if (isNaN(num)) return 0
-          if (num <= 0) return 0
-          if (num == Infinity) return 0
-          if (num > linechartscale.domain()[1]) return 0
-          else return -linechartscale(num) + 10
-        })
-        .attr('y', rectsize*0.7)
-        .attr('text-anchor', 'start')
-
-      // for (let country in growthrates){
-      //   for (let i in growthrates[country]["Infected"]) {
-      //     linecharts.append('text')
-      //       .attr('y', (i)*rectsize + rectsize*1.5)
-      //       .attr('transform', 'rotate(-90)')
-      //       .attr('font-size', 'small')
-      //       .text(growthrates[country]["Infected"][i]["Num"])
-      //
-      //   } //console.log(growthrates[country]["Infected"][i])
-      // }
+    growthrates.push(countryobj)
   }
+
+  linecharts = barcharts.append('g')
+
+  let linechartscale = d3.scaleLinear()
+    .domain([1, 100])
+    .range([0, scale.range()[1]])
+    .clamp(true)
+
+  var axis = d3.axisRight(linechartscale)
+    .tickFormat(d => d + '%')
+    .tickSize(- growthrates[0]["Infected"].length*rectsize)
+
+  linecharts.append("g")
+    .attr("transform", "translate("+(growthrates[0]["Infected"].length*rectsize + rectsize*2)+")")
+    .call(axis)
+    .attr('class', 'growthaxis')
+    .attr('opacity', 0)
+
+  linecharts.selectAll('.domain')
+    .attr('opacity', 0.2)
+
+  linecharts.selectAll('.tick').select('line')
+    .attr('stroke-dasharray', '3 3')
+    .attr('color', '#ccc')
+
+  linecharts.append('path')
+    .attr('d', d => {
+      let grate = growthrates.find(el => el["Country"] == d["Country"])["Infected"]
+      let tmparr = []
+      for (let el in grate){
+        if (isNaN(grate[el]["Num"])) continue
+        if (grate[el]["Num"] < linechartscale.domain()[0]) continue
+        if (d["Infected"].find(e => e["Date"] == grate[el]["Date"])["Num"] < 50) continue
+        //if (grate[el]["Num"] > linechartscale.domain()[1]) tmparr.push([(el)*rectsize + rectsize*1.5, linechartscale(100)])
+        //if (grate[el]["Num"] == 0) continue
+        tmparr.push([(el)*rectsize + rectsize*1.5, linechartscale(grate[el]["Num"])])
+      }
+      return d3line(tmparr)
+    })
+    .attr('stroke', 'red')
+    .attr('class', 'growthpath')
+    .attr('stroke-width', 1)
+    .attr('fill', 'none')
+    .attr('opacity', 0)
+}
 
   let drawChina = () => {
     let translatenum = 300
