@@ -46,7 +46,7 @@ let centerlinks = document.createElement('div')
 centerlinks.style.textAlign = 'center'
 centerlinks.style.marginTop = '2%'
 centerlinks.style.color = '#888'
-centerlinks.innerHTML = 'See: <a href="https://picorana.github.io/align_covid/">World</a>  ●  <a href="https://picorana.github.io/align_covid/us_states.html">US States</a>'
+centerlinks.innerHTML = 'See: <a href="https://picorana.github.io/align_covid/">World</a>  ●  <a href="https://picorana.github.io/align_covid/us_states.html">US States</a> ●  <a href="https://picorana.github.io/align_covid/italy.html">Italian Regions</a>'
 topdiv.append(centerlinks)
 
 document.body.appendChild(topdiv)
