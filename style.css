@@ -1,3 +1,16 @@
+.slider text {
+     font-size: 14px;
+   }
+
+#slider-simple text{
+  font-size: 14px;
+}
+
+.tick text {
+  font-size: 12px;
+}
+
+
 /* The switch - the box around the rslider */
 .switch {
  position: relative;

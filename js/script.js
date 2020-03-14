@@ -145,7 +145,7 @@ var sliderSimple = d3
 
   var gSimple = svg
     .append('g')
-    .attr('transform', 'translate('+(width/2 - sliderwidth/2)+',10)');
+    .attr('transform', 'translate('+(width/2 - sliderwidth/2)+',10)')
 
   gSimple.call(sliderSimple);
 
@@ -216,6 +216,9 @@ let events = {
   "Republic of Korea" : {
     "2/20" : "Military bases lockdown",
     "2/24" : "CDC level 3",
+  },
+  "Lombardia" : {
+    "03/07" : "Lockdown"
   }
 
 }
@@ -449,8 +452,6 @@ let filterUS = (data, groupbyname, filterbyname) => {
             else return scale(deathlist.find(e => d["Country"] == e["Country"])["Infected"].find(e => e["Date"] == d["Date"])["Num"])
           })
           .attr('fill', '#004853')
-
-        console.log(deathlist)
 
         rectbox
           .append('rect')
