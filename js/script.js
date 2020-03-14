@@ -29,7 +29,7 @@ lefttitle.style.fontWeight = 'bold'
 topdiv.appendChild(lefttitle)
 
 let lefttext = document.createElement('div')
-lefttext.innerHTML = "The following chart reports the current state of the coronavirus outbreak in different countries, aligned by number of infected people. Use the slider on top to change the alignment value. <br> A number of relevant events is reported under each subchart. Countries are sorted by current number of infected population. The purpose of the chart is to compare events at different points of the outbreak, and perhaps try to understand what to expect in the next few days. Understanding events while being out of the context is hard, so all help in populating the relevant events is welcome in <a href='https://github.com/picorana/align_covid/issues'>the issues of the repository</a>. <br> Data source: <a href='https://github.com/CSSEGISandData/COVID-19'>https://github.com/CSSEGISandData/COVID-19</a> and <a href='https://github.com/pcm-dpc/COVID-1'>https://github.com/pcm-dpc/COVID-19</a>"
+lefttext.innerHTML = "The following chart reports the current state of the coronavirus outbreak in different countries, aligned by number of infected people. Use the slider on top to change the alignment value. <br> A number of relevant events is reported under each subchart. Countries are sorted by current number of infected population. The purpose of the chart is to compare events at different points of the outbreak, and perhaps try to understand what to expect in the next few days. Understanding events while being out of the context is hard, so all help in populating the relevant events is welcome in <a href='https://github.com/picorana/align_covid/issues'>the issues of the repository</a>. <br> Data source: <a href='https://github.com/CSSEGISandData/COVID-19'>https://github.com/CSSEGISandData/COVID-19</a> and <a href='https://github.com/pcm-dpc/COVID-19'>https://github.com/pcm-dpc/COVID-19</a>"
 lefttext.style.width = '70%'
 lefttext.style.fontSize = 'small'
 topdiv.appendChild(lefttext)
@@ -130,7 +130,6 @@ var sliderSimple = d3
       d3.selectAll('.barchart')
         .transition(100)
         .attr('transform', (d, i) => {
-            animating = true
             let translatex = (width/2 - d["Infected"].indexOf(d["Infected"].find(e => e["Num"] > val))*rectsize + separatorlinewidth/2)
             if (val > d["Infected"][d["Infected"].length - 1]["Num"]) return 'translate('+ 10 +', '+(i*cellheight)+')'
             return 'translate(' + translatex + ', '+(i*cellheight)+')'
@@ -423,8 +422,15 @@ let filterUS = (data, groupbyname, filterbyname) => {
           .append('g')
           .attr('class', 'barchart')
           .attr('transform', (d, i) => {
-              let translatex = width/2 - d["Infected"].indexOf(d["Infected"].find(e => e["Num"] > translatenum))*rectsize + separatorlinewidth/2
-              return 'translate('+translatex+','+ (i*cellheight) +')'
+              // let translatex = width/2 - d["Infected"].indexOf(d["Infected"].find(e => e["Num"] > translatenum))*rectsize + separatorlinewidth/2
+              // return 'translate('+translatex+','+ (i*cellheight) +')'
+              let translatex = (width/2 - d["Infected"].indexOf(d["Infected"].find(e => e["Num"] > translatenum))*rectsize + separatorlinewidth/2)
+              if (translatenum > d["Infected"][d["Infected"].length - 1]["Num"]) return 'translate('+ 10 +', '+(i*cellheight)+')'
+              return 'translate(' + translatex + ', '+(i*cellheight)+')'
+          })
+          .attr('opacity', (d, i) => {
+            if(translatenum > d["Infected"][d["Infected"].length - 1]["Num"]) return 0.3
+            else return 1
           })
 
         rectsection = barcharts.selectAll('.rectsection')
@@ -482,10 +488,10 @@ let filterUS = (data, groupbyname, filterbyname) => {
           .attr("font-family", "Arial")
           .attr("font-size", "small")
           .attr('class', 'eventtext')
-          .attr("x", d => d["Num"] < 5000? -scale(d["Num"]) - 50 : -10)
+          .attr("x", d => d["Num"] < scale.domain()[1]/2? -scale(d["Num"]) - 50 : -10)
           .attr("y", +rectsize*3/4)
-          .attr("fill", d => d["Num"] < 5000? "gray" : "white")
-          .attr("text-anchor", d=> d["Num"] != 5000? "end" : "start")
+          .attr("fill", d => d["Num"] < scale.domain()[1]/2? "gray" : "white")
+          .attr("text-anchor", d=> d["Num"] != scale.domain()[1]/2? "end" : "start")
 
         rectsection.append("text")
           .text(d => d["Num"] != 0? d["Date"].split("/").slice(0,2).join("/") : "")
@@ -662,10 +668,10 @@ let filterUS = (data, groupbyname, filterbyname) => {
   }
 
   let drawItaly = () => {
-    let translatenum = 100
+    let translatenum = 200
     let cutoffnum = 30
     let linearScale = d3.scaleLinear()
-    .domain([0, 9000])
+    .domain([0, 12000])
     .range([0, cellheight*0.8])
 
     fileCases = 'data/dpc-covid19-ita-regioni.csv'
@@ -678,7 +684,7 @@ let filterUS = (data, groupbyname, filterbyname) => {
     let translatenum = 300
     let cutoffnum = 300
     let linearScale = d3.scaleLinear()
-    .domain([0, 16000])
+    .domain([0, 18000])
     .range([0, cellheight*0.8])
 
     fileCases = 'data/time_series_19-covid-Confirmed.csv'
