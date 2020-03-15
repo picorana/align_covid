@@ -28,7 +28,7 @@ let slideChartsToVal = (val) => {
     d3.selectAll('.barchart')
       .transition(100)
       .attr('transform', (d, i) => {
-          let translatex = (width/2 - d["Infected"].indexOf(d["Infected"].find(e => e["Num"] > val))*rectsize + separatorlinewidth/2)
+          let translatex = (width/2 - d["Infected"].indexOf(d["Infected"].find(e => e["Num"] >= val))*rectsize + separatorlinewidth/2)
           if (val > d["Infected"][d["Infected"].length - 1]["Num"]) return 'translate('+ 10 +', '+(i*cellheight)+')'
           return 'translate(' + translatex + ', '+(i*cellheight)+')'
     })
