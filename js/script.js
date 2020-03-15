@@ -260,31 +260,27 @@ let filterUS = (data, groupbyname, filterbyname) => {
 
         drawGuidelines()
 
-        let tmplist = []
-        let deathlist = []
-        let recoveredlist = []
+        tmplist = []
+        deathlist = []
+        recoveredlist = []
 
         if (filterbyname == "US"){
           tmplist = filterUS(data, groupbyname, filterbyname)
-          tmplist = tmplist.filter(d => d["Infected"][d["Infected"].length - 1]["Num"] > cutoffnum)
-          tmplist = tmplist.sort((a, b) => a["Infected"][a["Infected"].length - 1]["Num"] < b["Infected"][b["Infected"].length - 1]["Num"]? 1: -1)
           deathlist = filterUS(datadeaths, groupbyname, filterbyname)
           recoveredlist = filterUS(datarecovered, groupbyname, filterbyname)
         } else if (filterbyname == "Italy") {
           tmplist = filterItaly(data, "Confirmed")
           deathlist = filterItaly(datadeaths, "Deaths")
           recoveredlist = filterItaly(datarecovered, "Recovered")
-          tmplist = tmplist.filter(d => d["Infected"][d["Infected"].length - 1]["Num"] > cutoffnum)
-          tmplist = tmplist.sort((a, b) => a["Infected"][a["Infected"].length - 1]["Num"] < b["Infected"][b["Infected"].length - 1]["Num"]? 1: -1)
         } else {
           tmplist = getInfected(data, groupbyname, filterbyname)
-          tmplist = tmplist.filter(d => d["Country"] != "Others" && d["Country"] != "Mainland China" && d["Country"] != "China" && d["Country"] != "Cruise Ship")
-          tmplist = tmplist.filter(d => d["Infected"][d["Infected"].length - 1]["Num"] > cutoffnum)
-          tmplist = tmplist.sort((a, b) => a["Infected"][a["Infected"].length - 1]["Num"] < b["Infected"][b["Infected"].length - 1]["Num"]? 1: -1)
-
           deathlist = getInfected(datadeaths, groupbyname, filterbyname)
           recoveredlist = getInfected(datarecovered, groupbyname, filterbyname)
         }
+
+        tmplist = tmplist.filter(d => d["Country"] != "Others" && d["Country"] != "Mainland China" && d["Country"] != "China" && d["Country"] != "Cruise Ship")
+        tmplist = tmplist.filter(d => d["Infected"][d["Infected"].length - 1]["Num"] > cutoffnum)
+        tmplist = tmplist.sort((a, b) => a["Infected"][a["Infected"].length - 1]["Num"] < b["Infected"][b["Infected"].length - 1]["Num"]? 1: -1)
 
         barcharts = chartg.selectAll('.barchart')
           .data(tmplist)
@@ -319,6 +315,7 @@ let filterUS = (data, groupbyname, filterbyname) => {
           .attr("width", rectsize*.9)
           .attr("height", d => scale(d["Num"]))
           .attr("fill", "#FB6900")
+          .attr('class', 'confirmedrect')
 
         rectbox
           .append('rect')
@@ -328,6 +325,7 @@ let filterUS = (data, groupbyname, filterbyname) => {
             else return scale(deathlist.find(e => d["Country"] == e["Country"])["Infected"].find(e => e["Date"] == d["Date"])["Num"])
           })
           .attr('fill', '#004853')
+          .attr('class', 'deathrect')
 
         rectbox
           .append('rect')
@@ -349,6 +347,7 @@ let filterUS = (data, groupbyname, filterbyname) => {
 
           })
           .attr('fill', '#00B9BD')
+          .attr('class', 'recoveredrect')
 
         rectsection.append("text")
           .text(d => {
@@ -419,22 +418,91 @@ let filterUS = (data, groupbyname, filterbyname) => {
         }
 
           svg.attr('height', d3.selectAll('.barchart').filter(d => d["Infected"][d["Infected"].length - 1]["Num"]).size() * cellheight + cellheight)
+
           drawGrowthRates(tmplist, scale, rectsection)
           addconfirmedslider(scale, translatenum)
+          //useUniqueScalePerCountry(rectsection, tmplist, deathlist, recoveredlist, filterbyname)
       })
       })
     })
   }
 
-  let drawGrowthRates = (tmplist, scale, rectsection) => {
-    // d3.selectAll('.rectbox')
-    //   .attr('opacity', 0.2)
-    //
-    // d3.selectAll('.casestext')
-    //   .attr('opacity', 0.2)
-    //
-    // d3.selectAll('.eventtext')
-    //   .attr('opacity', 0.2)
+let useUniqueScalePerCountry = (val, filterbyname = undefined) => {
+  let confirmedlist = tmplist
+  let countrymaxvals = {}
+  for (let c in confirmedlist){
+    let country = confirmedlist[c]["Country"]
+    let gconf = confirmedlist.find(e => e["Country"] == country)["Infected"]
+    let maxval = gconf[gconf.length - 1]["Num"]
+    countrymaxvals[country] = maxval
+  }
+
+  let transitiontime = 1000
+
+  rectsection.selectAll('.confirmedrect')
+    .transition(transitiontime)
+    .attr('height', d => {
+      let newscale = d3.scaleLinear()
+        .domain([1, countrymaxvals[d["Country"]]])
+        .range([0, cellheight*0.8])
+      return newscale(d["Num"])
+    })
+
+  rectsection.selectAll('.casestext')
+  .transition(transitiontime)
+  .attr('x', d => {
+    let newscale = d3.scaleLinear()
+      .domain([1, countrymaxvals[d["Country"]]])
+      .range([0, cellheight*0.8])
+    return -newscale(d["Num"]) - 10
+  })
+
+  rectsection.selectAll('.eventtext')
+  .transition(transitiontime)
+  .attr('x', d => {
+    let newscale = d3.scaleLinear()
+      .domain([1, countrymaxvals[d["Country"]]])
+      .range([0, cellheight*0.8])
+    return d["Num"] < newscale.domain()[1]/2? -newscale(d["Num"]) - 50 : -10
+  })
+
+  rectsection.selectAll('.deathrect')
+  .transition(transitiontime)
+    .attr('height', d => {
+      let newscale = d3.scaleLinear()
+        .domain([1, countrymaxvals[d["Country"]]])
+        .range([0, cellheight*0.8])
+      if (deathlist.find(e => d["Country"] == e["Country"])["Infected"].find(e => e["Date"] == d["Date"]) == undefined) return 0
+      else return newscale(deathlist.find(e => d["Country"] == e["Country"])["Infected"].find(e => e["Date"] == d["Date"])["Num"])
+    })
+
+  rectsection.selectAll('.recoveredrect')
+  .transition(transitiontime)
+  .attr('y', d => {
+    let newscale = d3.scaleLinear()
+      .domain([1, countrymaxvals[d["Country"]]])
+      .range([0, cellheight*0.8])
+    if (deathlist.find(e => d["Country"] == e["Country"])["Infected"].find(e => e["Date"] == d["Date"]) == undefined) return 0
+    else return newscale(deathlist.find(e => d["Country"] == e["Country"])["Infected"].find(e => e["Date"] == d["Date"])["Num"])
+  })
+  .attr('height', d => {
+    let newscale = d3.scaleLinear()
+      .domain([1, countrymaxvals[d["Country"]]])
+      .range([0, cellheight*0.8])
+    if (filterbyname == "Italy"){
+      return newscale(recoveredlist.find(e => d["Country"] == e["Country"])["Infected"].find(e => e["Date"] == d["Date"])["Num"])
+    } else {
+      let numrec = recoveredlist.find(e => d["Country"] == e["Country"])["Infected"].find(e => e["Date"] == d["Date"])["Num"]
+      let numdead = 0
+      if (deathlist.find(e => d["Country"] == e["Country"])["Infected"].find(e => e["Date"] == d["Date"]) == undefined) numdead = 0
+      else numdead = deathlist.find(e => d["Country"] == e["Country"])["Infected"].find(e => e["Date"] == d["Date"])["Num"]
+      return newscale(numrec + numdead) - newscale(numdead)
+    }
+
+  })
+}
+
+let drawGrowthRates = (tmplist, scale, rectsection) => {
 
   let growthrates = []
   for (let n in tmplist){

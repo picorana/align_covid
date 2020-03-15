@@ -70,8 +70,11 @@ let showgrowth = (val) => {
 let optiondiv = document.createElement('div')
 optiondiv.style.textAlign = "center"
 optiondiv.style.marginTop = "10px"
+optiondiv.style.display = "flex"
+optiondiv.style.justifyContent = "center"
+
 let optiontext1 = document.createElement('div')
-optiontext1.innerHTML = "Show growth: "
+optiontext1.innerHTML = "Show growth: <br>"
 optiondiv.appendChild(optiontext1)
 let switchlabel = document.createElement('label')
 switchlabel.className = "switch"
@@ -82,7 +85,26 @@ let growthspan = document.createElement('span')
 growthspan.className = "rslider round"
 switchlabel.appendChild(growthswitch)
 switchlabel.appendChild(growthspan)
-optiondiv.appendChild(switchlabel)
+optiontext1.append(switchlabel)
+optiontext1.style.marginRight = '10px'
+
+let optiontext2 = document.createElement('div')
+optiontext2.innerHTML = "Use unique scales: <br>"
+let scalelabel = document.createElement('label')
+scalelabel.className = "switch"
+let scaleswitch = document.createElement('input')
+scaleswitch.type = "checkbox"
+scaleswitch.oninput = (input) => useUniqueScalePerCountry(input.target.checked)
+let scalespan = document.createElement('span')
+scalespan.className = "rslider round"
+scalelabel.appendChild(scaleswitch)
+scalelabel.appendChild(scalespan)
+optiontext2.append(scalelabel)
+optiontext2.style.marginLeft = '10px'
+
+optiondiv.appendChild(optiontext2)
+//optiondiv.appendChild(switchlabel)
+
 topdiv.appendChild(optiondiv)
 
 document.body.appendChild(topdiv)
