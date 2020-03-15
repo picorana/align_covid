@@ -34,5 +34,5 @@ let addconfirmedslider = (scale, translatenum) => {
 
     tickvaluearray = [1, 10, 100, 1000, 10000]
 
-    d3.selectAll('.tick').filter(d => tickvaluearray.indexOf(d) == -1).attr('opacity', 0)
+    gSimple.selectAll('.tick').filter(d => tickvaluearray.indexOf(d) == -1).attr('opacity', 0)
 }

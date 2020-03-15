@@ -111,7 +111,6 @@ let getInfected = (data, groupbyname, filterbyname) => {
   let tmpdict = {}
   ussum = 0
   for (let record of data){
-
     if (filterbyname != undefined){
       if (record["Country/Region"] != filterbyname) continue
     }
@@ -600,9 +599,9 @@ let drawGrowthRates = (tmplist, scale, rectsection) => {
     .domain([0, 600])
     .range([0, cellheight*0.8])
 
-    fileCases = 'data/time_series_19-covid-Confirmed.csv'
-    fileRecovered = 'data/time_series_19-covid-Recovered.csv'
-    fileDeaths = 'data/time_series_19-covid-Deaths.csv'
+    fileCases = 'data/time_series_19-covid-Confirmed-correct.csv'
+    fileRecovered = 'data/time_series_19-covid-Recovered-correct.csv'
+    fileDeaths = 'data/time_series_19-covid-Deaths-correct.csv'
     draw(fileCases, fileRecovered, fileDeaths, translatenum, cutoffnum, linearScale, "Province/State", "US")
   }
 
@@ -626,8 +625,8 @@ let drawGrowthRates = (tmplist, scale, rectsection) => {
     .domain([0, 18000])
     .range([0, cellheight*0.8])
 
-    fileCases = 'data/time_series_19-covid-Confirmed.csv'
-    fileRecovered = 'data/time_series_19-covid-Recovered.csv'
-    fileDeaths = 'data/time_series_19-covid-Deaths.csv'
+    fileCases = 'data/time_series_19-covid-Confirmed-correct.csv'
+    fileRecovered = 'data/time_series_19-covid-Recovered-correct.csv'
+    fileDeaths = 'data/time_series_19-covid-Deaths-correct.csv'
     draw(fileCases, fileRecovered, fileDeaths, translatenum, cutoffnum, linearScale, "Country/Region")
   }
