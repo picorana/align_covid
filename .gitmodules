@@ -1,0 +1,3 @@
+[submodule "data/daily_reports"]
+	path = data/daily_reports
+	url = https://github.com/CSSEGISandData/COVID-19

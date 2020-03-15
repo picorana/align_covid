@@ -309,42 +309,24 @@ let filterUS = (data, groupbyname, filterbyname) => {
 
         let rectbox = rectsection.append('g')
           .attr('class', 'rectbox')
+          .on('mouseover', function(d){d3.select(this).attr('opacity', 0.5)})
+          .on('mouseout', function(d){d3.select(this).attr('opacity', 1)})
+          .on('click', d => {slideChartsToVal(d["Num"])})
 
         rectbox.append("rect")
           .attr("width", rectsize*.9)
-          .attr("height", d => scale(d["Num"]))
           .attr("fill", "#FB6900")
           .attr('class', 'confirmedrect')
 
         rectbox
           .append('rect')
           .attr('width', rectsize*.9)
-          .attr('height', d => {
-            if (deathlist.find(e => d["Country"] == e["Country"])["Infected"].find(e => e["Date"] == d["Date"]) == undefined) return 0
-            else return scale(deathlist.find(e => d["Country"] == e["Country"])["Infected"].find(e => e["Date"] == d["Date"])["Num"])
-          })
           .attr('fill', '#004853')
           .attr('class', 'deathrect')
 
         rectbox
           .append('rect')
           .attr('width', rectsize*.9)
-          .attr('y', d => {
-            if (deathlist.find(e => d["Country"] == e["Country"])["Infected"].find(e => e["Date"] == d["Date"]) == undefined) return 0
-            else return scale(deathlist.find(e => d["Country"] == e["Country"])["Infected"].find(e => e["Date"] == d["Date"])["Num"])
-          })
-          .attr('height', d => {
-            if (filterbyname == "Italy"){
-              return scale(recoveredlist.find(e => d["Country"] == e["Country"])["Infected"].find(e => e["Date"] == d["Date"])["Num"])
-            } else {
-              let numrec = recoveredlist.find(e => d["Country"] == e["Country"])["Infected"].find(e => e["Date"] == d["Date"])["Num"]
-              let numdead = 0
-              if (deathlist.find(e => d["Country"] == e["Country"])["Infected"].find(e => e["Date"] == d["Date"]) == undefined) numdead = 0
-              else numdead = deathlist.find(e => d["Country"] == e["Country"])["Infected"].find(e => e["Date"] == d["Date"])["Num"]
-              return scale(numrec + numdead) - scale(numdead)
-            }
-
-          })
           .attr('fill', '#00B9BD')
           .attr('class', 'recoveredrect')
 
