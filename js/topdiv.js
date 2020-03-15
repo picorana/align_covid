@@ -26,7 +26,7 @@ let centerlinks = document.createElement('div')
 centerlinks.style.textAlign = 'center'
 centerlinks.style.marginTop = '2%'
 centerlinks.style.color = '#888'
-centerlinks.innerHTML = 'See: <a href="/">World</a>  ●  <a href="./us_states.html">US States</a> ● <a href="./italy.html">Italian Regions</a>'
+centerlinks.innerHTML = 'See: <a href="./">World</a>  ●  <a href="./us_states.html">US States</a> ● <a href="./italy.html">Italian Regions</a>'
 topdiv.append(centerlinks)
 
 let showgrowth = (val) => {
