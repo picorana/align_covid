@@ -107,13 +107,29 @@ let getDataFromAltState = (data, record, firstName, secondName) => {
   return r
 }
 
-let getInfected = (data, groupbyname, filterbyname) => {
+let cleanup_world = (record, datacolumn) => {
+  if (datacolumn == "Confirmed"){
+    if (record["Country/Region"] == "Italy") record["3/12/20"] = 15113
+    if (record["Country/Region"] == "Germany") record["3/12/20"] = 2078
+    if (record["Country/Region"] == "Spain") record["3/12/20"] = 2950
+    if (record["Country/Region"] == "France" && record["Province/State"] == "France") record["3/12/20"] = 2876
+  } else if (datacolumn == "Recovered") {
+
+  } else if (datacolumn == "Deaths") {
+
+  }
+
+}
+
+let getInfected = (data, groupbyname, filterbyname, datacolumn = "Confirmed") => {
   let tmpdict = {}
   ussum = 0
   for (let record of data){
     if (filterbyname != undefined){
       if (record["Country/Region"] != filterbyname) continue
     }
+
+    cleanup_world(record, datacolumn)
 
     // if (record[groupbyname] == "Iran") record = getDataFromAltState(data, record, "Iran", "Iran (Islamic Republic of)")
     // if (record[groupbyname] == "Iran (Islamic Republic of)") continue
@@ -272,9 +288,9 @@ let filterUS = (data, groupbyname, filterbyname) => {
           deathlist = filterItaly(datadeaths, "Deaths")
           recoveredlist = filterItaly(datarecovered, "Recovered")
         } else {
-          tmplist = getInfected(data, groupbyname, filterbyname)
-          deathlist = getInfected(datadeaths, groupbyname, filterbyname)
-          recoveredlist = getInfected(datarecovered, groupbyname, filterbyname)
+          tmplist = getInfected(data, groupbyname, filterbyname, "Confirmed")
+          deathlist = getInfected(datadeaths, groupbyname, filterbyname, "Deaths")
+          recoveredlist = getInfected(datarecovered, groupbyname, filterbyname, "Recovered")
         }
 
         tmplist = tmplist.filter(d => d["Country"] != "Others" && d["Country"] != "Mainland China" && d["Country"] != "China" && d["Country"] != "Cruise Ship")
@@ -637,9 +653,9 @@ let drawGrowthRates = (tmplist, scale, rectsection) => {
     .domain([0, 600])
     .range([0, cellheight*0.8])
 
-    fileCases = 'data/time_series_19-covid-Confirmed-correct.csv'
-    fileRecovered = 'data/time_series_19-covid-Recovered-correct.csv'
-    fileDeaths = 'data/time_series_19-covid-Deaths-correct.csv'
+    fileCases = 'data/time_series_19-covid-Confirmed.csv'
+    fileRecovered = 'data/time_series_19-covid-Recovered.csv'
+    fileDeaths = 'data/time_series_19-covid-Deaths.csv'
     draw(fileCases, fileRecovered, fileDeaths, translatenum, cutoffnum, linearScale, "Province/State", "US")
   }
 
@@ -663,9 +679,9 @@ let drawGrowthRates = (tmplist, scale, rectsection) => {
     .domain([0, 18000])
     .range([0, cellheight*0.8])
 
-    fileCases = 'data/time_series_19-covid-Confirmed-correct.csv'
-    fileRecovered = 'data/time_series_19-covid-Recovered-correct.csv'
-    fileDeaths = 'data/time_series_19-covid-Deaths-correct.csv'
+    fileCases = 'data/time_series_19-covid-Confirmed.csv'
+    fileRecovered = 'data/time_series_19-covid-Recovered.csv'
+    fileDeaths = 'data/time_series_19-covid-Deaths.csv'
     draw(fileCases, fileRecovered, fileDeaths, translatenum, cutoffnum, linearScale, "Country/Region")
   }
 
