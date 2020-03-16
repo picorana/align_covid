@@ -112,7 +112,11 @@ let cleanup_world = (record, datacolumn) => {
     if (record["Country/Region"] == "Italy") record["3/12/20"] = 15113
     if (record["Country/Region"] == "Germany") record["3/12/20"] = 2078
     if (record["Country/Region"] == "Spain") record["3/12/20"] = 2950
-    if (record["Country/Region"] == "France" && record["Province/State"] == "France") record["3/12/20"] = 2876
+    if (record["Country/Region"] == "France" && record["Province/State"] == "France") {
+      record["3/12/20"] = 2876
+      record["3/15/20"] = 5423
+    }
+
   } else if (datacolumn == "Recovered") {
 
   } else if (datacolumn == "Deaths") {
