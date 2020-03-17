@@ -88,6 +88,9 @@ let events = {
   },
   "Lombardia" : {
     "03/07" : "Lockdown"
+  },
+  "Qatar" : {
+    "3/16" : "Mandatory school closures"
   }
 
 }
