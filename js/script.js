@@ -581,6 +581,26 @@ let drawGrowthRates = (tmplist, scale, rectsection) => {
     growthrates.push(countryobj)
   }
 
+  let deathgrowthrates = []
+  for (let n in tmplist){
+    countrylist = []
+    country = deathlist[n]["Country"]
+    countryobj = {"Country": country, "Infected":countrylist}
+    for (let ev in tmplist[n]["Infected"]) {
+      if (ev == 0) continue
+      // se cresce da 17 a 20
+      // (20-17) : 20 = x : 100
+      // 100*diff/curr
+      let newval = deathlist[n]["Infected"][ev]["Num"]
+      let oldval = deathlist[n]["Infected"][ev-1]["Num"]
+      let diff = newval - oldval
+      //if (diff == 0) diff = 0.01
+      let val = 100*(diff)/oldval
+      countrylist.push({"Num": val, "Date": deathlist[n]["Infected"][ev]["Date"], "Country":country})
+    }
+    deathgrowthrates.push(countryobj)
+  }
+
   linecharts = barcharts.append('g')
 
   let linechartscale = d3.scaleLinear()
@@ -624,6 +644,27 @@ let drawGrowthRates = (tmplist, scale, rectsection) => {
     .attr('stroke-width', 1)
     .attr('fill', 'none')
     .attr('opacity', 0)
+
+  // linecharts.append('path')
+  //   .attr('d', d => {
+  //     if (deathgrowthrates.find(el => el["Country"] == d["Country"]) == undefined) return null
+  //     let grate = deathgrowthrates.find(el => el["Country"] == d["Country"])["Infected"]
+  //     let tmparr = []
+  //     for (let el in grate){
+  //       if (isNaN(grate[el]["Num"])) continue
+  //       if (grate[el]["Num"] < linechartscale.domain()[0]) continue
+  //       if (d["Infected"].find(e => e["Date"] == grate[el]["Date"])["Num"] < 50) continue
+  //       //if (grate[el]["Num"] > linechartscale.domain()[1]) tmparr.push([(el)*rectsize + rectsize*1.5, linechartscale(100)])
+  //       //if (grate[el]["Num"] == 0) continue
+  //       tmparr.push([(el)*rectsize + rectsize*1.5, linechartscale(grate[el]["Num"])])
+  //     }
+  //     return d3line(tmparr)
+  //   })
+  //   .attr('stroke', 'blue')
+  //   .attr('class', 'growthpath')
+  //   .attr('stroke-width', 1)
+  //   .attr('fill', 'none')
+  //   .attr('opacity', 0)
 
 }
 
