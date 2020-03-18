@@ -135,15 +135,6 @@ let getInfected = (data, groupbyname, filterbyname, datacolumn = "Confirmed") =>
 
     cleanup_world(record, datacolumn)
 
-    // if (record[groupbyname] == "Iran") record = getDataFromAltState(data, record, "Iran", "Iran (Islamic Republic of)")
-    // if (record[groupbyname] == "Iran (Islamic Republic of)") continue
-    //
-    // if (record[groupbyname] == "Republic of Korea") record = getDataFromAltState(data, record, "Republic of Korea", "Korea, South")
-    // if (record[groupbyname] == "Korea, South") continue
-    //
-    // if (record[groupbyname] == "UK") record = getDataFromAltState(data, record, "UK", "United Kingdom")
-    // if (record[groupbyname] == "United Kingdom") continue
-
     if (record["3/11/20"] == "") delete record["3/11/20"]
 
     let groupby = record[groupbyname]
@@ -168,8 +159,10 @@ let getInfected = (data, groupbyname, filterbyname, datacolumn = "Confirmed") =>
     }
     for (let elem in datedict){
       let num = datedict[elem]
+      if (num < 10) continue
       countryobj["Infected"].push({"Date":elem, "Num":num, "Country":country})
     }
+    if (countryobj["Infected"].length == 0) continue
     tmplist.push(countryobj)
   }
 
@@ -193,8 +186,11 @@ let filterItaly = (data, groupbyname, filterbyname) => {
       else if (groupbyname == "Deaths") numvar = "deceduti"
       else if (groupbyname == "Recovered") numvar = "dimessi_guariti"
       let date = record["data"].split(' ')[0].split('-').slice(1,3).join('/')
+      if (parseInt(record[numvar]) < 10) continue
       countryobj["Infected"].push({"Date": date, "Num":parseInt(record[numvar]), "Country":region})
     }
+
+    if (countryobj["Infected"].length == 0) continue
     tmplist.push(countryobj)
 
   }
@@ -210,16 +206,12 @@ let filterUS = (data, groupbyname, filterbyname) => {
     }
 
     if (record["3/11/20"] == "" && states.indexOf(record["Province/State"]) == -1) delete record["3/11/20"]
-    //if (states.indexOf(record["Province/State"]) != -1) delete record["3/10/20"]
-
-    //console.log(record)
     let groupby = ''
     if (states.indexOf(record["Province/State"]) == -1 && record["Province/State"] != "Diamond Princess" && record["Province/State"] != "Grand Princess")
       groupby = state_abbr[record[groupbyname].split(',')[1].trim()]
     else groupby = record[groupbyname]
     if (groupby == undefined) continue
     if (groupby == "Diamond Princess" || groupby == "Grand Princess") continue
-    //console.log(groupby, state_abbr[groupby])
     if (tmpdict[groupby] == undefined) tmpdict[groupby] = []
     tmpdict[groupby].push(record)
   }
@@ -230,9 +222,6 @@ let filterUS = (data, groupbyname, filterbyname) => {
     let datedict = {}
     for (let record of tmpdict[country]) {
       for (let date in record){
-
-        //if (date == "3/10/20" && states.indexOf(record["Province/State"]) == -1) continue
-
         if (date == "Province/State" || date == "Country/Region" || date == "Lat" || date == "Long") continue
         if (datedict[date] == undefined) datedict[date] = 0
         if (record[date] == "") continue
@@ -240,10 +229,11 @@ let filterUS = (data, groupbyname, filterbyname) => {
       }
     }
     for (let elem in datedict){
-      let num = datedict[elem]
-      //if (pop_values[country] != undefined) num = num/pop_values[country]
+      let num = parseInt(datedict[elem])
+      if (num < 10) continue
       countryobj["Infected"].push({"Date":elem, "Num":num, "Country":country})
     }
+    if (countryobj["Infected"].length == 0) continue
     tmplist.push(countryobj)
   }
 
@@ -309,7 +299,6 @@ let filterUS = (data, groupbyname, filterbyname) => {
     // growth rates
     confirmedgrowthrates = getGrowthRates(tmplist)
     deathconfirmedgrowthrates = getGrowthRates(deathlist)
-
   }
 
   let draw = (dataCases, dataRecovered, dataDeaths, translatenum, cutoffnum, scale, groupbyname) => {
@@ -410,11 +399,11 @@ let filterUS = (data, groupbyname, filterbyname) => {
 
                 // text for the number of cases
                 rectsection.append("text")
+                  .attr("class", "casestext")
                   .text(d => d["Num"] != 0? d["Num"] : "")
                   .attr("transform", "rotate(-90)")
                   .attr("font-family", "Arial")
                   .attr("font-size", "x-small")
-                  .attr("class", "casestext")
                   .attr("y", +rectsize*3/4)
                   .attr("x", d => -scale(d["Num"]) - 10)
                   .attr("fill", "gray")
@@ -550,6 +539,7 @@ useUniqueScalePerCountry = (val, filterbyname = undefined) => {
     rectsection.selectAll('.deathrect')
     .transition(transitiontime)
       .attr('height', d => {
+        if (deathlist.find(e => d["Country"] == e["Country"]) == undefined) return 0
         if (deathlist.find(e => d["Country"] == e["Country"])["Infected"].find(e => e["Date"] == d["Date"]) == undefined) return 0
         else return scale(deathlist.find(e => d["Country"] == e["Country"])["Infected"].find(e => e["Date"] == d["Date"])["Num"])
       })
@@ -558,16 +548,22 @@ useUniqueScalePerCountry = (val, filterbyname = undefined) => {
     .transition(transitiontime)
     .attr('y', d => {
       let newscale = d3.scaleLinear()
+      if (deathlist.find(e => d["Country"] == e["Country"]) == undefined) return 0
       if (deathlist.find(e => d["Country"] == e["Country"])["Infected"].find(e => e["Date"] == d["Date"]) == undefined) return 0
       else return scale(deathlist.find(e => d["Country"] == e["Country"])["Infected"].find(e => e["Date"] == d["Date"])["Num"])
     })
     .attr('height', d => {
       if (filterbyname == "Italy"){
+        if (recoveredlist.find(e => d["Country"] == e["Country"]) == undefined) return 0
+        if (recoveredlist.find(e => d["Country"] == e["Country"])["Infected"].find(e => e["Date"] == d["Date"]) == undefined) return 0
         return scale(recoveredlist.find(e => d["Country"] == e["Country"])["Infected"].find(e => e["Date"] == d["Date"])["Num"])
       } else {
+        if (recoveredlist.find(e => d["Country"] == e["Country"]) == undefined) return 0
+        if (recoveredlist.find(e => d["Country"] == e["Country"])["Infected"].find(e => e["Date"] == d["Date"]) == undefined) return 0
         let numrec = recoveredlist.find(e => d["Country"] == e["Country"])["Infected"].find(e => e["Date"] == d["Date"])["Num"]
         let numdead = 0
-        if (deathlist.find(e => d["Country"] == e["Country"])["Infected"].find(e => e["Date"] == d["Date"]) == undefined) numdead = 0
+        if (deathlist.find(e => d["Country"] == e["Country"]) == undefined) numdead = 0
+        else if (deathlist.find(e => d["Country"] == e["Country"])["Infected"].find(e => e["Date"] == d["Date"]) == undefined) numdead = 0
         else numdead = deathlist.find(e => d["Country"] == e["Country"])["Infected"].find(e => e["Date"] == d["Date"])["Num"]
         return scale(numrec + numdead) - scale(numdead)
       }
@@ -825,7 +821,6 @@ let showDeathsOnly = (val = false) => {
         normalizeddead.push(deadobj)
       }
 
-      console.log(normalizedconfirmed)
 
       let maxval = Math.max.apply(0, normalizedconfirmed.map(d => d["Infected"]).flat().map(d => d["Num"]))
 
@@ -839,7 +834,6 @@ let showDeathsOnly = (val = false) => {
 
       d3.selectAll('.confirmedrect')
         .attr('height', d => {
-          console.log(normalizedconfirmed.find(e => e["Country"] == d["Country"])["Infected"].find(e => e["Date"] == d["Date"]))
           return newscale(normalizedconfirmed.find(e => e["Country"] == d["Country"])["Infected"].find(e => e["Date"] == d["Date"])["Num"])
         })
 
@@ -853,51 +847,4 @@ let showDeathsOnly = (val = false) => {
       d3.selectAll('.casestext')
         .text(d => tmplist.find(e => e["Country"] == d["Country"])["Infected"].find(e => e["Date"] == d["Date"])["Num"])
     }
-  }
-
-  let addlegend = () => {
-    let g = svg.append('g')
-      .attr('transform', 'translate('+ (width/2 + sliderwidth/2 + 50) +', 0)')
-
-    let cradius = 5
-
-    g.append('circle')
-      .attr('r', cradius)
-      .attr('cy', 50)
-      .attr('fill', '#004853')
-
-    g.append('text')
-      .attr('font-family', 'Arial')
-      .attr('font-size', 'small')
-      .attr('y', 55)
-      .attr('x', 10)
-      .attr('fill', 'black')
-      .text('Deaths')
-
-    g.append('circle')
-      .attr('r', cradius)
-      .attr('cy', 30)
-      .attr('fill', '#00B9BD')
-
-    g.append('text')
-      .attr('font-family', 'Arial')
-      .attr('font-size', 'small')
-      .attr('y', 35)
-      .attr('x', 10)
-      .attr('fill', 'black')
-      .text('Recovered')
-
-    g.append('circle')
-      .attr('r', cradius)
-      .attr('cy', 10)
-      .attr('fill', "#FB6900")
-
-    g.append('text')
-      .attr('font-family', 'Arial')
-      .attr('font-size', 'small')
-      .attr('y', 15)
-      .attr('x', 10)
-      .attr('fill', 'black')
-      .text('Confirmed cases')
-
   }

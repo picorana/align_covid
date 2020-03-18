@@ -1,4 +1,50 @@
 
+let addlegend = () => {
+  let g = svg.append('g')
+    .attr('transform', 'translate('+ (width/2 + sliderwidth/2 + 50) +', 0)')
+
+  let cradius = 5
+
+  g.append('circle')
+    .attr('r', cradius)
+    .attr('cy', 50)
+    .attr('fill', '#004853')
+
+  g.append('text')
+    .attr('font-family', 'Arial')
+    .attr('font-size', 'small')
+    .attr('y', 55)
+    .attr('x', 10)
+    .attr('fill', 'black')
+    .text('Deaths')
+
+  g.append('circle')
+    .attr('r', cradius)
+    .attr('cy', 30)
+    .attr('fill', '#00B9BD')
+
+  g.append('text')
+    .attr('font-family', 'Arial')
+    .attr('font-size', 'small')
+    .attr('y', 35)
+    .attr('x', 10)
+    .attr('fill', 'black')
+    .text('Recovered')
+
+  g.append('circle')
+    .attr('r', cradius)
+    .attr('cy', 10)
+    .attr('fill', "#FB6900")
+
+  g.append('text')
+    .attr('font-family', 'Arial')
+    .attr('font-size', 'small')
+    .attr('y', 15)
+    .attr('x', 10)
+    .attr('fill', 'black')
+    .text('Confirmed cases')
+}
+
 let mktopdiv = () => {
   let topdiv = document.createElement('div')
   topdiv.style.margin = '20px'
