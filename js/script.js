@@ -159,7 +159,7 @@ let getInfected = (data, groupbyname, filterbyname, datacolumn = "Confirmed") =>
     }
     for (let elem in datedict){
       let num = datedict[elem]
-      if (num < 10) continue
+      if (num < 20) continue
       countryobj["Infected"].push({"Date":elem, "Num":num, "Country":country})
     }
     if (countryobj["Infected"].length == 0) continue
@@ -795,9 +795,8 @@ let showDeathsOnly = (val = false) => {
         let deadobj = {"Country": country, "Infected": []}
 
         let infconf = tmplist[c]["Infected"]
-        let infrecv = recoveredlist.find(e => e["Country"] == country)["Infected"]
-        let infdead = deathlist.find(e => e["Country"] == country)["Infected"]
-        //console.log(tmplist[c]["Country"], pop_vals[tmplist[c]["Country"]])
+        let infrecv = recoveredlist.find(e => e["Country"] == country) != undefined? recoveredlist.find(e => e["Country"] == country)["Infected"] : []
+        let infdead = deathlist.find(e => e["Country"] == country) != undefined? deathlist.find(e => e["Country"] == country)["Infected"] : []
 
         for (let i in infconf){
           let n = 100*infconf[i]["Num"]/ref_pop_values[tmplist[c]["Country"]]
@@ -838,7 +837,11 @@ let showDeathsOnly = (val = false) => {
         })
 
       d3.selectAll('.recoveredrect')
-        .attr('height', d => newscale(normalizedrecovered.find(e => e["Country"] == d["Country"])["Infected"].find(e => e["Date"] == d["Date"])["Num"]))
+        .attr('height', d => {
+          if (normalizedrecovered.find(e => e["Country"] == d["Country"]) == undefined) return 0
+          if (normalizedrecovered.find(e => e["Country"] == d["Country"])["Infected"].find(e => e["Date"] == d["Date"]) == undefined) return 0
+          else return newscale(normalizedrecovered.find(e => e["Country"] == d["Country"])["Infected"].find(e => e["Date"] == d["Date"])["Num"])
+        })
 
       d3.selectAll('.deadrect')
         .attr('height', d => newscale(normalizeddead.find(e => e["Country"] == d["Country"])["Infected"].find(e => e["Date"] == d["Date"])["Num"]))
