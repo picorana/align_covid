@@ -11,6 +11,11 @@ let separatorlinewidth = 2
 let sliderwidth = 500
 let animating = false
 
+let transitiontime = 1000
+
+showing_growth = false
+showing_death_growth = false
+
 var isMobile = false; //initiate as false
 // device detection
 if(/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|ipad|iris|kindle|Android|Silk|lge |maemo|midp|mmp|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows (ce|phone)|xda|xiino/i.test(navigator.userAgent)
@@ -22,6 +27,7 @@ let svg = d3.select('body').append('svg')
   .attr('width', width)
   .attr('height', height)
   .style('margin-top', '10px')
+  //.attr('transform', 'translate(0, ' + topdiv.clientHeight + ')')
 
 let pop_values = {
   "Mainland China": 1378665000,
@@ -92,7 +98,6 @@ let events = {
   "Qatar" : {
     "3/16" : "Mandatory school closures"
   }
-
 }
 
 let d3line = d3.line()
@@ -273,6 +278,9 @@ let filterUS = (data, groupbyname, filterbyname) => {
             d3.csv(dataDeaths)
               .then((datadeaths) => {
 
+        let topdiv = mktopdiv()
+        svg.attr('transform', 'translate(0, '+ (topdiv.clientHeight + 20) +')')
+
         let d3line = d3.line()
             .x(d => d[0])
             .y(d => d[1]);
@@ -328,25 +336,30 @@ let filterUS = (data, groupbyname, filterbyname) => {
           .attr("class", "rectsection")
           .attr("transform", (d, i) => "translate("+i*rectsize+",0)")
 
-        //let scale = linearScale
-
         let rectbox = rectsection.append('g')
           .attr('class', 'rectbox')
-          .on('mouseover', function(d){d3.select(this).attr('opacity', 0.5)})
-          .on('mouseout', function(d){d3.select(this).attr('opacity', 1)})
+          .on('mouseover', function(d){
+            if (showing_growth || showing_death_growth){
+              return null
+            } else {d3.select(this).attr('opacity', 0.5)}
+          })
+          .on('mouseout', function(d){(showing_growth || showing_death_growth)? null : d3.select(this).attr('opacity', 1)})
           .on('click', d => {slideChartsToVal(d["Num"])})
 
+        // confirmed cases bar
         rectbox.append("rect")
           .attr("width", rectsize*.9)
           .attr("fill", "#FB6900")
           .attr('class', 'confirmedrect')
 
+        // deaths rect
         rectbox
           .append('rect')
           .attr('width', rectsize*.9)
           .attr('fill', '#004853')
           .attr('class', 'deathrect')
 
+        // recovered rect
         rectbox
           .append('rect')
           .attr('width', rectsize*.9)
@@ -424,15 +437,17 @@ let filterUS = (data, groupbyname, filterbyname) => {
           svg.attr('height', d3.selectAll('.barchart').filter(d => d["Infected"][d["Infected"].length - 1]["Num"]).size() * cellheight + cellheight)
 
           drawGrowthRates(tmplist, scale, rectsection)
+          drawDeathGrowthRates(scale, rectsection)
           addconfirmedslider(scale, translatenum)
           useUniqueScalePerCountry(false, filterbyname)
           addlegend()
+          //showDeathsOnly()
       })
       })
     })
   }
 
-let useUniqueScalePerCountry = (val, filterbyname = undefined) => {
+useUniqueScalePerCountry = (val, filterbyname = undefined) => {
   if (val){
     let confirmedlist = tmplist
     let countrymaxvals = {}
@@ -442,8 +457,6 @@ let useUniqueScalePerCountry = (val, filterbyname = undefined) => {
       let maxval = gconf[gconf.length - 1]["Num"]
       countrymaxvals[country] = maxval
     }
-
-    let transitiontime = 1000
 
     rectsection.selectAll('.confirmedrect')
       .transition(transitiontime)
@@ -584,26 +597,6 @@ let drawGrowthRates = (tmplist, scale, rectsection) => {
     growthrates.push(countryobj)
   }
 
-  let deathgrowthrates = []
-  for (let n in tmplist){
-    countrylist = []
-    country = deathlist[n]["Country"]
-    countryobj = {"Country": country, "Infected":countrylist}
-    for (let ev in tmplist[n]["Infected"]) {
-      if (ev == 0) continue
-      // se cresce da 17 a 20
-      // (20-17) : 20 = x : 100
-      // 100*diff/curr
-      let newval = deathlist[n]["Infected"][ev]["Num"]
-      let oldval = deathlist[n]["Infected"][ev-1]["Num"]
-      let diff = newval - oldval
-      //if (diff == 0) diff = 0.01
-      let val = 100*(diff)/oldval
-      countrylist.push({"Num": val, "Date": deathlist[n]["Infected"][ev]["Date"], "Country":country})
-    }
-    deathgrowthrates.push(countryobj)
-  }
-
   linecharts = barcharts.append('g')
 
   let linechartscale = d3.scaleLinear()
@@ -644,31 +637,123 @@ let drawGrowthRates = (tmplist, scale, rectsection) => {
     })
     .attr('stroke', 'red')
     .attr('class', 'growthpath')
-    .attr('stroke-width', 1)
+    .attr('stroke-width', 3)
     .attr('fill', 'none')
     .attr('opacity', 0)
+}
 
-  // linecharts.append('path')
-  //   .attr('d', d => {
-  //     if (deathgrowthrates.find(el => el["Country"] == d["Country"]) == undefined) return null
-  //     let grate = deathgrowthrates.find(el => el["Country"] == d["Country"])["Infected"]
-  //     let tmparr = []
-  //     for (let el in grate){
-  //       if (isNaN(grate[el]["Num"])) continue
-  //       if (grate[el]["Num"] < linechartscale.domain()[0]) continue
-  //       if (d["Infected"].find(e => e["Date"] == grate[el]["Date"])["Num"] < 50) continue
-  //       //if (grate[el]["Num"] > linechartscale.domain()[1]) tmparr.push([(el)*rectsize + rectsize*1.5, linechartscale(100)])
-  //       //if (grate[el]["Num"] == 0) continue
-  //       tmparr.push([(el)*rectsize + rectsize*1.5, linechartscale(grate[el]["Num"])])
-  //     }
-  //     return d3line(tmparr)
-  //   })
-  //   .attr('stroke', 'blue')
-  //   .attr('class', 'growthpath')
-  //   .attr('stroke-width', 1)
-  //   .attr('fill', 'none')
-  //   .attr('opacity', 0)
+let drawDeathGrowthRates = (scale, rectsection) => {
+  let deathgrowthrates = []
+  for (let n in deathlist){
+    countrylist = []
+    country = deathlist[n]["Country"]
+    countryobj = {"Country": country, "Infected":countrylist}
+    for (let ev in deathlist[n]["Infected"]) {
+      if (ev == 0) continue
+      // se cresce da 17 a 20
+      // (20-17) : 20 = x : 100
+      // 100*diff/curr
+      let newval = deathlist[n]["Infected"][ev]["Num"]
+      let oldval = deathlist[n]["Infected"][ev-1]["Num"]
+      let diff = newval - oldval
+      //if (diff == 0) diff = 0.01
+      let val = 100*(diff)/oldval
+      countrylist.push({"Num": val, "Date": deathlist[n]["Infected"][ev]["Date"], "Country":country})
+    }
+    deathgrowthrates.push(countryobj)
+  }
 
+  linecharts = barcharts.append('g')
+
+  let linechartscale = d3.scaleLinear()
+    .domain([1, 100])
+    .range([0, scale.range()[1]])
+    .clamp(true)
+
+  var axis = d3.axisRight(linechartscale)
+    .tickFormat(d => d + '%')
+    .tickSize(- deathgrowthrates[0]["Infected"].length*rectsize)
+
+  linecharts.append("g")
+    .attr("transform", "translate("+(deathgrowthrates[0]["Infected"].length*rectsize + rectsize*2)+")")
+    .call(axis)
+    .attr('class', 'deathgrowthaxis')
+    .attr('opacity', 0)
+
+  linecharts.selectAll('.domain')
+    .attr('opacity', 0.2)
+
+  linecharts.selectAll('.tick').select('line')
+    .attr('stroke-dasharray', '3 3')
+    .attr('color', '#ccc')
+
+  linecharts.append('path')
+    .attr('d', d => {
+      if (deathgrowthrates.find(el => el["Country"] == d["Country"]) == undefined) return null
+      let grate = deathgrowthrates.find(el => el["Country"] == d["Country"])["Infected"]
+      let tmparr = []
+      for (let el in grate){
+        if (isNaN(grate[el]["Num"])) continue
+        if (grate[el]["Num"] < linechartscale.domain()[0]) continue
+        if (d["Infected"].find(e => e["Date"] == grate[el]["Date"])["Num"] < 50) continue
+        //if (grate[el]["Num"] > linechartscale.domain()[1]) tmparr.push([(el)*rectsize + rectsize*1.5, linechartscale(100)])
+        //if (grate[el]["Num"] == 0) continue
+        tmparr.push([(el)*rectsize + rectsize*1.5, linechartscale(grate[el]["Num"])])
+      }
+      return d3line(tmparr)
+    })
+    .attr('stroke', '#004853')
+    .attr('class', 'deathgrowthpath')
+    .attr('stroke-width', 3)
+    .attr('fill', 'none')
+    .attr('opacity', 0)
+}
+
+let showDeathsOnly = (val = false) => {
+  if (val) {
+    let maxval = 0
+    maxval = Math.max.apply(0, deathlist.map(d => d["Infected"]).flat().map(d => d["Num"]))
+
+    let scale = d3.scaleLinear()
+      .domain([0, maxval])
+      .range([0, cellheight])
+
+    d3.selectAll('.confirmedrect')
+      .transition(transitiontime)
+      .attr('opacity', 0)
+
+    d3.selectAll('.recoveredrect')
+      .transition(transitiontime)
+      .attr('opacity', 0)
+
+    d3.selectAll('.deathrect')
+      .transition(transitiontime)
+      .attr('height', d => {
+        let v = deathlist.find(e => d["Country"] == e["Country"])["Infected"].find(e => e["Date"] == d["Date"])["Num"]
+        return scale(v)
+      })
+
+    d3.selectAll('.casestext')
+      .transition(transitiontime)
+      .text(d => deathlist.find(e => d["Country"] == e["Country"])["Infected"].find(e => e["Date"] == d["Date"])["Num"])
+      .attr('x', d => -10 -scale(deathlist.find(e => d["Country"] == e["Country"])["Infected"].find(e => e["Date"] == d["Date"])["Num"]))
+  } else {
+
+    d3.selectAll('.confirmedrect')
+    .transition(transitiontime + 1)
+      .attr('opacity', 1)
+
+    d3.selectAll('.recoveredrect')
+      .transition(transitiontime + 1)
+      .attr('opacity', 1)
+
+    d3.selectAll('.casestext')
+      .transition(transitiontime)
+      .text(d => tmplist.find(e => d["Country"] == e["Country"])["Infected"].find(e => e["Date"] == d["Date"])["Num"])
+      //.attr('x', d => -10 -scale(tmplist.find(e => d["Country"] == e["Country"])["Infected"].find(e => e["Date"] == d["Date"])["Num"]))
+
+    useUniqueScalePerCountry()
+  }
 }
 
   let drawChina = () => {
@@ -724,7 +809,7 @@ let drawGrowthRates = (tmplist, scale, rectsection) => {
     let translatenum = 300
     let cutoffnum = 300
     let linearScale = d3.scaleLinear()
-    .domain([0, 18000])
+    .domain([0, 50000])
     .range([0, cellheight*0.8])
 
     fileCases = 'data/time_series_19-covid-Confirmed.csv'

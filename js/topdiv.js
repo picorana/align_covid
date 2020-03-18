@@ -1,110 +1,152 @@
-let topdiv = document.createElement('div')
-topdiv.style.margin = '20px'
 
-let lefttitle = document.createElement('div')
-lefttitle.innerHTML = 'Comparing outbreaks'
-lefttitle.style.color = '#aaa'
-lefttitle.style.fontSize = 'x-large'
-lefttitle.style.fontWeight = 'bold'
-topdiv.appendChild(lefttitle)
+let mktopdiv = () => {
+  let topdiv = document.createElement('div')
+  topdiv.style.margin = '20px'
+  topdiv.style.position = 'absolute'
+  topdiv.style.top = 0
 
-let lefttext = document.createElement('div')
-lefttext.innerHTML = "The following chart reports the current state of the coronavirus outbreak in different countries, aligned by number of infected people. Use the slider on top to change the alignment value. <br> A number of relevant events is reported under each subchart. Countries are sorted by current number of infected population. The purpose of the chart is to compare events at different points of the outbreak, and perhaps try to understand what to expect in the next few days. Understanding events while being out of the context is hard, so all help in populating the relevant events is welcome in <a href='https://github.com/picorana/align_covid/issues'>the issues of the repository</a>. <br> Data source: <a href='https://github.com/CSSEGISandData/COVID-19'>https://github.com/CSSEGISandData/COVID-19</a> and <a href='https://github.com/pcm-dpc/COVID-19'>https://github.com/pcm-dpc/COVID-19</a>"
-lefttext.style.width = '70%'
-lefttext.style.fontSize = 'small'
-topdiv.appendChild(lefttext)
+  let lefttitle = document.createElement('div')
+  lefttitle.innerHTML = 'Comparing outbreaks'
+  lefttitle.style.color = '#aaa'
+  lefttitle.style.fontSize = 'x-large'
+  lefttitle.style.fontWeight = 'bold'
+  topdiv.appendChild(lefttitle)
 
-let rightinfo = document.createElement('div')
-rightinfo.innerHTML = '<a href="https://github.com/picorana/align_covid/issues">Report an issue or incorrect information</a><br><a href="https://github.com/picorana/align_covid" aria-label="Star picorana/align_covid on GitHub">See it on github</a><br>Author: <a href="https://picorana.github.io/">picorana</a><br><a class="github-button" href="https://github.com/picorana" data-size="large" data-show-count="true" aria-label="Follow @picorana on GitHub">Follow @picorana</a><br><a class="github-button" href="https://github.com/picorana/align_covid" data-icon="octicon-star" data-size="large" aria-label="Star picorana/align_covid on GitHub">Star</a>'
-rightinfo.style.position = 'absolute'
-rightinfo.style.textAlign = 'right'
-rightinfo.style.top = '20px'
-rightinfo.style.right = '20px'
-topdiv.appendChild(rightinfo)
+  let lefttext = document.createElement('div')
+  lefttext.innerHTML = "The following chart reports the current state of the coronavirus outbreak in different countries, aligned by number of infected people. Use the slider on top to change the alignment value. <br> A number of relevant events is reported under each subchart. Countries are sorted by current number of infected population. The purpose of the chart is to compare events at different points of the outbreak, and perhaps try to understand what to expect in the next few days. Understanding events while being out of the context is hard, so all help in populating the relevant events is welcome in <a href='https://github.com/picorana/align_covid/issues'>the issues of the repository</a>. <br> Data source: <a href='https://github.com/CSSEGISandData/COVID-19'>https://github.com/CSSEGISandData/COVID-19</a> and <a href='https://github.com/pcm-dpc/COVID-19'>https://github.com/pcm-dpc/COVID-19</a>"
+  lefttext.style.width = '70%'
+  lefttext.style.fontSize = 'small'
+  topdiv.appendChild(lefttext)
 
-let centerlinks = document.createElement('div')
-centerlinks.style.textAlign = 'center'
-centerlinks.style.marginTop = '2%'
-centerlinks.style.color = '#888'
-centerlinks.innerHTML = 'See: <a href="./">World</a>  ●  <a href="./us_states.html">US States</a> ● <a href="./italy.html">Italian Regions</a>'
-topdiv.append(centerlinks)
+  let rightinfo = document.createElement('div')
+  rightinfo.innerHTML = '<a href="https://github.com/picorana/align_covid/issues">Report an issue or incorrect information</a><br><a href="https://github.com/picorana/align_covid" aria-label="Star picorana/align_covid on GitHub">See it on github</a><br>Author: <a href="https://picorana.github.io/">picorana</a><br><a class="github-button" href="https://github.com/picorana" data-size="large" data-show-count="true" aria-label="Follow @picorana on GitHub">Follow @picorana</a><br><a class="github-button" href="https://github.com/picorana/align_covid" data-icon="octicon-star" data-size="large" aria-label="Star picorana/align_covid on GitHub">Star</a>'
+  rightinfo.style.position = 'absolute'
+  rightinfo.style.textAlign = 'right'
+  rightinfo.style.top = '20px'
+  rightinfo.style.right = '20px'
+  topdiv.appendChild(rightinfo)
 
-let showgrowth = (val) => {
-  if (val){
-    d3.selectAll('.rectbox')
-      .transition(500)
-      .attr('opacity', 0.2)
-    d3.selectAll('.casestext')
-      .transition(500)
-      .attr('opacity', 0.2)
-    d3.selectAll('.eventtext')
-      .transition(500)
-      .attr('opacity', 0.2)
+  let centerlinks = document.createElement('div')
+  centerlinks.style.textAlign = 'center'
+  centerlinks.style.marginTop = '2%'
+  centerlinks.style.color = '#888'
+  centerlinks.innerHTML = 'See: <a href="./">World</a>  ●  <a href="./us_states.html">US States</a> ● <a href="./italy.html">Italian Regions</a>'
+  topdiv.append(centerlinks)
 
-    d3.selectAll('.growthpath')
-      .transition(500)
-      .attr('opacity', 1)
-    d3.selectAll('.growthaxis')
-      .transition(500)
-      .attr('opacity', 1)
-  } else {
-    d3.selectAll('.rectbox')
-      .transition(500)
-      .attr('opacity', 1)
-    d3.selectAll('.casestext')
-      .transition(500)
-      .attr('opacity', 1)
-    d3.selectAll('.eventtext')
-      .transition(500)
-      .attr('opacity', 1)
+  let showgrowth = (val) => {
+    showing_growth = val
+    if (val){
+      d3.selectAll('.rectbox')
+        .transition(500)
+        .attr('opacity', 0.2)
+      d3.selectAll('.casestext')
+        .transition(500)
+        .attr('opacity', 0.2)
+      d3.selectAll('.eventtext')
+        .transition(500)
+        .attr('opacity', 0.2)
 
-    d3.selectAll('.growthpath')
-      .transition(500)
-      .attr('opacity', 0)
-    d3.selectAll('.growthaxis')
-      .transition(500)
-      .attr('opacity', 0)
+      d3.selectAll('.growthpath')
+        .transition(500)
+        .attr('opacity', 1)
+      d3.selectAll('.growthaxis')
+        .transition(500)
+        .attr('opacity', 1)
+    } else {
+      if (!showing_death_growth){
+        d3.selectAll('.rectbox')
+          .transition(500)
+          .attr('opacity', 1)
+        d3.selectAll('.casestext')
+          .transition(500)
+          .attr('opacity', 1)
+        d3.selectAll('.eventtext')
+          .transition(500)
+          .attr('opacity', 1)
+      }
+
+      d3.selectAll('.growthpath')
+        .transition(500)
+        .attr('opacity', 0)
+      d3.selectAll('.growthaxis')
+        .transition(500)
+        .attr('opacity', 0)
+    }
   }
+
+  let showdeathgrowth = (val) => {
+    showing_death_growth = val
+    if (val){
+      d3.selectAll('.rectbox')
+        .transition(500)
+        .attr('opacity', 0.2)
+      d3.selectAll('.casestext')
+        .transition(500)
+        .attr('opacity', 0.2)
+      d3.selectAll('.eventtext')
+        .transition(500)
+        .attr('opacity', 0.2)
+
+      d3.selectAll('.deathgrowthpath')
+        .transition(500)
+        .attr('opacity', 1)
+      d3.selectAll('.deathgrowthaxis')
+        .transition(500)
+        .attr('opacity', 1)
+    } else {
+      if (!showing_growth){
+        d3.selectAll('.rectbox')
+          .transition(500)
+          .attr('opacity', 1)
+        d3.selectAll('.casestext')
+          .transition(500)
+          .attr('opacity', 1)
+        d3.selectAll('.eventtext')
+          .transition(500)
+          .attr('opacity', 1)
+      }
+
+      d3.selectAll('.deathgrowthpath')
+        .transition(500)
+        .attr('opacity', 0)
+      d3.selectAll('.deathgrowthaxis')
+        .transition(500)
+        .attr('opacity', 0)
+    }
+  }
+
+  let optiondiv = document.createElement('div')
+  optiondiv.style.textAlign = "center"
+  optiondiv.style.marginTop = "10px"
+  optiondiv.style.display = "flex"
+  optiondiv.style.justifyContent = "center"
+
+  let genswitch = (text, appelem, fname) => {
+    let t = document.createElement('div')
+    t.innerHTML = text
+    let switchlabel = document.createElement('label')
+    switchlabel.className = "switch"
+    let growthswitch = document.createElement('input')
+    growthswitch.type = "checkbox"
+    growthswitch.oninput = (input) => fname(input.target.checked)
+    let growthspan = document.createElement('span')
+    growthspan.className = "rslider round"
+    switchlabel.appendChild(growthswitch)
+    switchlabel.appendChild(growthspan)
+    t.append(switchlabel)
+    t.style.marginRight = '10px'
+
+    appelem.appendChild(t)
+  }
+
+  genswitch("Show deaths only: <br>", optiondiv, showDeathsOnly)
+  genswitch("Show growth: <br>", optiondiv, showgrowth)
+  genswitch("Show death growth: <br>", optiondiv, showdeathgrowth)
+  genswitch("Use unique scales: <br>", optiondiv, useUniqueScalePerCountry)
+
+  topdiv.appendChild(optiondiv)
+
+  document.body.appendChild(topdiv)
+
+  return topdiv
 }
-
-let optiondiv = document.createElement('div')
-optiondiv.style.textAlign = "center"
-optiondiv.style.marginTop = "10px"
-optiondiv.style.display = "flex"
-optiondiv.style.justifyContent = "center"
-
-let optiontext1 = document.createElement('div')
-optiontext1.innerHTML = "Show growth: <br>"
-optiondiv.appendChild(optiontext1)
-let switchlabel = document.createElement('label')
-switchlabel.className = "switch"
-let growthswitch = document.createElement('input')
-growthswitch.type = "checkbox"
-growthswitch.oninput = (input) => showgrowth(input.target.checked)
-let growthspan = document.createElement('span')
-growthspan.className = "rslider round"
-switchlabel.appendChild(growthswitch)
-switchlabel.appendChild(growthspan)
-optiontext1.append(switchlabel)
-optiontext1.style.marginRight = '10px'
-
-let optiontext2 = document.createElement('div')
-optiontext2.innerHTML = "Use unique scales: <br>"
-let scalelabel = document.createElement('label')
-scalelabel.className = "switch"
-let scaleswitch = document.createElement('input')
-scaleswitch.type = "checkbox"
-scaleswitch.oninput = (input) => useUniqueScalePerCountry(input.target.checked)
-let scalespan = document.createElement('span')
-scalespan.className = "rslider round"
-scalelabel.appendChild(scaleswitch)
-scalelabel.appendChild(scalespan)
-optiontext2.append(scalelabel)
-optiontext2.style.marginLeft = '10px'
-
-optiondiv.appendChild(optiontext2)
-//optiondiv.appendChild(switchlabel)
-
-topdiv.appendChild(optiondiv)
-
-document.body.appendChild(topdiv)
