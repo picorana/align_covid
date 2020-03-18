@@ -137,12 +137,14 @@ let mktopdiv = () => {
     t.style.marginRight = '10px'
 
     appelem.appendChild(t)
+    return t
   }
 
   genswitch("Show deaths only: <br>", optiondiv, showDeathsOnly)
   genswitch("Show growth: <br>", optiondiv, showgrowth)
   genswitch("Show death growth: <br>", optiondiv, showdeathgrowth)
   genswitch("Use unique scales: <br>", optiondiv, useUniqueScalePerCountry)
+  genswitch("Normalize by population: <br>", optiondiv, normalizeByPopulation)
 
   topdiv.appendChild(optiondiv)
 
