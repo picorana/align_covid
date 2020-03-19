@@ -207,9 +207,14 @@ let filterUS = (data, groupbyname, filterbyname) => {
 
     if (record["3/11/20"] == "" && states.indexOf(record["Province/State"]) == -1) delete record["3/11/20"]
     let groupby = ''
-    if (states.indexOf(record["Province/State"]) == -1 && record["Province/State"] != "Diamond Princess" && record["Province/State"] != "Grand Princess")
-      groupby = state_abbr[record[groupbyname].split(',')[1].trim()]
-    else groupby = record[groupbyname]
+    if (states.indexOf(record["Province/State"]) == -1 && record["Province/State"] != "Diamond Princess" && record["Province/State"] != "Grand Princess"){
+      if (record[groupbyname].split(',').length == 1) groupby = undefined
+      else groupby = state_abbr[record[groupbyname].split(',')[1].trim()]
+    } else groupby = record[groupbyname]
+
+    // if (us_pop_vals[record[groupbyname]] == undefined) continue
+    // else groupby = record[groupbyname]
+
     if (groupby == undefined) continue
     if (groupby == "Diamond Princess" || groupby == "Grand Princess") continue
     if (tmpdict[groupby] == undefined) tmpdict[groupby] = []
