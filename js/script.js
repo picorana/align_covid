@@ -15,9 +15,10 @@ let transitiontime = 1000
 
 let filterbyname = undefined
 let usingLogScale = false
+let focus = undefined
 
-showing_growth = false
-showing_death_growth = false
+let showing_growth = false
+let showing_death_growth = false
 
 var isMobile = false; //initiate as false
 // device detection
