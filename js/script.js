@@ -690,14 +690,24 @@ let showDeathsOnly = (val = false) => {
     d3.selectAll('.deathrect')
       .transition(transitiontime)
       .attr('height', d => {
+        if (deathlist.find(e => d["Country"] == e["Country"]) == undefined) return 0
+        if (deathlist.find(e => d["Country"] == e["Country"])["Infected"].find(e => e["Date"] == d["Date"]) == undefined) return 0
         let v = deathlist.find(e => d["Country"] == e["Country"])["Infected"].find(e => e["Date"] == d["Date"])["Num"]
         return scale(v)
       })
 
     d3.selectAll('.casestext')
       .transition(transitiontime)
-      .text(d => deathlist.find(e => d["Country"] == e["Country"])["Infected"].find(e => e["Date"] == d["Date"])["Num"])
-      .attr('x', d => -10 -scale(deathlist.find(e => d["Country"] == e["Country"])["Infected"].find(e => e["Date"] == d["Date"])["Num"]))
+      .text(d => {
+        if (deathlist.find(e => d["Country"] == e["Country"]) == undefined) return ''
+        if (deathlist.find(e => d["Country"] == e["Country"])["Infected"].find(e => e["Date"] == d["Date"]) == undefined) return ''
+        return deathlist.find(e => d["Country"] == e["Country"])["Infected"].find(e => e["Date"] == d["Date"])["Num"]
+      })
+      .attr('x', d => {
+        if (deathlist.find(e => d["Country"] == e["Country"]) == undefined) return 0
+        if (deathlist.find(e => d["Country"] == e["Country"])["Infected"].find(e => e["Date"] == d["Date"]) == undefined) return 0
+        return -10 -scale(deathlist.find(e => d["Country"] == e["Country"])["Infected"].find(e => e["Date"] == d["Date"])["Num"])
+      })
   } else {
 
     d3.selectAll('.confirmedrect')
