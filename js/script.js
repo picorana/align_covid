@@ -596,8 +596,8 @@ let drawconfirmedgrowthrates = (tmplist, scale, rectsection) => {
     .tickSize(-1000)
 
   linecharts.append("g")
-    .attr("transform", () =>{
-        return "translate("+(confirmedgrowthrates[0]["Infected"].length*rectsize + rectsize*2)+")"
+    .attr("transform", (d) =>{
+        return "translate("+(d["Infected"].length*rectsize + rectsize)+")"
     })
     .call(axis)
     .attr('class', 'growthaxis')
@@ -642,7 +642,7 @@ let drawDeathconfirmedgrowthrates = (scale, rectsection) => {
     .tickSize(- deathconfirmedgrowthrates[0]["Infected"].length*rectsize)
 
   linecharts.append("g")
-    .attr("transform", "translate("+(deathconfirmedgrowthrates[0]["Infected"].length*rectsize + rectsize*2)+")")
+    .attr("transform", (d) => "translate("+(d["Infected"].length*rectsize + rectsize)+")")
     .call(axis)
     .attr('class', 'deathgrowthaxis')
     .attr('opacity', 0)
@@ -658,12 +658,13 @@ let drawDeathconfirmedgrowthrates = (scale, rectsection) => {
     .attr('d', d => {
       if (deathconfirmedgrowthrates.find(el => el["Country"] == d["Country"]) == undefined) return null
       let grate = deathconfirmedgrowthrates.find(el => el["Country"] == d["Country"])["Infected"]
+      if (d["Country"] == "Germany") console.log(grate)
       let tmparr = []
       for (let el in grate){
         if (isNaN(grate[el]["Num"])) continue
         if (grate[el]["Num"] < linechartscale.domain()[0]) continue
         if (d["Infected"].find(e => e["Date"] == grate[el]["Date"])["Num"] < 50) continue
-        tmparr.push([(el)*rectsize + rectsize*1.5, linechartscale(grate[el]["Num"])])
+        tmparr.push([(el)*rectsize + rectsize*(confirmedgrowthrates.find(e => e["Country"] == d["Country"])["Infected"].length - grate.length) + rectsize*1.5, linechartscale(grate[el]["Num"])])
       }
       return d3line(tmparr)
     })
