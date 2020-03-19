@@ -180,17 +180,38 @@ let mktopdiv = () => {
     switchlabel.appendChild(growthswitch)
     switchlabel.appendChild(growthspan)
     t.append(switchlabel)
-    t.style.marginRight = '10px'
-
+    t.style.fontSize = '0.8em'
+    t.style.textAlign = 'right'
+    switchlabel.style.marginBottom = '1px'
     appelem.appendChild(t)
     return t
   }
 
-  genswitch("Show deaths only: <br>", optiondiv, showDeathsOnly)
-  genswitch("Show growth: <br>", optiondiv, showgrowth)
-  genswitch("Show death growth: <br>", optiondiv, showdeathgrowth)
-  genswitch("Use unique scales: <br>", optiondiv, useUniqueScalePerCountry)
-  genswitch("Normalize by population: <br>", optiondiv, normalizeByPopulation)
+  grdiv = document.createElement('div')
+  grdiv.innerHTML = 'Growth'
+  grdiv.style.border = 'solid 4px #ddd'
+  grdiv.style.padding = '5px'
+  optiondiv.appendChild(grdiv)
+
+  scalediv = document.createElement('div')
+  scalediv.innerHTML = 'Scales'
+  scalediv.style.border = 'solid 4px #ddd'
+  scalediv.style.padding = '5px'
+  scalediv.style.marginLeft = '10px'
+  optiondiv.appendChild(scalediv)
+
+  viewdiv = document.createElement('div')
+  viewdiv.innerHTML = 'Views'
+  viewdiv.style.border = 'solid 4px #ddd'
+  viewdiv.style.padding = '5px'
+  viewdiv.style.marginLeft = '10px'
+  optiondiv.appendChild(viewdiv)
+
+  let tonlydeaths = genswitch("Show deaths only: ", viewdiv, showDeathsOnly)
+  let tgrowth = genswitch("Show growth: ", grdiv, showgrowth)
+  let tdgrowth = genswitch("Show death growth: ", grdiv, showdeathgrowth)
+  let tunique = genswitch("Unique scale by country: ", scalediv, useUniqueScalePerCountry)
+  let tnormalize = genswitch("Normalize by population: ", scalediv, normalizeByPopulation)
 
   topdiv.appendChild(optiondiv)
 

@@ -159,7 +159,7 @@ let getInfected = (data, groupbyname, filterbyname, datacolumn = "Confirmed") =>
     }
     for (let elem in datedict){
       let num = datedict[elem]
-      if (num < 20) continue
+      if (num < 50) continue
       countryobj["Infected"].push({"Date":elem, "Num":num, "Country":country})
     }
     if (countryobj["Infected"].length == 0) continue
@@ -441,7 +441,75 @@ let filterUS = (data, groupbyname, filterbyname) => {
     })
   }
 
-useUniqueScalePerCountry = (val, filterbyname = undefined) => {
+  let genScaleFromList = (arr) => {
+    let maxval = Math.max.apply(0, arr.map(d => d["Infected"]).flat().map(d => d["Num"]))
+
+    let scale = d3.scaleLinear()
+      .domain([0, maxval])
+      .range([0, cellheight*.8])
+
+    return scale
+  }
+
+  let applyScale = (scale, focus = undefined) => {
+    let transitiontime = 1000
+
+    let textref = tmplist
+    if (focus == 'deaths') textref = deathlist
+
+    // text
+    rectsection.selectAll('.casestext')
+    .transition(transitiontime)
+    .attr('x', d => {
+      return -scale(getEntryFromArr(textref, d)) - 10
+    })
+    .text(d => getEntryFromArr(textref, d))
+
+    rectsection.selectAll('.eventtext')
+    .transition(transitiontime)
+    .attr('x', d => {
+      return getEntryFromArr(textref, d) < scale.domain()[1]/2? -scale(getEntryFromArr(textref, d)) - 50 : -10
+    })
+
+    // rects
+    rectsection.selectAll('.confirmedrect')
+      .transition(transitiontime)
+      .attr('height', d => {
+        return scale(d["Num"])
+      })
+      .attr('opacity', () => (focus != undefined && focus != 'confirmed')? 0 : 1)
+
+    rectsection.selectAll('.deathrect')
+    .transition(transitiontime)
+    .attr('height', d => {
+      return scale(getEntryFromArr(deathlist, d))
+    })
+    .attr('opacity', () => (focus != undefined && focus != 'deaths')? 0 : 1)
+
+    rectsection.selectAll('.recoveredrect')
+    .transition(transitiontime)
+    .attr('y', d => {
+      return scale(getEntryFromArr(deathlist, d))
+    })
+    .attr('height', d => {
+      if (filterbyname == "Italy"){
+        return scale(getEntryFromArr(recoveredlist, d))
+      } else {
+        let numrec = getEntryFromArr(recoveredlist, d)
+        let numdead = getEntryFromArr(deathlist, d)
+        return scale(numrec + numdead) - scale(numdead)
+      }
+    })
+    .attr('opacity', () => (focus != undefined && focus != 'recovered')? 0 : 1)
+  }
+
+let getEntryFromArr = (arr, d) => {
+  if (arr.find(e => d["Country"] == e["Country"]) == undefined) return 0
+  else if (arr.find(e => d["Country"] == e["Country"])["Infected"].find(e => e["Date"] == d["Date"]) == undefined) return 0
+  else return arr.find(e => d["Country"] == e["Country"])["Infected"].find(e => e["Date"] == d["Date"])["Num"]
+}
+
+let useUniqueScalePerCountry = (val, filterbyname = undefined) => {
   if (val){
     let confirmedlist = tmplist
     let countrymaxvals = {}
@@ -485,8 +553,7 @@ useUniqueScalePerCountry = (val, filterbyname = undefined) => {
         let newscale = d3.scaleLinear()
           .domain([1, countrymaxvals[d["Country"]]])
           .range([0, cellheight*0.8])
-        if (deathlist.find(e => d["Country"] == e["Country"])["Infected"].find(e => e["Date"] == d["Date"]) == undefined) return 0
-        else return newscale(deathlist.find(e => d["Country"] == e["Country"])["Infected"].find(e => e["Date"] == d["Date"])["Num"])
+        return newscale(getEntryFromArr(deathlist, d))
       })
 
     rectsection.selectAll('.recoveredrect')
@@ -495,84 +562,23 @@ useUniqueScalePerCountry = (val, filterbyname = undefined) => {
       let newscale = d3.scaleLinear()
         .domain([1, countrymaxvals[d["Country"]]])
         .range([0, cellheight*0.8])
-      if (deathlist.find(e => d["Country"] == e["Country"])["Infected"].find(e => e["Date"] == d["Date"]) == undefined) return 0
-      else return newscale(deathlist.find(e => d["Country"] == e["Country"])["Infected"].find(e => e["Date"] == d["Date"])["Num"])
+      return newscale(getEntryFromArr(deathlist, d))
     })
     .attr('height', d => {
       let newscale = d3.scaleLinear()
         .domain([1, countrymaxvals[d["Country"]]])
         .range([0, cellheight*0.8])
       if (filterbyname == "Italy"){
-        return newscale(recoveredlist.find(e => d["Country"] == e["Country"])["Infected"].find(e => e["Date"] == d["Date"])["Num"])
+        return newscale(getEntryFromArr(recoveredlist, d))
       } else {
-        let numrec = recoveredlist.find(e => d["Country"] == e["Country"])["Infected"].find(e => e["Date"] == d["Date"])["Num"]
-        let numdead = 0
-        if (deathlist.find(e => d["Country"] == e["Country"])["Infected"].find(e => e["Date"] == d["Date"]) == undefined) numdead = 0
-        else numdead = deathlist.find(e => d["Country"] == e["Country"])["Infected"].find(e => e["Date"] == d["Date"])["Num"]
+        let numrec = getEntryFromArr(recoveredlist, d)
+        let numdead = getEntryFromArr(deathlist, d)
         return newscale(numrec + numdead) - newscale(numdead)
       }
-
     })
   } else {
-
-    let maxval = Math.max.apply(0, tmplist.map(d => d["Infected"]).flat().map(d => d["Num"]))
-
-    let scale = d3.scaleLinear()
-      .domain([0, maxval])
-      .range([0, cellheight*.8])
-
-    let transitiontime = 1000
-
-    rectsection.selectAll('.confirmedrect')
-      .transition(transitiontime)
-      .attr('height', d => {
-        return scale(d["Num"])
-      })
-
-    rectsection.selectAll('.casestext')
-    .transition(transitiontime)
-    .attr('x', d => {
-      return -scale(d["Num"]) - 10
-    })
-
-    rectsection.selectAll('.eventtext')
-    .transition(transitiontime)
-    .attr('x', d => {
-      return d["Num"] < scale.domain()[1]/2? -scale(d["Num"]) - 50 : -10
-    })
-
-    rectsection.selectAll('.deathrect')
-    .transition(transitiontime)
-      .attr('height', d => {
-        if (deathlist.find(e => d["Country"] == e["Country"]) == undefined) return 0
-        if (deathlist.find(e => d["Country"] == e["Country"])["Infected"].find(e => e["Date"] == d["Date"]) == undefined) return 0
-        else return scale(deathlist.find(e => d["Country"] == e["Country"])["Infected"].find(e => e["Date"] == d["Date"])["Num"])
-      })
-
-    rectsection.selectAll('.recoveredrect')
-    .transition(transitiontime)
-    .attr('y', d => {
-      let newscale = d3.scaleLinear()
-      if (deathlist.find(e => d["Country"] == e["Country"]) == undefined) return 0
-      if (deathlist.find(e => d["Country"] == e["Country"])["Infected"].find(e => e["Date"] == d["Date"]) == undefined) return 0
-      else return scale(deathlist.find(e => d["Country"] == e["Country"])["Infected"].find(e => e["Date"] == d["Date"])["Num"])
-    })
-    .attr('height', d => {
-      if (filterbyname == "Italy"){
-        if (recoveredlist.find(e => d["Country"] == e["Country"]) == undefined) return 0
-        if (recoveredlist.find(e => d["Country"] == e["Country"])["Infected"].find(e => e["Date"] == d["Date"]) == undefined) return 0
-        return scale(recoveredlist.find(e => d["Country"] == e["Country"])["Infected"].find(e => e["Date"] == d["Date"])["Num"])
-      } else {
-        if (recoveredlist.find(e => d["Country"] == e["Country"]) == undefined) return 0
-        if (recoveredlist.find(e => d["Country"] == e["Country"])["Infected"].find(e => e["Date"] == d["Date"]) == undefined) return 0
-        let numrec = recoveredlist.find(e => d["Country"] == e["Country"])["Infected"].find(e => e["Date"] == d["Date"])["Num"]
-        let numdead = 0
-        if (deathlist.find(e => d["Country"] == e["Country"]) == undefined) numdead = 0
-        else if (deathlist.find(e => d["Country"] == e["Country"])["Infected"].find(e => e["Date"] == d["Date"]) == undefined) numdead = 0
-        else numdead = deathlist.find(e => d["Country"] == e["Country"])["Infected"].find(e => e["Date"] == d["Date"])["Num"]
-        return scale(numrec + numdead) - scale(numdead)
-      }
-    })
+    let scale = genScaleFromList(tmplist)
+    applyScale(scale)
   }
 }
 
@@ -657,8 +663,6 @@ let drawDeathconfirmedgrowthrates = (scale, rectsection) => {
         if (isNaN(grate[el]["Num"])) continue
         if (grate[el]["Num"] < linechartscale.domain()[0]) continue
         if (d["Infected"].find(e => e["Date"] == grate[el]["Date"])["Num"] < 50) continue
-        //if (grate[el]["Num"] > linechartscale.domain()[1]) tmparr.push([(el)*rectsize + rectsize*1.5, linechartscale(100)])
-        //if (grate[el]["Num"] == 0) continue
         tmparr.push([(el)*rectsize + rectsize*1.5, linechartscale(grate[el]["Num"])])
       }
       return d3line(tmparr)
@@ -672,58 +676,11 @@ let drawDeathconfirmedgrowthrates = (scale, rectsection) => {
 
 let showDeathsOnly = (val = false) => {
   if (val) {
-    let maxval = 0
-    maxval = Math.max.apply(0, deathlist.map(d => d["Infected"]).flat().map(d => d["Num"]))
-
-    let scale = d3.scaleLinear()
-      .domain([0, maxval])
-      .range([0, cellheight])
-
-    d3.selectAll('.confirmedrect')
-      .transition(transitiontime)
-      .attr('opacity', 0)
-
-    d3.selectAll('.recoveredrect')
-      .transition(transitiontime)
-      .attr('opacity', 0)
-
-    d3.selectAll('.deathrect')
-      .transition(transitiontime)
-      .attr('height', d => {
-        if (deathlist.find(e => d["Country"] == e["Country"]) == undefined) return 0
-        if (deathlist.find(e => d["Country"] == e["Country"])["Infected"].find(e => e["Date"] == d["Date"]) == undefined) return 0
-        let v = deathlist.find(e => d["Country"] == e["Country"])["Infected"].find(e => e["Date"] == d["Date"])["Num"]
-        return scale(v)
-      })
-
-    d3.selectAll('.casestext')
-      .transition(transitiontime)
-      .text(d => {
-        if (deathlist.find(e => d["Country"] == e["Country"]) == undefined) return ''
-        if (deathlist.find(e => d["Country"] == e["Country"])["Infected"].find(e => e["Date"] == d["Date"]) == undefined) return ''
-        return deathlist.find(e => d["Country"] == e["Country"])["Infected"].find(e => e["Date"] == d["Date"])["Num"]
-      })
-      .attr('x', d => {
-        if (deathlist.find(e => d["Country"] == e["Country"]) == undefined) return 0
-        if (deathlist.find(e => d["Country"] == e["Country"])["Infected"].find(e => e["Date"] == d["Date"]) == undefined) return 0
-        return -10 -scale(deathlist.find(e => d["Country"] == e["Country"])["Infected"].find(e => e["Date"] == d["Date"])["Num"])
-      })
+    let scale = genScaleFromList(deathlist)
+    applyScale(scale, 'deaths')
   } else {
-
-    d3.selectAll('.confirmedrect')
-    .transition(transitiontime + 1)
-      .attr('opacity', 1)
-
-    d3.selectAll('.recoveredrect')
-      .transition(transitiontime + 1)
-      .attr('opacity', 1)
-
-    d3.selectAll('.casestext')
-      .transition(transitiontime)
-      .text(d => tmplist.find(e => d["Country"] == e["Country"])["Infected"].find(e => e["Date"] == d["Date"])["Num"])
-      //.attr('x', d => -10 -scale(tmplist.find(e => d["Country"] == e["Country"])["Infected"].find(e => e["Date"] == d["Date"])["Num"]))
-
-    useUniqueScalePerCountry()
+    let scale = genScaleFromList(tmplist)
+    applyScale(scale)
   }
 }
 
@@ -781,8 +738,8 @@ let showDeathsOnly = (val = false) => {
   }
 
   let drawCountries = () => {
-    let translatenum = 300
-    let cutoffnum = 300
+    let translatenum = 400
+    let cutoffnum = 400
     let linearScale = d3.scaleLinear()
     .domain([0, 50000])
     .range([0, cellheight*0.8])

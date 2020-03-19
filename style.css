@@ -15,8 +15,8 @@
 .switch {
  position: relative;
  display: inline-block;
- width: 48px;
- height: 28px;
+ width: 34px;
+ height: 20px;
 }
 
 /* Hide default HTML checkbox */
@@ -42,8 +42,8 @@
 .rslider:before {
  position: absolute;
  content: "";
- height: 20px;
- width: 20px;
+ height: 12px;
+ width: 12px;
  left: 4px;
  bottom: 4px;
  background-color: white;
@@ -60,9 +60,9 @@ input:focus + .rslider {
 }
 
 input:checked + .rslider:before {
- -webkit-transform: translateX(20px);
- -ms-transform: translateX(20px);
- transform: translateX(20px);
+ -webkit-transform: translateX(15px);
+ -ms-transform: translateX(15px);
+ transform: translateX(15px);
 }
 
 /* Rounded rsliders */
