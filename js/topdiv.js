@@ -212,6 +212,7 @@ let mktopdiv = () => {
   let tdgrowth = genswitch("Show death growth: ", grdiv, showdeathgrowth)
   let tunique = genswitch("Unique scale by country: ", scalediv, useUniqueScalePerCountry)
   let tnormalize = genswitch("Normalize by population: ", scalediv, normalizeByPopulation)
+  let tlog = genswitch("Use log scale: ", scalediv, useLogScale)
 
   topdiv.appendChild(optiondiv)
 
