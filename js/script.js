@@ -16,6 +16,7 @@ let transitiontime = 1000
 let filterbyname = undefined
 let usingLogScale = false
 let focus = undefined
+let usingUniqueScales = false
 
 let showing_growth = false
 let showing_death_growth = false
@@ -91,6 +92,11 @@ let events = {
   },
   "Qatar" : {
     "3/16" : "Mandatory school closures"
+  },
+  "China" : {
+    "1/23" : "Hubei Lockdown",
+    "2/13" : "Only bare necessities allowed",
+    "3/17" : "Transport limitations lifted"
   }
 }
 
@@ -161,8 +167,8 @@ let getInfected = (data, groupbyname, filterbyname, datacolumn = "Confirmed") =>
     }
     for (let elem in datedict){
       let num = datedict[elem]
-      if (num < 50) continue
-      countryobj["Infected"].push({"Date":elem, "Num":num, "Country":country})
+      if (num < 50 && datacolumn == "Confirmed") continue
+      countryobj["Infected"].push({"Date":elem, "Num":num, "Country":country, "NumNormalized" : Math.round(10000*100*num/pop_vals[country])/10000})
     }
     if (countryobj["Infected"].length == 0) continue
     tmplist.push(countryobj)
@@ -189,7 +195,7 @@ let filterItaly = (data, groupbyname, filterbyname) => {
       else if (groupbyname == "Recovered") numvar = "dimessi_guariti"
       let date = record["data"].split(' ')[0].split('-').slice(1,3).join('/')
       if (parseInt(record[numvar]) < 10) continue
-      countryobj["Infected"].push({"Date": date, "Num":parseInt(record[numvar]), "Country":region})
+      countryobj["Infected"].push({"Date": date, "Num":parseInt(record[numvar]), "Country":region, "NumNormalized" : Math.round(10000*100*parseInt(record[numvar])/it_pop_vals[region])/10000})
     }
 
     if (countryobj["Infected"].length == 0) continue
@@ -237,7 +243,7 @@ let filterUS = (data, groupbyname, filterbyname) => {
     for (let elem in datedict){
       let num = parseInt(datedict[elem])
       if (num < 10) continue
-      countryobj["Infected"].push({"Date":elem, "Num":num, "Country":country})
+      countryobj["Infected"].push({"Date":elem, "Num":num, "Country":country, "NumNormalized" : Math.round(10000*100*num/us_pop_vals[country])/10000})
     }
     if (countryobj["Infected"].length == 0) continue
     tmplist.push(countryobj)
@@ -298,10 +304,9 @@ let filterUS = (data, groupbyname, filterbyname) => {
       recoveredlist = getInfected(datarecovered, groupbyname, filterbyname, "Recovered")
     }
 
-    tmplist = tmplist.filter(d => d["Country"] != "Others" && d["Country"] != "Mainland China" && d["Country"] != "China" && d["Country"] != "Cruise Ship")
+    tmplist = tmplist.filter(d => d["Country"] != "Others" && d["Country"] != "Cruise Ship" && d["Country"] != "China")
     tmplist = tmplist.filter(d => d["Infected"][d["Infected"].length - 1]["Num"] > cutoffnum)
     tmplist = tmplist.sort((a, b) => a["Infected"][a["Infected"].length - 1]["Num"] < b["Infected"][b["Infected"].length - 1]["Num"]? 1: -1)
-
     //tmplist = tmplist.slice(0,1)
 
     // growth rates
@@ -462,7 +467,7 @@ let filterUS = (data, groupbyname, filterbyname) => {
     return scale
   }
 
-  let applyScale = (scale) => {
+  let applyScale = (scale, entryname = "Num") => {
     let transitiontime = 1000
 
     let textref = tmplist
@@ -472,42 +477,46 @@ let filterUS = (data, groupbyname, filterbyname) => {
     rectsection.selectAll('.casestext')
     .transition(transitiontime)
     .attr('x', d => {
-      return -scale(getEntryFromArr(textref, d)) - 10
+      return -scale(getEntryFromArr(textref, d, entryname)) - 10
     })
-    .text(d => getEntryFromArr(textref, d))
+    .text(d => {
+      let r = getEntryFromArr(textref, d, entryname).toString()
+      if (entryname == "NumNormalized") r += '%'
+      return r
+    })
 
     rectsection.selectAll('.eventtext')
     .transition(transitiontime)
     .attr('x', d => {
-      return getEntryFromArr(textref, d) < scale.domain()[1]/2? -scale(getEntryFromArr(textref, d)) - 50 : -10
+      return getEntryFromArr(textref, d, entryname) < scale.domain()[1]/2? -scale(getEntryFromArr(textref, d, entryname)) - 50 : -10
     })
 
     // rects
     rectsection.selectAll('.confirmedrect')
       .transition(transitiontime)
       .attr('height', d => {
-        return scale(d["Num"])
+        return scale(d[entryname])
       })
       .attr('opacity', () => (focus != undefined && focus != 'confirmed')? 0 : 1)
 
     rectsection.selectAll('.deathrect')
     .transition(transitiontime)
     .attr('height', d => {
-      return scale(getEntryFromArr(deathlist, d))
+      return scale(getEntryFromArr(deathlist, d, entryname))
     })
     .attr('opacity', () => (focus != undefined && focus != 'deaths')? 0 : 1)
 
     rectsection.selectAll('.recoveredrect')
     .transition(transitiontime)
     .attr('y', d => {
-      return scale(getEntryFromArr(deathlist, d))
+      return scale(getEntryFromArr(deathlist, d, entryname))
     })
     .attr('height', d => {
       if (filterbyname == "Italy"){
-        return scale(getEntryFromArr(recoveredlist, d))
+        return scale(getEntryFromArr(recoveredlist, d, entryname))
       } else {
-        let numrec = getEntryFromArr(recoveredlist, d)
-        let numdead = getEntryFromArr(deathlist, d)
+        let numrec = getEntryFromArr(recoveredlist, d, entryname)
+        let numdead = getEntryFromArr(deathlist, d, entryname)
         return scale(numrec + numdead) - scale(numdead)
       }
     })
@@ -515,6 +524,10 @@ let filterUS = (data, groupbyname, filterbyname) => {
   }
 
 let applyScales = (scaledict) => {
+
+  let textref = tmplist
+  if (focus == 'deaths') textref = deathlist
+
   rectsection.selectAll('.confirmedrect')
     .transition(transitiontime)
     .attr('height', d => {
@@ -524,14 +537,14 @@ let applyScales = (scaledict) => {
   rectsection.selectAll('.casestext')
   .transition(transitiontime)
   .attr('x', d => {
-    return -scaledict[d["Country"]](d["Num"]) - 10
+    return -scaledict[d["Country"]](getEntryFromArr(textref, d)) - 10
   })
 
   rectsection.selectAll('.eventtext')
   .transition(transitiontime)
   .attr('x', d => {
     let newscale = scaledict[d["Country"]]
-    return d["Num"] < newscale.domain()[1]/2? -newscale(d["Num"]) - 50 : -10
+    return getEntryFromArr(textref, d) < newscale.domain()[1]/2? -newscale(getEntryFromArr(textref, d)) - 50 : -10
   })
 
   rectsection.selectAll('.deathrect')
@@ -559,26 +572,47 @@ let applyScales = (scaledict) => {
   })
 }
 
-let getEntryFromArr = (arr, d) => {
+let getEntryFromArr = (arr, d, entryname = "Num") => {
   if (arr.find(e => d["Country"] == e["Country"]) == undefined) return 0
   else if (arr.find(e => d["Country"] == e["Country"])["Infected"].find(e => e["Date"] == d["Date"]) == undefined) return 0
-  else return arr.find(e => d["Country"] == e["Country"])["Infected"].find(e => e["Date"] == d["Date"])["Num"]
+  else return arr.find(e => d["Country"] == e["Country"])["Infected"].find(e => e["Date"] == d["Date"])[entryname]
 }
 
 let useUniqueScalePerCountry = (val, filterbyname = undefined) => {
+
+  let scaletype = d3.scaleLinear
+  if (usingLogScale) scaletype = d3.scaleSymlog
+
+  usingUniqueScales = val
   if (val){
-    let confirmedlist = tmplist
+    let reflist = undefined
+    if (focus == undefined) reflist = tmplist
+    else if (focus == 'deaths') reflist = deathlist
+
     let countrymaxvals = {}
     let scaledict = {}
-    for (let c in confirmedlist){
-      let country = confirmedlist[c]["Country"]
-      let gconf = confirmedlist.find(e => e["Country"] == country)["Infected"]
-      let maxval = gconf[gconf.length - 1]["Num"]
-      let newscale = d3.scaleLinear()
-        .domain([1, maxval])
+    for (let c in reflist){
+      let maxval = 1
+      let country = reflist[c]["Country"]
+      if (reflist[c] == undefined) maxval = 2
+      else {
+        let gconf = reflist.find(e => e["Country"] == country)["Infected"]
+        maxval = gconf[gconf.length - 1]["Num"]
+      }
+
+      let newscale = scaletype()
+        .domain([0, maxval])
         .range([0, cellheight*0.8])
+        .clamp(true)
+
       scaledict[country] = newscale
       countrymaxvals[country] = maxval
+    }
+
+    for (elem of tmplist){
+      if (scaledict[elem["Country"]] == undefined) scaledict[elem['Country']] = scaletype()
+        .domain([0, 10000])
+        .range([0, cellheight*0.8])
     }
 
     applyScales(scaledict)
@@ -665,7 +699,6 @@ let drawDeathconfirmedgrowthrates = (scale, rectsection) => {
     .attr('d', d => {
       if (deathconfirmedgrowthrates.find(el => el["Country"] == d["Country"]) == undefined) return null
       let grate = deathconfirmedgrowthrates.find(el => el["Country"] == d["Country"])["Infected"]
-      if (d["Country"] == "Germany") console.log(grate)
       let tmparr = []
       for (let el in grate){
         if (isNaN(grate[el]["Num"])) continue
@@ -687,12 +720,20 @@ let drawDeathconfirmedgrowthrates = (scale, rectsection) => {
 let showDeathsOnly = (val = false) => {
   if (val) {
     focus = 'deaths'
-    let scale = genScaleFromList(deathlist)
-    applyScale(scale)
+    if (usingUniqueScales){
+      useUniqueScalePerCountry(true)
+    } else {
+      let scale = genScaleFromList(deathlist)
+      applyScale(scale)
+    }
   } else {
     focus = undefined
-    let scale = genScaleFromList(tmplist)
-    applyScale(scale)
+    if (usingUniqueScales){
+      useUniqueScalePerCountry(true)
+    } else {
+      let scale = genScaleFromList(tmplist)
+      applyScale(scale)
+    }
   }
 }
 
@@ -751,74 +792,22 @@ let useLogScale = (val) => {
 
   let normalizeByPopulation = (val) => {
     if (val){
-      let normalizedconfirmed = []
-      let normalizedrecovered = []
-      let normalizeddead = []
 
-      if (filterbyname == "US") ref_pop_values = us_pop_vals
-      else if (filterbyname == "Italy") ref_pop_values = it_pop_vals
-      else ref_pop_values = pop_vals
+      // tmplist = tmplist.sort((a, b) => a["Infected"][a["Infected"].length - 1]["NumNormalized"] < b["Infected"][b["Infected"].length - 1]["NumNormalized"])
+      // barcharts.attr('transform', function(d){
+      //   let translatey = tmplist.indexOf(tmplist.find(e => e["Country"] == d["Country"]))*cellheight
+      //   return 'translate(' + width/2 + ', ' + translatey + ')'
+      // })
 
-      for (let c in tmplist){
-        let country = tmplist[c]["Country"]
-        let tmpobj = {"Country": country, "Infected": []}
-        let recobj = {"Country": country, "Infected": []}
-        let deadobj = {"Country": country, "Infected": []}
-
-        let infconf = tmplist[c]["Infected"]
-        let infrecv = recoveredlist.find(e => e["Country"] == country) != undefined? recoveredlist.find(e => e["Country"] == country)["Infected"] : []
-        let infdead = deathlist.find(e => e["Country"] == country) != undefined? deathlist.find(e => e["Country"] == country)["Infected"] : []
-
-        for (let i in infconf){
-          let n = 100*infconf[i]["Num"]/ref_pop_values[tmplist[c]["Country"]]
-          n = Math.round(n*10000)/10000
-          tmpobj["Infected"].push({"Country": country, "Date": infconf[i]["Date"], "Num" : n})
-        }
-        normalizedconfirmed.push(tmpobj)
-
-        for (let i in infrecv){
-          let n = 100*infrecv[i]["Num"]/ref_pop_values[country]
-          n = Math.round(n*10000)/10000
-          recobj["Infected"].push({"Country": country, "Date": infrecv[i]["Date"], "Num" : n})
-        }
-        normalizedrecovered.push(recobj)
-
-        for (let i in infdead){
-          let n = 100*infdead[i]["Num"]/ref_pop_values[country]
-          n = Math.round(n*10000)/10000
-          deadobj["Infected"].push({"Country": country, "Date": infdead[i]["Date"], "Num" : n})
-        }
-        normalizeddead.push(deadobj)
-      }
-
-
-      let maxval = Math.max.apply(0, normalizedconfirmed.map(d => d["Infected"]).flat().map(d => d["Num"]))
+      let maxval = Math.max.apply(0, tmplist.map(d => d["Infected"]).flat().map(d => d["NumNormalized"]))
 
       let newscale = d3.scaleLinear()
         .domain([0, maxval])
         .range([0, cellheight*.8])
 
-      d3.selectAll('.casestext')
-        .text(d => normalizedconfirmed.find(e => e["Country"] == d["Country"])["Infected"].find(e => e["Date"] == d["Date"])["Num"] + '%')
-        .attr('x', d => -10 -newscale(normalizedconfirmed.find(e => e["Country"] == d["Country"])["Infected"].find(e => e["Date"] == d["Date"])["Num"]))
+      applyScale(newscale, "NumNormalized")
 
-      d3.selectAll('.confirmedrect')
-        .attr('height', d => {
-          return newscale(normalizedconfirmed.find(e => e["Country"] == d["Country"])["Infected"].find(e => e["Date"] == d["Date"])["Num"])
-        })
-
-      d3.selectAll('.recoveredrect')
-        .attr('height', d => {
-          if (normalizedrecovered.find(e => e["Country"] == d["Country"]) == undefined) return 0
-          if (normalizedrecovered.find(e => e["Country"] == d["Country"])["Infected"].find(e => e["Date"] == d["Date"]) == undefined) return 0
-          else return newscale(normalizedrecovered.find(e => e["Country"] == d["Country"])["Infected"].find(e => e["Date"] == d["Date"])["Num"])
-        })
-
-      d3.selectAll('.deadrect')
-        .attr('height', d => newscale(normalizeddead.find(e => e["Country"] == d["Country"])["Infected"].find(e => e["Date"] == d["Date"])["Num"]))
     } else {
       useUniqueScalePerCountry()
-      d3.selectAll('.casestext')
-        .text(d => tmplist.find(e => e["Country"] == d["Country"])["Infected"].find(e => e["Date"] == d["Date"])["Num"])
     }
   }
