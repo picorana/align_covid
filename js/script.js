@@ -17,6 +17,7 @@ let filterbyname = undefined
 let usingLogScale = false
 let focus = undefined
 let usingUniqueScales = false
+let usingNormalizedValues = false
 
 let showing_growth = false
 let showing_death_growth = false
@@ -256,10 +257,17 @@ let filterUS = (data, groupbyname, filterbyname) => {
 
     for (i in [...new Array(5)]){
       svg.append('path')
-        .attr('d', d3line([[width/2 + rectsize*(2-i)*7, 80],[width/2 + rectsize*(2-i)*7, height]]))
+        .attr('d', d3line([[width/2 + rectsize*(2-i)*7 + separatorlinewidth, 80],[width/2 + rectsize*(2-i)*7, height]]))
         .style('stroke-dasharray', i==2? '5 5':'3 3')
         .attr('stroke', i==2? '#aaa' : '#eee')
         .attr('stroke-width', separatorlinewidth)
+    }
+
+    for (i in [...new Array(100)]){
+      svg.append('path')
+        .attr('d', d3line([[rectsize*i - 2, 80],[rectsize*i - 2, height]]))
+        .attr('stroke', '#fff')
+        .attr('stroke-width', 2)
     }
   }
 
@@ -328,11 +336,14 @@ let filterUS = (data, groupbyname, filterbyname) => {
                 let chartg = svg.append('g')
                   .attr('transform', 'translate(0,200)')
 
-                drawGuidelines()
                 addconfirmedslider(scale, translatenum)
                 addlegend()
 
                 getData(datacases, datarecovered, datadeaths, groupbyname, cutoffnum)
+
+                height = tmplist.length * cellheight + cellheight
+                svg.attr('height', height)
+                drawGuidelines()
 
                 barcharts = chartg.selectAll('.barchart')
                   .data(tmplist)
@@ -349,6 +360,42 @@ let filterUS = (data, groupbyname, filterbyname) => {
                     else return 1
                   })
 
+                barcharts.append('path')
+                  .attr('fill', "#FB6900")
+                  .attr('class', 'confirmedline')
+                  .attr('d', d => {
+                    let pathlist = []
+                    for (let e in d["Infected"]){
+                      pathlist.push([rectsize + e*rectsize, 0])
+                    }
+                    pathlist.push([(d["Infected"].length-1)*rectsize, 0])
+                    return d3line(pathlist)
+                  })
+
+                barcharts.append('path')
+                  .attr('fill', '#00B9BD')
+                  .attr('class', 'recoveredline')
+                  .attr('d', d => {
+                    let pathlist = []
+                    for (let e in d["Infected"]){
+                      pathlist.push([rectsize + e*rectsize, 0])
+                    }
+                    pathlist.push([(d["Infected"].length-1)*rectsize, 0])
+                    return d3line(pathlist)
+                  })
+
+                barcharts.append('path')
+                  .attr('fill', '#004853')
+                  .attr('class', 'deathline')
+                  .attr('d', d => {
+                    let pathlist = []
+                    for (let e in d["Infected"]){
+                      pathlist.push([rectsize + e*rectsize, 0])
+                    }
+                    pathlist.push([(d["Infected"].length-1)*rectsize, 0])
+                    return d3line(pathlist)
+                  })
+
                 rectsection = barcharts.selectAll('.rectsection')
                   .data(d => d["Infected"])
                   .enter()
@@ -356,35 +403,35 @@ let filterUS = (data, groupbyname, filterbyname) => {
                   .attr("class", "rectsection")
                   .attr("transform", (d, i) => "translate("+i*rectsize+",0)")
 
-                let rectbox = rectsection.append('g')
-                  .attr('class', 'rectbox')
-                  .on('mouseover', function(d){
-                    if (showing_growth || showing_death_growth){
-                      return null
-                    } else {d3.select(this).attr('opacity', 0.5)}
-                  })
-                  .on('mouseout', function(d){(showing_growth || showing_death_growth)? null : d3.select(this).attr('opacity', 1)})
-                  .on('click', d => {slideChartsToVal(d["Num"])})
+                // let rectbox = rectsection.append('g')
+                //   .attr('class', 'rectbox')
+                //   .on('mouseover', function(d){
+                //     if (showing_growth || showing_death_growth){
+                //       return null
+                //     } else {d3.select(this).attr('opacity', 0.5)}
+                //   })
+                //   .on('mouseout', function(d){(showing_growth || showing_death_growth)? null : d3.select(this).attr('opacity', 1)})
+                //   .on('click', d => {slideChartsToVal(d["Num"])})
 
                 // confirmed cases bar
-                rectbox.append("rect")
-                  .attr("width", rectsize*.9)
-                  .attr("fill", "#FB6900")
-                  .attr('class', 'confirmedrect')
+                // rectbox.append("rect")
+                //   .attr("width", rectsize*.9)
+                //   .attr("fill", "#FB6900")
+                //   .attr('class', 'confirmedrect')
 
                 // deaths rect
-                rectbox
-                  .append('rect')
-                  .attr('width', rectsize*.9)
-                  .attr('fill', '#004853')
-                  .attr('class', 'deathrect')
+                // rectbox
+                //   .append('rect')
+                //   .attr('width', rectsize*.9)
+                //   .attr('fill', '#004853')
+                //   .attr('class', 'deathrect')
 
                 // recovered rect
-                rectbox
-                  .append('rect')
-                  .attr('width', rectsize*.9)
-                  .attr('fill', '#00B9BD')
-                  .attr('class', 'recoveredrect')
+                // rectbox
+                //   .append('rect')
+                //   .attr('width', rectsize*.9)
+                //   .attr('fill', '#00B9BD')
+                //   .attr('class', 'recoveredrect')
 
                 // text for the events
                 rectsection.append("text")
@@ -435,7 +482,6 @@ let filterUS = (data, groupbyname, filterbyname) => {
                     .text(elem["Country"])
                 }
 
-                  svg.attr('height', d3.selectAll('.barchart').filter(d => d["Infected"][d["Infected"].length - 1]["Num"]).size() * cellheight + cellheight)
 
                   drawconfirmedgrowthrates(tmplist, scale, rectsection)
                   drawDeathconfirmedgrowthrates(scale, rectsection)
@@ -472,6 +518,39 @@ let filterUS = (data, groupbyname, filterbyname) => {
 
     let textref = tmplist
     if (focus == 'deaths') textref = deathlist
+
+    barcharts.selectAll('.confirmedline')
+    .transition(transitiontime)
+    .attr('d', d => {
+      let pathlist = [[0, 0]]
+      for (let e in d["Infected"]){
+        pathlist.push([rectsize + (e)*rectsize, scale(d["Infected"][e][entryname])])
+      }
+      pathlist.push([rectsize + (d["Infected"].length-1)*rectsize, 0])
+      return d3line(pathlist)
+    }).attr('opacity', () => (focus != undefined && focus != 'confirmed')? 0 : 1)
+
+    barcharts.selectAll('.recoveredline')
+    .transition(transitiontime)
+    .attr('d', d => {
+      let pathlist = []
+      for (let e in d["Infected"]){
+        pathlist.push([rectsize + (e)*rectsize, scale(getEntryFromArr(deathlist, d["Infected"][e], entryname) + getEntryFromArr(recoveredlist, d["Infected"][e], entryname))])
+      }
+      pathlist.push([rectsize + (d["Infected"].length-1)*rectsize, 0])
+      return d3line(pathlist)
+    }).attr('opacity', () => (focus != undefined && focus != 'recovered')? 0 : 1)
+
+    barcharts.selectAll('.deathline')
+    .transition(transitiontime)
+    .attr('d', d => {
+      let pathlist = [[0, 0]]
+      for (let e in d["Infected"]){
+        pathlist.push([rectsize + (e)*rectsize, scale(getEntryFromArr(deathlist, d["Infected"][e], entryname))])
+      }
+      pathlist.push([rectsize + (d["Infected"].length-1)*rectsize, 0])
+      return d3line(pathlist)
+    }).attr('opacity', () => (focus != undefined && focus != 'deaths')? 0 : 1)
 
     // text
     rectsection.selectAll('.casestext')
@@ -523,10 +602,43 @@ let filterUS = (data, groupbyname, filterbyname) => {
     .attr('opacity', () => (focus != undefined && focus != 'recovered')? 0 : 1)
   }
 
-let applyScales = (scaledict) => {
+let applyScales = (scaledict, entryname = "Num") => {
 
   let textref = tmplist
   if (focus == 'deaths') textref = deathlist
+
+  barcharts.selectAll('.confirmedline')
+  .transition(transitiontime)
+  .attr('d', d => {
+    let pathlist = [[0, 0]]
+    for (let e in d["Infected"]){
+      pathlist.push([rectsize + (e)*rectsize, scaledict[d["Country"]](d["Infected"][e][entryname])])
+    }
+    pathlist.push([rectsize + (d["Infected"].length-1)*rectsize, 0])
+    return d3line(pathlist)
+  })
+
+  barcharts.selectAll('.recoveredline')
+  .transition(transitiontime)
+  .attr('d', d => {
+    let pathlist = []
+    for (let e in d["Infected"]){
+      pathlist.push([rectsize + (e)*rectsize, scaledict[d["Country"]](getEntryFromArr(deathlist, d["Infected"][e], entryname) + getEntryFromArr(recoveredlist, d["Infected"][e], entryname))])
+    }
+    pathlist.push([rectsize + (d["Infected"].length-1)*rectsize, 0])
+    return d3line(pathlist)
+  })
+
+  barcharts.selectAll('.deathline')
+  .transition(transitiontime)
+  .attr('d', d => {
+    let pathlist = [[0, 0]]
+    for (let e in d["Infected"]){
+      pathlist.push([rectsize + (e)*rectsize, scaledict[d["Country"]](getEntryFromArr(deathlist, d["Infected"][e], entryname))])
+    }
+    pathlist.push([rectsize + (d["Infected"].length-1)*rectsize, 0])
+    return d3line(pathlist)
+  })
 
   rectsection.selectAll('.confirmedrect')
     .transition(transitiontime)
@@ -597,7 +709,7 @@ let useUniqueScalePerCountry = (val, filterbyname = undefined) => {
       if (reflist[c] == undefined) maxval = 2
       else {
         let gconf = reflist.find(e => e["Country"] == country)["Infected"]
-        maxval = gconf[gconf.length - 1]["Num"]
+        maxval = gconf[gconf.length - 1][usingNormalizedValues? "NumNormalized" : "Num"]
       }
 
       let newscale = scaletype()
@@ -791,6 +903,7 @@ let useLogScale = (val) => {
   }
 
   let normalizeByPopulation = (val) => {
+    usingNormalizedValues = val
     if (val){
 
       // tmplist = tmplist.sort((a, b) => a["Infected"][a["Infected"].length - 1]["NumNormalized"] < b["Infected"][b["Infected"].length - 1]["NumNormalized"])
