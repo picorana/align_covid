@@ -98,6 +98,19 @@ let mktopdiv = () => {
       d3.selectAll('.growthaxis')
         .transition(500)
         .attr('opacity', 1)
+
+      d3.selectAll('.confirmedline')
+      .transition(500)
+      .attr('opacity', 0.2)
+
+      d3.selectAll('.recoveredline')
+      .transition(500)
+      .attr('opacity', 0.2)
+
+      d3.selectAll('.deathline')
+      .transition(500)
+      .attr('opacity', 0.2)
+
     } else {
       if (!showing_death_growth){
         d3.selectAll('.rectbox')
@@ -109,6 +122,7 @@ let mktopdiv = () => {
         d3.selectAll('.eventtext')
           .transition(500)
           .attr('opacity', 1)
+
       }
 
       d3.selectAll('.growthpath')
@@ -117,6 +131,7 @@ let mktopdiv = () => {
       d3.selectAll('.growthaxis')
         .transition(500)
         .attr('opacity', 0)
+
     }
   }
 
@@ -139,6 +154,19 @@ let mktopdiv = () => {
       d3.selectAll('.deathgrowthaxis')
         .transition(500)
         .attr('opacity', 1)
+
+      d3.selectAll('.confirmedline')
+      .transition(500)
+      .attr('opacity', 0.2)
+
+      d3.selectAll('.recoveredline')
+      .transition(500)
+      .attr('opacity', 0.2)
+
+      d3.selectAll('.deathline')
+      .transition(500)
+      .attr('opacity', 0.2)
+
     } else {
       if (!showing_growth){
         d3.selectAll('.rectbox')
@@ -150,6 +178,18 @@ let mktopdiv = () => {
         d3.selectAll('.eventtext')
           .transition(500)
           .attr('opacity', 1)
+
+        d3.selectAll('.confirmedline')
+        .transition(500)
+        .attr('opacity', 1)
+
+        d3.selectAll('.recoveredline')
+        .transition(500)
+        .attr('opacity', 1)
+
+        d3.selectAll('.deathline')
+        .transition(500)
+        .attr('opacity', 1)
       }
 
       d3.selectAll('.deathgrowthpath')
@@ -158,6 +198,8 @@ let mktopdiv = () => {
       d3.selectAll('.deathgrowthaxis')
         .transition(500)
         .attr('opacity', 0)
+
+
     }
   }
 
