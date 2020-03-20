@@ -194,7 +194,6 @@ let filterItaly = (data, groupbyname, filterbyname) => {
 
     if (countryobj["Infected"].length == 0) continue
     tmplist.push(countryobj)
-
   }
 
   return tmplist
@@ -463,7 +462,7 @@ let filterUS = (data, groupbyname, filterbyname) => {
     return scale
   }
 
-  let applyScale = (scale, focus = undefined) => {
+  let applyScale = (scale) => {
     let transitiontime = 1000
 
     let textref = tmplist
@@ -515,7 +514,7 @@ let filterUS = (data, groupbyname, filterbyname) => {
     .attr('opacity', () => (focus != undefined && focus != 'recovered')? 0 : 1)
   }
 
-let applyScales = (scaledict, focus = undefined) => {
+let applyScales = (scaledict) => {
   rectsection.selectAll('.confirmedrect')
     .transition(transitiontime)
     .attr('height', d => {
@@ -671,7 +670,9 @@ let drawDeathconfirmedgrowthrates = (scale, rectsection) => {
       for (let el in grate){
         if (isNaN(grate[el]["Num"])) continue
         if (grate[el]["Num"] < linechartscale.domain()[0]) continue
+        if (d["Infected"].find(e => e["Date"] == grate[el]["Date"]) == undefined) continue
         if (d["Infected"].find(e => e["Date"] == grate[el]["Date"])["Num"] < 50) continue
+        //if (confirmedgrowthrates.find(e => e["Country"] == d["Country"]) == undefined) continue
         tmparr.push([(el)*rectsize + rectsize*(confirmedgrowthrates.find(e => e["Country"] == d["Country"])["Infected"].length - grate.length) + rectsize*1.5, linechartscale(grate[el]["Num"])])
       }
       return d3line(tmparr)
@@ -685,9 +686,11 @@ let drawDeathconfirmedgrowthrates = (scale, rectsection) => {
 
 let showDeathsOnly = (val = false) => {
   if (val) {
+    focus = 'deaths'
     let scale = genScaleFromList(deathlist)
-    applyScale(scale, 'deaths')
+    applyScale(scale)
   } else {
+    focus = undefined
     let scale = genScaleFromList(tmplist)
     applyScale(scale)
   }
