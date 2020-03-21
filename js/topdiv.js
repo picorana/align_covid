@@ -123,6 +123,18 @@ let mktopdiv = () => {
           .transition(500)
           .attr('opacity', 1)
 
+        d3.selectAll('.confirmedline')
+        .transition(500)
+        .attr('opacity', 1)
+
+        d3.selectAll('.recoveredline')
+        .transition(500)
+        .attr('opacity', 1)
+
+        d3.selectAll('.deathline')
+        .transition(500)
+        .attr('opacity', 1)
+
       }
 
       d3.selectAll('.growthpath')
