@@ -330,6 +330,8 @@ let filterUS = (data, groupbyname, filterbyname) => {
             d3.csv(dataDeaths)
               .then((datadeaths) => {
 
+                console.log(dataCases)
+
                 let topdiv = mktopdiv()
                 svg.attr('transform', 'translate(0, '+ (topdiv.clientHeight + 20) +')')
 
