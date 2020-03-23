@@ -312,10 +312,10 @@ let filterUS = (data, groupbyname, filterbyname) => {
       recoveredlist = getInfected(datarecovered, groupbyname, filterbyname, "Recovered")
     }
 
-    tmplist = tmplist.filter(d => d["Country"] != "Others" && d["Country"] != "Cruise Ship" && d["Country"] != "China")
+    tmplist = tmplist.filter(d => d["Country"] != "Others" && d["Country"] != "Cruise Ship")
     tmplist = tmplist.filter(d => d["Infected"][d["Infected"].length - 1]["Num"] > cutoffnum)
     tmplist = tmplist.sort((a, b) => a["Infected"][a["Infected"].length - 1]["Num"] < b["Infected"][b["Infected"].length - 1]["Num"]? 1: -1)
-    //tmplist = tmplist.slice(0,1)
+    //tmplist = tmplist.slice(0,3)
 
     // growth rates
     confirmedgrowthrates = getGrowthRates(tmplist)
@@ -892,10 +892,10 @@ let useLogScale = (val) => {
   }
 
   let drawCountries = () => {
-    let translatenum = 400
+    let translatenum = 5000
     let cutoffnum = 400
     let linearScale = d3.scaleLinear()
-    .domain([0, 50000])
+    .domain([0, 100000])
     .range([0, cellheight*0.8])
 
     fileCases = 'data/time_series_19-covid-Confirmed.csv'
