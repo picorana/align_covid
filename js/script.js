@@ -893,7 +893,7 @@ let useLogScale = (val) => {
   }
 
   let drawCountries = () => {
-    let translatenum = 5000
+    let translatenum = 1000
     let cutoffnum = 400
     let linearScale = d3.scaleLinear()
     .domain([0, 100000])
