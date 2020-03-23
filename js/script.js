@@ -263,11 +263,12 @@ let filterUS = (data, groupbyname, filterbyname) => {
         .attr('stroke-width', separatorlinewidth)
     }
 
-    for (i in [...new Array(100)]){
+    for (i in [...new Array(200)]){
       svg.append('path')
         .attr('d', d3line([[rectsize*i - 2, 80],[rectsize*i - 2, height]]))
         .attr('stroke', '#fff')
         .attr('stroke-width', 2)
+        .attr('opacity', 0.5)
     }
   }
 
