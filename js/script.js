@@ -255,9 +255,9 @@ let filterUS = (data, groupbyname, filterbyname) => {
 
   let drawGuidelines = () => {
 
-    for (i in [...new Array(5)]){
+    for (i in [...new Array(7)]){
       svg.append('path')
-        .attr('d', d3line([[width/2 + rectsize*(2-i)*7 + separatorlinewidth, 80],[width/2 + rectsize*(2-i)*7, height]]))
+        .attr('d', d3line([[width/2 + rectsize*(3-i)*7 + separatorlinewidth, 80],[width/2 + rectsize*(3-i)*7, height]]))
         .style('stroke-dasharray', i==2? '5 5':'3 3')
         .attr('stroke', i==2? '#aaa' : '#eee')
         .attr('stroke-width', separatorlinewidth)
