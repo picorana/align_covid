@@ -96,7 +96,7 @@ let events = {
   },
   "China" : {
     "1/23" : "Hubei Lockdown",
-    "2/13" : "Only bare necessities allowed",
+    //"2/13" : "Only bare needs allowed",
     "3/17" : "Transport limitations lifted"
   }
 }
