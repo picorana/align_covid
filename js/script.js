@@ -19,6 +19,8 @@ let focus = undefined
 let usingUniqueScales = false
 let usingNormalizedValues = false
 
+let curslidervalue = 0
+
 let showing_growth = false
 let showing_death_growth = false
 
@@ -170,7 +172,7 @@ let getInfected = (data, groupbyname, filterbyname, datacolumn = "Confirmed") =>
     for (let elem in datedict){
       let num = datedict[elem]
       if (num < 50 && datacolumn == "Confirmed") continue
-      countryobj["Infected"].push({"Date":elem, "Num":num, "Country":country, "NumNormalized" : Math.round(10000*100*num/pop_vals[country])/10000})
+      countryobj["Infected"].push({"Date":elem, "Num":num, "Country":country, "NumNormalized" : Math.round(1000*100*num/pop_vals[country])/1000})
     }
     if (countryobj["Infected"].length == 0) continue
     tmplist.push(countryobj)
@@ -286,7 +288,7 @@ let filterUS2 = (data, groupbyname, filterbyname) => {
 
     for (i in [...new Array(7)]){
       svg.append('path')
-        .attr('d', d3line([[width/2 + rectsize*(3-i)*7 + separatorlinewidth, 80],[width/2 + rectsize*(3-i)*7, height]]))
+        .attr('d', d3line([[width/2 + rectsize*(2-i)*7 + separatorlinewidth, 80],[width/2 + rectsize*(2-i)*7, height]]))
         .style('stroke-dasharray', i==2? '5 5':'3 3')
         .attr('stroke', i==2? '#aaa' : '#eee')
         .attr('stroke-width', separatorlinewidth)
@@ -508,6 +510,7 @@ let filterUS2 = (data, groupbyname, filterbyname) => {
                     .attr("x", 50)
                     .attr("fill", "#aaa")
                     .attr("font-size", "2em")
+                    .attr("class", "countryname")
                     .attr("font-weight", "bold")
                     .text(elem["Country"])
                 }
@@ -532,12 +535,12 @@ let filterUS2 = (data, groupbyname, filterbyname) => {
     if (usingLogScale){
       scale = d3.scaleSymlog()
         .domain([50, maxval])
-        .range([0, cellheight*.8])
+        .range([0, cellheight*.7])
         .clamp(true)
     } else {
       scale = d3.scaleLinear()
         .domain([0, maxval])
-        .range([0, cellheight*.8])
+        .range([0, cellheight*.7])
     }
 
     return scale
@@ -654,10 +657,12 @@ let applyScales = (scaledict, entryname = "Num") => {
   .transition(transitiontime)
   .attr('d', d => {
     let pathlist = []
-    for (let e in d["Infected"]){
+    let tmpinf = d["Infected"]
+    if (filterbyname == undefined) tmpinf = d["Infected"].slice(0, d["Infected"].length -1)
+    for (let e in tmpinf){
       pathlist.push([rectsize + (e)*rectsize, scaledict[d["Country"]](getEntryFromArr(deathlist, d["Infected"][e], entryname) + getEntryFromArr(recoveredlist, d["Infected"][e], entryname))])
     }
-    pathlist.push([rectsize + (d["Infected"].length-1)*rectsize, 0])
+    pathlist.push([rectsize + (tmpinf.length-1)*rectsize, 0])
     return d3line(pathlist)
   })
 
@@ -746,7 +751,7 @@ let useUniqueScalePerCountry = (val, filterbyname = undefined) => {
 
       let newscale = scaletype()
         .domain([0, maxval])
-        .range([0, cellheight*0.8])
+        .range([0, cellheight*0.7])
         .clamp(true)
 
       scaledict[country] = newscale
@@ -756,7 +761,7 @@ let useUniqueScalePerCountry = (val, filterbyname = undefined) => {
     for (elem of tmplist){
       if (scaledict[elem["Country"]] == undefined) scaledict[elem['Country']] = scaletype()
         .domain([0, 10000])
-        .range([0, cellheight*0.8])
+        .range([0, cellheight*0.7])
     }
 
     applyScales(scaledict)
@@ -894,11 +899,13 @@ let useLogScale = (val) => {
 
     let logScale = d3.scaleSymlog()
     .domain([0, 1000])
-    .range([0, cellheight*0.8]);
+    .range([0, cellheight*0.7]);
 
     let linearScale = d3.scaleLinear()
     .domain([0, 600])
-    .range([0, cellheight*0.8])
+    .range([0, cellheight*0.7])
+
+    curslidervalue = translatenum
 
     fileCases = 'data/us_states.csv'
     fileRecovered = 'data/us_states.csv'
@@ -911,9 +918,11 @@ let useLogScale = (val) => {
     let cutoffnum = 30
     let linearScale = d3.scaleLinear()
     .domain([0, 12000])
-    .range([0, cellheight*0.8])
+    .range([0, cellheight*0.7])
 
     filterbyname = "Italy"
+
+    curslidervalue = translatenum
 
     fileCases = 'data/dpc-covid19-ita-regioni.csv'
     fileRecovered = 'data/dpc-covid19-ita-regioni.csv'
@@ -922,11 +931,13 @@ let useLogScale = (val) => {
   }
 
   let drawCountries = () => {
-    let translatenum = 1000
+    let translatenum = 400
     let cutoffnum = 400
     let linearScale = d3.scaleLinear()
     .domain([0, 100000])
-    .range([0, cellheight*0.8])
+    .range([0, cellheight*0.7])
+
+    curslidervalue = translatenum
 
     //fileCases = 'data/time_series_19-covid-Confirmed.csv'
     fileCases = 'data/time_series_covid19_confirmed_global.csv'
@@ -946,15 +957,28 @@ let useLogScale = (val) => {
       //   return 'translate(' + width/2 + ', ' + translatey + ')'
       // })
 
-      let maxval = Math.max.apply(0, tmplist.map(d => d["Infected"]).flat().map(d => d["NumNormalized"]))
+      let vallist = tmplist.map(d => d["Infected"]).flat().map(d => isNaN(d["NumNormalized"])? 0 : d["NumNormalized"])
+      let maxval = Math.max.apply(0, vallist)
+
+      tmplist = tmplist.sort((a, b) => a["Infected"][a["Infected"].length - 1]["NumNormalized"] < b["Infected"][b["Infected"].length - 1]["NumNormalized"] ? 1 : -1)
+      slideChartsToVal(curslidervalue)
+
+      d3.selectAll('.countryname')
+        .attr("y", function(d){return tmplist.indexOf(tmplist.find(e => e["Country"] == d3.select(this).text()))*cellheight + cellheight/2 + 80})
 
       let newscale = d3.scaleLinear()
         .domain([0, maxval])
-        .range([0, cellheight*.8])
+        .range([0, cellheight*.7])
 
       applyScale(newscale, "NumNormalized")
 
     } else {
+      tmplist = tmplist.sort((a, b) => a["Infected"][a["Infected"].length - 1]["Num"] < b["Infected"][b["Infected"].length - 1]["Num"] ? 1 : -1)
+      slideChartsToVal(curslidervalue)
+
+      d3.selectAll('.countryname')
+        .attr("y", function(d){return tmplist.indexOf(tmplist.find(e => e["Country"] == d3.select(this).text()))*cellheight + cellheight/2 + 80})
+
       useUniqueScalePerCountry()
     }
   }

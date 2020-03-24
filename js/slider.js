@@ -23,14 +23,15 @@ let addconfirmedslider = (scale, translatenum) => {
 
 
 let slideChartsToVal = (val) => {
+  curslidervalue = val
   d3.select('p#value-simple').text(d3.format('')(val));
 
     d3.selectAll('.barchart')
       .transition(100)
       .attr('transform', (d, i) => {
           let translatex = (width/2 - d["Infected"].indexOf(d["Infected"].find(e => e["Num"] >= val))*rectsize + separatorlinewidth/2)
-          if (val > d["Infected"][d["Infected"].length - 1]["Num"]) return 'translate('+ 10 +', '+(i*cellheight)+')'
-          return 'translate(' + translatex + ', '+(i*cellheight)+')'
+          if (val > d["Infected"][d["Infected"].length - 1]["Num"]) return 'translate('+ 10 +', '+(tmplist.indexOf(d)*cellheight)+')'
+          return 'translate(' + translatex + ', '+(tmplist.indexOf(d)*cellheight)+')'
     })
     .attr('opacity', (d, i) => {
       if(val > d["Infected"][d["Infected"].length - 1]["Num"]) return 0.3
