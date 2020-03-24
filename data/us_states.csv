@@ -1,0 +1,922 @@
+Date,State,Confirmed,Recovered,Deaths
+2020-00-22,Washington,1,0,0
+2020-00-23,Washington,1,0,0
+2020-00-24,Washington,1,0,0
+2020-00-24,Chicago,1,0,0
+2020-00-25,Washington,1,0,0
+2020-00-25,Illinois,1,0,0
+2020-00-26,Washington,1,0,0
+2020-00-26,Illinois,1,0,0
+2020-00-26,California,2,0,0
+2020-00-26,Arizona,1,0,0
+2020-00-27,Washington,1,0,0
+2020-00-27,Illinois,1,0,0
+2020-00-27,California,2,0,0
+2020-00-27,Arizona,1,0,0
+2020-00-28,Washington,1,0,0
+2020-00-28,Illinois,1,0,0
+2020-00-28,California,2,0,0
+2020-00-28,Arizona,1,0,0
+2020-00-29,Washington,1,0,0
+2020-00-29,Illinois,1,0,0
+2020-00-29,California,2,0,0
+2020-00-29,Arizona,1,0,0
+2020-00-30,Washington,1,0,0
+2020-00-30,Illinois,1,0,0
+2020-00-30,California,2,0,0
+2020-00-30,Arizona,1,0,0
+2020-00-31,Illinois,2,0,0
+2020-00-31,California,2,0,0
+2020-00-31,Washington,1,0,0
+2020-00-31,Arizona,1,0,0
+2020-00-01,"Chicago, IL",2,0,0
+2020-00-01,"Boston, MA",1,0,0
+2020-00-01,"Los Angeles, CA",1,0,0
+2020-00-01,"Orange, CA",1,0,0
+2020-00-01,"Santa Clara, CA",1,0,0
+2020-00-01,"Seattle, WA",1,0,0
+2020-00-01,"Tempe, AZ",1,0,0
+2020-02-01,"Chicago, IL",2,0,0
+2020-02-01,"Boston, MA",1,0,0
+2020-02-01,"Los Angeles, CA",1,0,0
+2020-02-01,"Orange, CA",1,0,0
+2020-02-01,"Santa Clara, CA",1,0,0
+2020-02-01,"Seattle, WA",1,0,0
+2020-02-01,"Tempe, AZ",1,0,0
+2020-02-03,"San Benito, CA",2,0,0
+2020-02-03,"Santa Clara, CA",2,0,0
+2020-02-05,"Madison, WI",1,0,0
+2020-02-09,"Chicago, IL",2,2,0
+2020-02-09,"Seattle, WA",1,1,0
+2020-02-11,"San Diego County, CA",1,0,0
+2020-02-13,"San Diego County, CA",2,0,0
+2020-02-13,"San Antonio, TX",1,0,0
+2020-02-21,"Ashland, NE",11,0,0
+2020-02-21,"Travis, CA",5,0,0
+2020-02-21,"Lackland, TX",2,0,0
+2020-02-21,"San Diego County, CA",2,1,0
+2020-02-21,"Santa Clara, CA",2,1,0
+2020-02-21,"Humboldt County, CA",1,0,0
+2020-02-21,"Sacramento County, CA",1,0,0
+2020-02-22,"Omaha, NE (From Diamond Princess)",11,0,0
+2020-02-22,"Travis, CA (From Diamond Princess)",5,0,0
+2020-02-22,"Lackland, TX (From Diamond Princess)",2,0,0
+2020-02-24,Unassigned Location (From Diamond Princess),36,0,0
+2020-02-24,"Lackland, TX (From Diamond Princess)",0,0,0
+2020-02-24,"Omaha, NE (From Diamond Princess)",0,0,0
+2020-02-24,"Travis, CA (From Diamond Princess)",0,0,0
+2020-02-25,Unassigned Location (From Diamond Princess),36,0,0
+2020-02-25,"Tempe, AZ",1,1,0
+2020-02-26,Unassigned Location (From Diamond Princess),42,0,0
+2020-02-27,"Sacramento County, CA",2,0,0
+2020-02-28,Unassigned Location (From Diamond Princess),44,0,0
+2020-02-28,"Boston, MA",1,1,0
+2020-02-29,"Seattle, WA",6,1,1
+2020-02-29,"Santa Clara, CA",3,1,0
+2020-02-29,"Portland, OR",1,0,0
+2020-02-29,"Snohomish County, WA",1,0,0
+2020-03-01,"Seattle, WA",9,1,1
+2020-03-01,"Chicago, IL",3,2,0
+2020-03-01,"Snohomish County, WA",2,0,0
+2020-03-01,"Providence, RI",1,0,0
+2020-03-02,Unassigned Location (From Diamond Princess),45,0,0
+2020-03-02,"King County, WA",14,1,5
+2020-03-02,"Santa Clara, CA",9,1,0
+2020-03-02,"Cook County, IL",4,2,0
+2020-03-02,"Snohomish County, WA",4,0,1
+2020-03-02,"Portland, OR",2,0,0
+2020-03-02,"Providence, RI",2,0,0
+2020-03-02,"Grafton County, NH",1,0,0
+2020-03-02,"Hillsborough, FL",1,0,0
+2020-03-02,"New York City, NY",1,0,0
+2020-03-02,"Placer County, CA",1,0,0
+2020-03-02,"San Mateo, CA",1,0,0
+2020-03-02,"Sarasota, FL",1,0,0
+2020-03-02,"Sonoma County, CA",1,0,0
+2020-03-02,"Umatilla, OR",1,0,0
+2020-03-03,"King County, WA",21,1,6
+2020-03-03,"Santa Clara, CA",11,1,0
+2020-03-03,"Snohomish County, WA",6,0,1
+2020-03-03,"Fulton County, GA",2,0,0
+2020-03-03,"Grafton County, NH",2,0,0
+2020-03-03,"Hillsborough, FL",2,0,0
+2020-03-03,"San Mateo, CA",2,0,0
+2020-03-03,"Washington County, OR",2,0,0
+2020-03-03," Norfolk County, MA",1,0,0
+2020-03-03,"Berkeley, CA",1,0,0
+2020-03-03,"Madison, WI",1,1,0
+2020-03-03,"Maricopa County, AZ",1,0,0
+2020-03-03,"Wake County, NC",1,0,0
+2020-03-03,"Westchester County, NY",1,0,0
+2020-03-04,"King County, WA",31,1,9
+2020-03-04,"Westchester County, NY",10,0,0
+2020-03-04,"Snohomish County, WA",8,0,1
+2020-03-04,"Los Angeles, CA",7,0,0
+2020-03-04,"Orange County, CA",3,0,0
+2020-03-04,"Placer County, CA",2,0,1
+2020-03-04,"Contra Costa County, CA",1,0,0
+2020-03-05,"King County, WA",51,1,10
+2020-03-05,"Santa Clara, CA",20,1,0
+2020-03-05,"Snohomish County, WA",18,0,1
+2020-03-05,"Westchester County, NY",18,0,0
+2020-03-05,"Los Angeles, CA",11,0,0
+2020-03-05,"Cook County, IL",5,2,0
+2020-03-05,"New York City, NY",4,0,0
+2020-03-05,"San Diego County, CA",3,1,0
+2020-03-05,"Bergen County, NJ",2,0,0
+2020-03-05,"Harris County, TX",2,0,0
+2020-03-05,"San Francisco County, CA",2,0,0
+2020-03-05,"Clark County, NV",1,0,0
+2020-03-05,"Fort Bend County, TX",1,0,0
+2020-03-05,"Grant County, WA",1,0,0
+2020-03-05,"Queens County, NY",1,0,0
+2020-03-05,"Santa Rosa County, FL",1,0,0
+2020-03-05,"Williamson County, TN",1,0,0
+2020-03-06,"King County, WA",58,1,12
+2020-03-06,"Snohomish County, WA",19,0,1
+2020-03-06,"Westchester County, NY",19,0,0
+2020-03-06,"New York County, NY",16,0,0
+2020-03-06,"Los Angeles, CA",13,0,0
+2020-03-06,"Placer County, CA",5,0,1
+2020-03-06,"Unassigned Location, WA",5,0,0
+2020-03-06,"Contra Costa County, CA",3,0,0
+2020-03-06,"Harris County, TX",3,0,0
+2020-03-06,"Montgomery County, MD",3,0,0
+2020-03-06,"Suffolk County, MA",3,1,0
+2020-03-06," Norfolk County, MA",2,0,0
+2020-03-06,"Denver County, CO",2,0,0
+2020-03-06,"Maricopa County, AZ",2,0,0
+2020-03-06,"Summit County, CO",2,0,0
+2020-03-06,"Chatham County, NC",1,0,0
+2020-03-06,"Delaware County, PA",1,0,0
+2020-03-06,"Douglas County, NE",1,0,0
+2020-03-06,"Fayette County, KY",1,0,0
+2020-03-06,"Floyd County, GA",1,0,0
+2020-03-06,"Marion County, IN",1,0,0
+2020-03-06,"Middlesex County, MA",1,0,0
+2020-03-06,"Nassau County, NY",1,0,0
+2020-03-06,"Norwell County, MA",1,0,0
+2020-03-06,"Ramsey County, MN",1,0,0
+2020-03-06,"Washoe County, NV",1,0,0
+2020-03-06,"Wayne County, PA",1,0,0
+2020-03-06,"Yolo County, CA",1,0,0
+2020-03-07,"King County, WA",71,1,15
+2020-03-07,"Westchester County, NY",57,0,0
+2020-03-07,"Santa Clara County, CA",32,1,0
+2020-03-07,"Snohomish County, WA",27,0,1
+2020-03-07,Grand Princess Cruise Ship,21,0,0
+2020-03-07,"Los Angeles, CA",14,0,0
+2020-03-07,"New York County, NY",11,0,0
+2020-03-07,"San Francisco County, CA",9,0,0
+2020-03-07,"Cook County, IL",6,2,0
+2020-03-07,"Harris County, TX",5,0,0
+2020-03-07,"Bergen County, NJ",4,0,0
+2020-03-07,"Nassau County, NY",4,0,0
+2020-03-07,"Douglas County, CO",3,0,0
+2020-03-07,"Fort Bend County, TX",3,0,0
+2020-03-07,"Fulton County, GA",3,0,0
+2020-03-07,"Maricopa County, AZ",3,1,0
+2020-03-07,"Providence County, RI",3,0,0
+2020-03-07,"Washington County, OR",3,0,0
+2020-03-07,"Alameda County, CA",2,0,0
+2020-03-07,"Broward County, FL",2,0,0
+2020-03-07,"Fairfield County, CT",2,0,0
+2020-03-07,"Floyd County, GA",2,0,0
+2020-03-07,"Lee County, FL",2,0,0
+2020-03-07,"Pinal County, AZ",2,0,0
+2020-03-07,"Rockland County, NY",2,0,0
+2020-03-07,"Saratoga County, NY",2,0,0
+2020-03-07,"Charleston County, SC",1,0,0
+2020-03-07,"Clark County, WA",1,0,0
+2020-03-07,"Cobb County, GA",1,0,0
+2020-03-07,"Davis County, UT",1,0,0
+2020-03-07,"El Paso County, CO",1,0,0
+2020-03-07,"Honolulu County, HI",1,0,0
+2020-03-07,"Jackson County, OR ",1,0,0
+2020-03-07,"Jefferson County, WA",1,0,0
+2020-03-07,"Kershaw County, SC",1,0,0
+2020-03-07,"Klamath County, OR",1,0,0
+2020-03-07,"Madera County, CA",1,0,0
+2020-03-07,"Middlesex County, MA",1,0,0
+2020-03-07,"Pierce County, WA",1,0,0
+2020-03-07,"Plymouth County, MA",1,0,0
+2020-03-07,"Santa Cruz County, CA",1,0,0
+2020-03-07,"Tulsa County, OK",1,0,0
+2020-03-07,"Montgomery County, TX",0,0,0
+2020-03-08,"King County, WA",83,1,17
+2020-03-08,"Westchester County, NY",83,0,0
+2020-03-08,"Santa Clara County, CA",38,1,0
+2020-03-08,"Snohomish County, WA",31,0,1
+2020-03-08,"Los Angeles, CA",14,0,0
+2020-03-08,"Contra Costa County, CA",12,0,0
+2020-03-08,"New York County, NY",12,0,0
+2020-03-08,"San Francisco County, CA",9,0,0
+2020-03-08,"Suffolk County, MA",8,1,0
+2020-03-08,"Washington County, OR",8,0,0
+2020-03-08,"Cook County, IL",7,2,0
+2020-03-08,"Middlesex County, MA",7,0,0
+2020-03-08,"Fort Bend County, TX",6,0,0
+2020-03-08,"Norfolk County, MA",6,0,0
+2020-03-08,"Nassau County, NY",5,0,0
+2020-03-08,"Bergen County, NJ",4,0,0
+2020-03-08,"Grafton County, NH",4,0,0
+2020-03-08,"Montgomery County, MD",4,0,0
+2020-03-08,"Montgomery County, PA",4,0,0
+2020-03-08,"Pierce County, WA",4,0,0
+2020-03-08,"Clark County, NV",2,0,0
+2020-03-08,"Fairfax County, VA",2,0,0
+2020-03-08,"Jackson County, OR ",2,0,0
+2020-03-08,"Lee County, FL",2,0,1
+2020-03-08,"Rockingham County, NH",2,0,0
+2020-03-08,"Washington, D.C.",2,0,0
+2020-03-08,"Washoe County, NV",2,0,0
+2020-03-08,"Berkshire County, MA",1,0,0
+2020-03-08,"Davidson County, TN",1,0,0
+2020-03-08,"Douglas County, OR",1,0,0
+2020-03-08,"Fairfield County, CT",1,0,0
+2020-03-08,"Fresno County, CA",1,0,0
+2020-03-08,"Harford County, MD",1,0,0
+2020-03-08,"Hendricks County, IN",1,0,0
+2020-03-08,"Hudson County, NJ",1,0,0
+2020-03-08,"Johnson County, KS",1,0,0
+2020-03-08,"Kittitas County, WA",1,0,0
+2020-03-08,"Manatee County, FL",1,0,0
+2020-03-08,"Marion County, OR",1,0,0
+2020-03-08,"Okaloosa County, FL",1,0,0
+2020-03-08,"Polk County, GA",1,0,0
+2020-03-08,"Riverside County, CA",1,0,0
+2020-03-08,"Santa Rosa County, FL",1,0,1
+2020-03-08,"Shelby County, TN",1,0,0
+2020-03-08,"Spokane County, WA",1,0,0
+2020-03-08,"St. Louis County, MO",1,0,0
+2020-03-08,"Suffolk County, NY",1,0,0
+2020-03-08,"Ulster County, NY",1,0,0
+2020-03-08,"Unassigned Location, VT",1,0,0
+2020-03-08,"Unknown Location, MA",1,0,0
+2020-03-08,"Volusia County, FL",1,0,0
+2020-03-09,"Westchester County, NY",98,0,0
+2020-03-09,"New York County, NY",19,0,0
+2020-03-09,"Nassau County, NY",17,0,0
+2020-03-09,"Placer County, CA",7,0,1
+2020-03-09,"Harris County, TX",6,0,0
+2020-03-09,"Fulton County, GA",5,0,0
+2020-03-09,"Montgomery County, PA",5,0,0
+2020-03-09,"Kershaw County, SC",4,0,0
+2020-03-09,"Orange County, CA",4,0,0
+2020-03-09,"Rockland County, NY",4,0,0
+2020-03-09,"Broward County, FL",3,0,0
+2020-03-09,"Cobb County, GA",3,0,0
+2020-03-09,"Douglas County, NE",3,0,0
+2020-03-09,"Johnson County, IA",3,0,0
+2020-03-09,"Sonoma County, CA",3,0,0
+2020-03-09,"Harrison County, KY",2,0,0
+2020-03-09,"Hendricks County, IN",2,0,0
+2020-03-09,"Honolulu County, HI",2,0,0
+2020-03-09,"Manatee County, FL",2,0,0
+2020-03-09,"Bennington County, VT",1,0,0
+2020-03-09,"Carver County, MN",1,0,0
+2020-03-09,"Charlotte County, FL",1,0,0
+2020-03-09,"Cherokee County, GA",1,0,0
+2020-03-09,"Collin County, TX",1,0,0
+2020-03-09,"Grant County, WA",1,0,1
+2020-03-09,"Jefferson County, KY",1,0,0
+2020-03-09,"Jefferson Parish, LA",1,0,0
+2020-03-09,"Rockingham County, NH",1,0,0
+2020-03-09,"Shasta County, CA",1,0,0
+2020-03-09,"Spartanburg County, SC",1,0,0
+2020-03-10,Washington,267,1,23
+2020-03-10,New York,173,0,0
+2020-03-10,California,144,2,2
+2020-03-10,Massachusetts,92,1,0
+2020-03-10,Diamond Princess,46,0,0
+2020-03-10,Grand Princess,21,0,0
+2020-03-10,Georgia,17,0,0
+2020-03-10,Colorado,15,0,0
+2020-03-10,Florida,15,0,2
+2020-03-10,New Jersey,15,0,1
+2020-03-10,Oregon,15,0,0
+2020-03-10,Texas,13,0,0
+2020-03-10,Illinois,12,2,0
+2020-03-10,Pennsylvania,12,0,0
+2020-03-10,Iowa,8,0,0
+2020-03-10,Maryland,8,0,0
+2020-03-10,North Carolina,7,0,0
+2020-03-10,South Carolina,7,0,0
+2020-03-10,Tennessee,7,0,0
+2020-03-10,Virginia,7,0,0
+2020-03-10,Arizona,6,1,0
+2020-03-10,Indiana,6,0,0
+2020-03-10,Kentucky,6,0,0
+2020-03-10,District of Columbia,5,0,0
+2020-03-10,Nevada,4,0,0
+2020-03-10,New Hampshire,4,0,0
+2020-03-10,Minnesota,3,0,0
+2020-03-10,Nebraska,3,0,0
+2020-03-10,Ohio,3,0,0
+2020-03-10,Rhode Island,3,0,0
+2020-03-10,Wisconsin,3,1,0
+2020-03-10,Connecticut,2,0,0
+2020-03-10,Hawaii,2,0,0
+2020-03-10,Oklahoma,2,0,0
+2020-03-10,Utah,2,0,0
+2020-03-10,Kansas,1,0,0
+2020-03-10,Louisiana,1,0,0
+2020-03-10,Missouri,1,0,0
+2020-03-10,Vermont,1,0,0
+2020-03-10,Alaska,0,0,0
+2020-03-10,Arkansas,0,0,0
+2020-03-10,Delaware,0,0,0
+2020-03-10,Idaho,0,0,0
+2020-03-10,Maine,0,0,0
+2020-03-10,Michigan,0,0,0
+2020-03-10,Mississippi,0,0,0
+2020-03-10,Montana,0,0,0
+2020-03-10,New Mexico,0,0,0
+2020-03-10,North Dakota,0,0,0
+2020-03-10,South Dakota,0,0,0
+2020-03-10,West Virginia,0,0,0
+2020-03-10,Wyoming,0,0,0
+2020-03-11,Washington,366,1,29
+2020-03-11,New York,220,0,0
+2020-03-11,California,177,2,3
+2020-03-11,Massachusetts,95,1,0
+2020-03-11,Colorado,34,0,0
+2020-03-11,Florida,28,0,2
+2020-03-11,Illinois,25,2,0
+2020-03-11,Georgia,23,0,0
+2020-03-11,New Jersey,23,0,1
+2020-03-11,Texas,21,0,0
+2020-03-11,Oregon,19,0,0
+2020-03-11,Pennsylvania,16,0,0
+2020-03-11,Iowa,13,0,0
+2020-03-11,Indiana,11,0,0
+2020-03-11,District of Columbia,10,0,0
+2020-03-11,South Carolina,10,0,0
+2020-03-11,Arizona,9,1,0
+2020-03-11,Maryland,9,0,0
+2020-03-11,Tennessee,9,0,0
+2020-03-11,Virginia,9,0,0
+2020-03-11,Kentucky,8,0,0
+2020-03-11,South Dakota,8,0,1
+2020-03-11,Nevada,7,0,0
+2020-03-11,Louisiana,6,0,0
+2020-03-11,Wisconsin,6,1,0
+2020-03-11,Minnesota,5,0,0
+2020-03-11,Nebraska,5,0,0
+2020-03-11,New Hampshire,5,0,0
+2020-03-11,Rhode Island,5,0,0
+2020-03-11,Ohio,4,0,0
+2020-03-11,Connecticut,3,0,0
+2020-03-11,New Mexico,3,0,0
+2020-03-11,Utah,3,0,0
+2020-03-11,Michigan,2,0,0
+2020-03-11,Arkansas,1,0,0
+2020-03-11,Delaware,1,0,0
+2020-03-11,Montana,1,0,0
+2020-03-11,Diamond Princess,46,0,0
+2020-03-11,Alabama,5,0,0
+2020-03-11,Grand Princess,21,0,0
+2020-03-11,Alaska,1,0,0
+2020-03-11,Hawaii,2,0,0
+2020-03-11,Idaho,1,0,0
+2020-03-11,Kansas,5,0,1
+2020-03-11,Maine,1,0,0
+2020-03-11,Mississippi,1,0,0
+2020-03-11,Missouri,2,0,0
+2020-03-11,North Carolina,17,0,0
+2020-03-11,North Dakota,1,0,0
+2020-03-11,Oklahoma,2,0,0
+2020-03-11,Vermont,2,0,0
+2020-03-11,West Virginia,0,0,0
+2020-03-11,Wyoming,1,0,0
+2020-03-12,Washington,442,1,31
+2020-03-12,New York,328,0,0
+2020-03-12,California,221,6,4
+2020-03-12,Massachusetts,108,1,0
+2020-03-12,Colorado,45,0,0
+2020-03-12,Florida,35,0,2
+2020-03-12,Illinois,32,2,0
+2020-03-12,Georgia,31,0,1
+2020-03-12,New Jersey,29,0,1
+2020-03-12,Texas,27,0,0
+2020-03-12,Oregon,24,0,0
+2020-03-12,Pennsylvania,22,0,0
+2020-03-12,Louisiana,19,0,0
+2020-03-12,Tennessee,18,0,0
+2020-03-12,Virginia,17,0,0
+2020-03-12,Iowa,16,0,0
+2020-03-12,North Carolina,15,0,0
+2020-03-12,Nevada,14,0,0
+2020-03-12,Indiana,13,0,0
+2020-03-12,Maryland,12,0,0
+2020-03-12,South Carolina,12,0,0
+2020-03-12,Kentucky,10,0,0
+2020-03-12,Nebraska,10,0,0
+2020-03-12,Minnesota,9,0,0
+2020-03-12,Wisconsin,8,1,0
+2020-03-12,Arkansas,6,0,0
+2020-03-12,New Hampshire,6,0,0
+2020-03-12,Connecticut,5,0,0
+2020-03-12,New Mexico,5,0,0
+2020-03-12,Ohio,5,0,0
+2020-03-12,Utah,5,0,0
+2020-03-12,Vermont,2,0,0
+2020-03-12,Mississippi,1,0,0
+2020-03-12,North Dakota,1,0,0
+2020-03-12,Wyoming,1,0,0
+2020-03-14,Washington,572,1,37
+2020-03-14,New York,525,0,2
+2020-03-14,California,340,6,5
+2020-03-14,Massachusetts,138,1,0
+2020-03-14,Colorado,101,0,1
+2020-03-14,Louisiana,77,0,1
+2020-03-14,Florida,76,0,3
+2020-03-14,New Jersey,69,0,1
+2020-03-14,Georgia,66,0,1
+2020-03-14,Illinois,64,2,0
+2020-03-14,Texas,57,0,0
+2020-03-14,Pennsylvania,47,0,0
+2020-03-14,Virginia,41,0,1
+2020-03-14,Oregon,32,0,0
+2020-03-14,Tennessee,32,0,0
+2020-03-14,Wisconsin,27,1,0
+2020-03-14,Maryland,26,0,0
+2020-03-14,Ohio,26,0,0
+2020-03-14,Michigan,25,0,0
+2020-03-14,North Carolina,24,0,0
+2020-03-14,Connecticut,22,0,0
+2020-03-14,Minnesota,21,0,0
+2020-03-14,Nevada,21,0,0
+2020-03-14,Rhode Island,20,0,0
+2020-03-14,South Carolina,19,0,0
+2020-03-14,Indiana,16,0,0
+2020-03-14,Nebraska,14,0,0
+2020-03-14,Arizona,12,1,0
+2020-03-14,Arkansas,12,0,0
+2020-03-14,New Mexico,10,0,0
+2020-03-14,Utah,10,0,0
+2020-03-14,South Dakota,9,0,1
+2020-03-14,Kansas,8,0,1
+2020-03-14,New Hampshire,7,0,0
+2020-03-14,Alabama,6,0,0
+2020-03-14,Delaware,6,0,0
+2020-03-14,Mississippi,6,0,0
+2020-03-14,Montana,5,0,0
+2020-03-14,Vermont,5,0,0
+2020-03-14,Hawaii,4,0,0
+2020-03-14,Missouri,4,0,0
+2020-03-14,Oklahoma,4,0,0
+2020-03-14,Maine,3,0,0
+2020-03-14,Puerto Rico,3,0,0
+2020-03-14,Idaho,2,0,0
+2020-03-14,Wyoming,2,0,0
+2020-03-14,"Virgin Islands, U.S.",1,0,0
+2020-03-13,Iowa,17,0,0
+2020-03-13,Kentucky,14,0,0
+2020-03-13,Alaska,1,0,0
+2020-03-15,New York,732,0,3
+2020-03-15,Washington,643,1,40
+2020-03-15,California,426,6,6
+2020-03-15,Florida,115,0,4
+2020-03-15,Georgia,99,0,1
+2020-03-15,Louisiana,91,0,2
+2020-03-15,New Jersey,98,0,2
+2020-03-15,Illinois,93,2,0
+2020-03-15,Texas,72,0,0
+2020-03-15,Virginia,45,0,1
+2020-03-15,Oregon,36,0,1
+2020-03-15,Minnesota,35,0,0
+2020-03-15,Michigan,33,0,0
+2020-03-15,North Carolina,33,0,0
+2020-03-15,Maryland,32,0,0
+2020-03-15,Ohio,37,0,0
+2020-03-15,Wisconsin,32,1,0
+2020-03-15,Connecticut,24,0,0
+2020-03-15,Utah,28,0,0
+2020-03-15,Indiana,20,0,0
+2020-03-15,Iowa,18,0,0
+2020-03-15,Kentucky,20,0,0
+2020-03-15,Nebraska,17,0,0
+2020-03-15,Arkansas,16,0,0
+2020-03-15,District of Columbia,16,0,0
+2020-03-15,New Mexico,13,0,0
+2020-03-15,Alabama,12,0,0
+2020-03-15,Montana,7,0,0
+2020-03-15,Hawaii,6,0,0
+2020-03-15,Maine,12,0,0
+2020-03-15,Idaho,5,0,0
+2020-03-15,Missouri,5,0,0
+2020-03-15,Guam,3,0,0
+2020-03-15,Wyoming,3,0,0
+2020-03-16,New York,967,0,10
+2020-03-16,Washington,904,1,48
+2020-03-16,California,557,6,7
+2020-03-16,Massachusetts,197,1,0
+2020-03-16,New Jersey,178,1,2
+2020-03-16,Colorado,160,0,1
+2020-03-16,Florida,155,0,5
+2020-03-16,Louisiana,136,0,3
+2020-03-16,Georgia,121,0,1
+2020-03-16,Illinois,105,2,0
+2020-03-16,Texas,85,0,0
+2020-03-16,Pennsylvania,77,0,0
+2020-03-16,Minnesota,54,0,0
+2020-03-16,Michigan,53,0,0
+2020-03-16,Tennessee,52,0,0
+2020-03-16,Ohio,50,0,0
+2020-03-16,Virginia,49,0,1
+2020-03-16,Diamond Princess,47,0,0
+2020-03-16,Wisconsin,47,1,0
+2020-03-16,Nevada,45,0,1
+2020-03-16,Maryland,41,3,0
+2020-03-16,Oregon,39,0,1
+2020-03-16,Utah,39,0,0
+2020-03-16,North Carolina,38,0,0
+2020-03-16,South Carolina,33,0,1
+2020-03-16,Connecticut,30,0,0
+2020-03-16,Alabama,29,0,0
+2020-03-16,Indiana,25,0,1
+2020-03-16,Iowa,23,0,0
+2020-03-16,Arkansas,22,0,0
+2020-03-16,District of Columbia,22,0,0
+2020-03-16,Kentucky,21,1,1
+2020-03-16,Rhode Island,21,0,0
+2020-03-16,Grand Princess,20,0,0
+2020-03-16,Arizona,18,1,0
+2020-03-16,Nebraska,18,0,0
+2020-03-16,Maine,17,0,0
+2020-03-16,New Hampshire,17,0,0
+2020-03-16,New Mexico,17,0,0
+2020-03-16,Mississippi,13,0,0
+2020-03-16,Vermont,12,0,0
+2020-03-16,Kansas,11,0,1
+2020-03-16,Oklahoma,10,0,0
+2020-03-16,South Dakota,10,0,1
+2020-03-16,Delaware,8,0,0
+2020-03-16,Hawaii,7,0,0
+2020-03-16,Missouri,6,0,0
+2020-03-16,Puerto Rico,5,0,0
+2020-03-16,Virgin Islands,1,0,0
+2020-03-17,New York,1706,0,13
+2020-03-17,Washington,1076,1,55
+2020-03-17,California,698,6,12
+2020-03-17,New Jersey,267,1,3
+2020-03-17,Massachusetts,218,1,0
+2020-03-17,Florida,216,0,6
+2020-03-17,Louisiana,196,0,4
+2020-03-17,Illinois,161,2,1
+2020-03-17,Colorado,160,0,2
+2020-03-17,Georgia,146,0,1
+2020-03-17,Pennsylvania,112,0,0
+2020-03-17,Texas,110,0,1
+2020-03-17,Tennessee,74,0,0
+2020-03-17,Wisconsin,72,1,0
+2020-03-17,Connecticut,68,0,0
+2020-03-17,Ohio,67,0,0
+2020-03-17,Virginia,67,0,2
+2020-03-17,Oregon,66,0,1
+2020-03-17,Michigan,65,0,0
+2020-03-17,North Carolina,64,0,0
+2020-03-17,Maryland,60,3,0
+2020-03-17,Minnesota,60,0,0
+2020-03-17,Nevada,56,0,1
+2020-03-17,Utah,51,0,0
+2020-03-17,South Carolina,47,0,1
+2020-03-17,Alabama,39,0,0
+2020-03-17,Maine,32,0,0
+2020-03-17,Indiana,30,0,2
+2020-03-17,Kentucky,26,1,1
+2020-03-17,New Hampshire,26,0,0
+2020-03-17,New Mexico,23,0,0
+2020-03-17,Rhode Island,23,0,0
+2020-03-17,Grand Princess,21,0,0
+2020-03-17,Mississippi,21,0,0
+2020-03-17,Nebraska,21,0,0
+2020-03-17,Arizona,20,1,0
+2020-03-17,Oklahoma,19,0,0
+2020-03-17,Kansas,18,0,1
+2020-03-17,Delaware,16,0,0
+2020-03-17,Missouri,11,0,0
+2020-03-17,South Dakota,11,0,1
+2020-03-17,Wyoming,11,0,0
+2020-03-17,Hawaii,10,0,0
+2020-03-17,Montana,9,0,0
+2020-03-17,Idaho,8,0,0
+2020-03-17,Alaska,3,0,0
+2020-03-17,North Dakota,3,0,0
+2020-03-17,Virgin Islands,2,0,0
+2020-03-17,West Virginia,1,0,0
+2020-03-18,New York,2495,0,16
+2020-03-18,Washington,1014,0,55
+2020-03-18,California,751,0,13
+2020-03-18,Florida,314,0,7
+2020-03-18,New Jersey,267,0,3
+2020-03-18,Louisiana,257,0,4
+2020-03-18,Massachusetts,218,0,0
+2020-03-18,Georgia,199,0,3
+2020-03-18,Colorado,184,0,2
+2020-03-18,Texas,173,0,3
+2020-03-18,Illinois,162,0,1
+2020-03-18,Pennsylvania,152,0,0
+2020-03-18,Wisconsin,92,0,0
+2020-03-18,Ohio,86,0,0
+2020-03-18,Maryland,85,0,0
+2020-03-18,Michigan,83,0,0
+2020-03-18,Tennessee,79,0,0
+2020-03-18,Minnesota,77,0,0
+2020-03-18,Virginia,77,0,2
+2020-03-18,North Carolina,70,0,0
+2020-03-18,Oregon,68,0,2
+2020-03-18,Nevada,55,0,1
+2020-03-18,Alabama,46,0,0
+2020-03-18,Maine,42,0,0
+2020-03-18,Indiana,39,0,2
+2020-03-18,Mississippi,34,0,0
+2020-03-18,Arkansas,33,0,0
+2020-03-18,Rhode Island,33,0,0
+2020-03-18,District of Columbia,31,0,0
+2020-03-18,Iowa,29,0,0
+2020-03-18,Arizona,27,0,0
+2020-03-18,Kentucky,27,0,1
+2020-03-18,Nebraska,24,0,0
+2020-03-18,Delaware,19,0,0
+2020-03-18,Missouri,18,0,0
+2020-03-18,Vermont,18,0,0
+2020-03-18,Wyoming,15,0,0
+2020-03-18,Hawaii,14,0,0
+2020-03-18,Montana,11,0,0
+2020-03-18,Idaho,9,0,0
+2020-03-18,Alaska,6,0,0
+2020-03-18,North Dakota,6,0,0
+2020-03-18,Guam,5,0,0
+2020-03-18,United States Virgin Islands,2,0,0
+2020-03-19,New York,5365,0,34
+2020-03-19,Washington,1376,0,74
+2020-03-19,California,952,0,18
+2020-03-19,New Jersey,742,0,9
+2020-03-19,Illinois,422,0,4
+2020-03-19,Florida,417,0,9
+2020-03-19,Louisiana,392,0,10
+2020-03-19,Michigan,334,0,3
+2020-03-19,Massachusetts,328,0,0
+2020-03-19,Georgia,287,0,10
+2020-03-19,Colorado,277,0,4
+2020-03-19,Texas,260,0,5
+2020-03-19,Pennsylvania,206,0,1
+2020-03-19,Connecticut,159,0,2
+2020-03-19,Wisconsin,159,0,0
+2020-03-19,Tennessee,154,0,0
+2020-03-19,North Carolina,123,0,0
+2020-03-19,Ohio,119,0,0
+2020-03-19,Maryland,107,0,1
+2020-03-19,Virginia,99,0,2
+2020-03-19,Nevada,95,0,1
+2020-03-19,Minnesota,89,0,0
+2020-03-19,Oregon,88,0,3
+2020-03-19,South Carolina,81,0,1
+2020-03-19,Utah,80,0,0
+2020-03-19,Alabama,78,0,0
+2020-03-19,Arkansas,62,0,0
+2020-03-19,Indiana,60,0,2
+2020-03-19,Maine,52,0,0
+2020-03-19,Mississippi,50,0,1
+2020-03-19,Arizona,45,0,0
+2020-03-19,Iowa,44,0,0
+2020-03-19,New Hampshire,44,0,0
+2020-03-19,Oklahoma,44,0,1
+2020-03-19,Rhode Island,44,0,0
+2020-03-19,District of Columbia,40,0,0
+2020-03-19,Kentucky,37,0,2
+2020-03-19,New Mexico,35,0,0
+2020-03-19,Kansas,34,0,1
+2020-03-19,Missouri,31,0,1
+2020-03-19,Delaware,30,0,0
+2020-03-19,Nebraska,29,0,0
+2020-03-19,Grand Princess,22,0,0
+2020-03-19,Vermont,22,0,0
+2020-03-19,North Dakota,18,0,0
+2020-03-19,Wyoming,18,0,0
+2020-03-19,Hawaii,16,0,0
+2020-03-19,Guam,12,0,0
+2020-03-19,Idaho,11,0,0
+2020-03-19,Alaska,9,0,0
+2020-03-19,Virgin Islands,3,0,0
+2020-03-19,West Virginia,2,0,0
+2020-03-20,New York,8310,0,42
+2020-03-20,Washington,1524,0,83
+2020-03-20,California,1177,0,23
+2020-03-20,New Jersey,890,0,11
+2020-03-20,Illinois,585,0,5
+2020-03-20,Florida,563,0,10
+2020-03-20,Michigan,552,0,3
+2020-03-20,Louisiana,538,0,14
+2020-03-20,Georgia,420,0,13
+2020-03-20,Massachusetts,413,0,1
+2020-03-20,Texas,394,0,5
+2020-03-20,Colorado,363,0,4
+2020-03-20,Pennsylvania,303,0,1
+2020-03-20,Tennessee,233,0,0
+2020-03-20,Wisconsin,207,0,3
+2020-03-20,Connecticut,194,0,3
+2020-03-20,Ohio,173,0,2
+2020-03-20,North Carolina,172,0,0
+2020-03-20,Maryland,149,0,1
+2020-03-20,South Carolina,126,0,1
+2020-03-20,Virginia,122,0,2
+2020-03-20,Minnesota,115,0,0
+2020-03-20,Nevada,114,0,1
+2020-03-20,Oregon,114,0,3
+2020-03-20,Arkansas,96,0,0
+2020-03-20,Indiana,86,0,2
+2020-03-20,Alabama,83,0,0
+2020-03-20,Mississippi,80,0,1
+2020-03-20,Arizona,78,0,0
+2020-03-20,Utah,78,0,0
+2020-03-20,District of Columbia,71,0,1
+2020-03-20,Maine,56,0,0
+2020-03-20,Rhode Island,54,0,0
+2020-03-20,Missouri,53,0,2
+2020-03-20,Diamond Princess,49,0,0
+2020-03-20,Oklahoma,49,0,1
+2020-03-20,Kentucky,47,0,2
+2020-03-20,Iowa,45,0,0
+2020-03-20,Kansas,44,0,1
+2020-03-20,New Mexico,43,0,0
+2020-03-20,Delaware,38,0,0
+2020-03-20,Nebraska,37,0,0
+2020-03-20,Vermont,29,0,2
+2020-03-20,Hawaii,26,0,0
+2020-03-20,Grand Princess,23,0,0
+2020-03-20,Idaho,23,0,0
+2020-03-20,North Dakota,19,0,0
+2020-03-20,Wyoming,19,0,0
+2020-03-20,Montana,15,0,0
+2020-03-20,Guam,14,0,0
+2020-03-20,Puerto Rico,14,0,0
+2020-03-20,South Dakota,14,0,1
+2020-03-20,Alaska,12,0,0
+2020-03-20,West Virginia,7,0,0
+2020-03-20,United States Virgin Islands,3,0,0
+2020-03-21,New York,11710,0,60
+2020-03-21,Washington,1793,0,94
+2020-03-21,California,1364,0,24
+2020-03-21,New Jersey,1327,0,16
+2020-03-21,Michigan,788,0,5
+2020-03-21,Illinois,753,0,6
+2020-03-21,Florida,659,0,13
+2020-03-21,Louisiana,585,0,16
+2020-03-21,Texas,581,0,5
+2020-03-21,Massachusetts,525,0,1
+2020-03-21,Georgia,507,0,14
+2020-03-21,Pennsylvania,396,0,2
+2020-03-21,Colorado,390,0,4
+2020-03-21,Tennessee,371,0,1
+2020-03-21,Wisconsin,282,0,4
+2020-03-21,North Carolina,253,0,0
+2020-03-21,Ohio,248,0,3
+2020-03-21,Connecticut,194,0,4
+2020-03-21,Maryland,193,0,2
+2020-03-21,South Carolina,171,0,3
+2020-03-21,Nevada,161,0,2
+2020-03-21,Virginia,156,0,2
+2020-03-21,Mississippi,140,0,1
+2020-03-21,Minnesota,138,0,1
+2020-03-21,Utah,136,0,0
+2020-03-21,Alabama,131,0,0
+2020-03-21,Indiana,128,0,4
+2020-03-21,Arkansas,122,0,0
+2020-03-21,Arizona,118,0,1
+2020-03-21,Oregon,114,0,5
+2020-03-21,Kentucky,87,0,3
+2020-03-21,District of Columbia,77,0,1
+2020-03-21,Missouri,74,0,3
+2020-03-21,Maine,70,0,0
+2020-03-21,Iowa,68,0,0
+2020-03-21,Rhode Island,66,0,0
+2020-03-21,Kansas,57,0,2
+2020-03-21,New Hampshire,55,0,0
+2020-03-21,Oklahoma,53,0,1
+2020-03-21,Delaware,45,0,0
+2020-03-21,Nebraska,38,0,0
+2020-03-21,Hawaii,37,0,0
+2020-03-21,Idaho,36,0,0
+2020-03-21,North Dakota,28,0,0
+2020-03-21,Wyoming,23,0,0
+2020-03-21,Montana,21,0,0
+2020-03-21,Puerto Rico,21,0,1
+2020-03-21,Alaska,15,0,0
+2020-03-21,Guam,15,0,0
+2020-03-21,West Virginia,8,0,0
+2020-03-21,United States Virgin Islands,6,0,0
+2020-03-22,New York,15793,0,117
+2020-03-22,Washington,1996,0,95
+2020-03-22,New Jersey,1914,0,20
+2020-03-22,California,1642,0,30
+2020-03-22,Illinois,1049,0,9
+2020-03-22,Michigan,1037,0,9
+2020-03-22,Louisiana,837,0,20
+2020-03-22,Florida,830,0,13
+2020-03-22,Massachusetts,646,0,5
+2020-03-22,Texas,627,0,6
+2020-03-22,Georgia,600,0,23
+2020-03-22,Pennsylvania,509,0,3
+2020-03-22,Tennessee,505,0,2
+2020-03-22,Colorado,476,0,6
+2020-03-22,Wisconsin,381,0,4
+2020-03-22,Ohio,355,0,3
+2020-03-22,North Carolina,302,0,0
+2020-03-22,Maryland,244,0,3
+2020-03-22,Connecticut,223,0,5
+2020-03-22,Virginia,221,0,6
+2020-03-22,Mississippi,207,0,1
+2020-03-22,Indiana,201,0,6
+2020-03-22,South Carolina,196,0,3
+2020-03-22,Nevada,190,0,2
+2020-03-22,Utah,181,0,1
+2020-03-22,Minnesota,169,0,1
+2020-03-22,Arkansas,165,0,0
+2020-03-22,Oregon,161,0,4
+2020-03-22,Arizona,152,0,2
+2020-03-22,Alabama,138,0,0
+2020-03-22,District of Columbia,102,0,2
+2020-03-22,Missouri,100,0,3
+2020-03-22,Kentucky,99,0,3
+2020-03-22,Iowa,90,0,0
+2020-03-22,Maine,89,0,0
+2020-03-22,Rhode Island,83,0,0
+2020-03-22,Oklahoma,67,0,2
+2020-03-22,New Hampshire,65,0,0
+2020-03-22,Kansas,64,0,2
+2020-03-22,New Mexico,57,0,0
+2020-03-22,Vermont,52,0,2
+2020-03-22,Nebraska,51,0,0
+2020-03-22,Hawaii,48,0,0
+2020-03-22,Delaware,47,0,0
+2020-03-22,Idaho,42,0,0
+2020-03-22,Montana,31,0,0
+2020-03-22,Grand Princess,30,0,1
+2020-03-22,Guam,27,0,1
+2020-03-22,Wyoming,24,0,0
+2020-03-22,Puerto Rico,23,0,1
+2020-03-22,Alaska,21,0,0
+2020-03-22,South Dakota,21,0,1
+2020-03-22,West Virginia,12,0,0
+2020-03-23,South Carolina,298,0,5
+2020-03-23,Louisiana,1172,0,35
+2020-03-23,Virginia,254,0,6
+2020-03-23,Idaho,68,0,0
+2020-03-23,Iowa,105,0,0
+2020-03-23,Kentucky,123,0,4
+2020-03-23,Missouri,187,0,4
+2020-03-23,Oklahoma,81,0,2
+2020-03-23,Colorado,704,0,7
+2020-03-23,Illinois,1285,0,12
+2020-03-23,Indiana,270,0,7
+2020-03-23,Mississippi,249,0,1
+2020-03-23,Nebraska,51,0,0
+2020-03-23,North Dakota,30,0,0
+2020-03-23,Ohio,443,0,6
+2020-03-23,Pennsylvania,698,0,6
+2020-03-23,Washington,2221,0,109
+2020-03-23,Wisconsin,425,0,5
+2020-03-23,Vermont,75,0,5
+2020-03-23,Minnesota,234,0,1
+2020-03-23,Florida,1227,0,18
+2020-03-23,North Carolina,353,0,0
+2020-03-23,California,2108,0,39
+2020-03-23,New York,20884,0,158
+2020-03-23,Wyoming,26,0,0
+2020-03-23,Michigan,1329,0,15
+2020-03-23,Alaska,30,0,0
+2020-03-23,Maryland,290,0,3
+2020-03-23,Kansas,84,0,2
+2020-03-23,Tennessee,614,0,2
+2020-03-23,Texas,758,0,9
+2020-03-23,Maine,107,0,0
+2020-03-23,Arizona,235,0,2
+2020-03-23,Georgia,772,0,25
+2020-03-23,Arkansas,192,0,0
+2020-03-23,New Jersey,2844,0,27
+2020-03-23,South Dakota,28,0,1
+2020-03-23,Alabama,196,0,0
+2020-03-23,Oregon,191,0,5
+2020-03-23,West Virginia,16,0,0
+2020-03-23,Massachusetts,777,0,9
+2020-03-23,Utah,257,0,1
+2020-03-23,Montana,34,0,0
+2020-03-23,New Hampshire,101,0,1
+2020-03-23,New Mexico,83,0,0
+2020-03-23,Rhode Island,106,0,0
+2020-03-23,Nevada,245,0,4
+2020-03-23,District of Columbia,120,0,2
+2020-03-23,Connecticut,415,0,10
+2020-03-23,Hawaii,56,0,0
+2020-03-23,Delaware,68,0,0
+2020-03-23,Wuhan Evacuee,4,0,0
+2020-03-23,American Samoa,0,0,0
+2020-03-23,Diamond Princess,49,0,0
+2020-03-23,Grand Princess,28,0,1
+2020-03-23,Guam,29,0,1
+2020-03-23,Northern Mariana Islands,0,0,0
+2020-03-23,Puerto Rico,31,0,2
+2020-03-23,Virgin Islands,7,0,0

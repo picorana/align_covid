@@ -62,7 +62,7 @@ let events = {
     "2/24" : "Declared CDC level 3"
   },
   "US" : {
-    "3/10" : "first school closures"
+    "3/9" : "first school closures"
   },
   "Switzerland":{
     "2/28" : "Events with > 1000 cancelled"
@@ -145,6 +145,7 @@ let getInfected = (data, groupbyname, filterbyname, datacolumn = "Confirmed") =>
     cleanup_world(record, datacolumn)
 
     if (record["3/11/20"] == "") delete record["3/11/20"]
+    if (datacolumn == "Recovered") delete record["3/23/20"]
 
     let groupby = record[groupbyname]
     if (tmpdict[groupby] == undefined) tmpdict[groupby] = []
@@ -207,6 +208,34 @@ let filterItaly = (data, groupbyname, filterbyname) => {
 }
 
 let filterUS = (data, groupbyname, filterbyname) => {
+  let tmpdict = {}
+  for (let record of data){
+    let groupby = record["State"]
+    if (tmpdict[groupby] == undefined) tmpdict[groupby] = []
+    tmpdict[groupby].push(record)
+  }
+
+  let tmplist = []
+  for (let region in tmpdict){
+    let countryobj = {"Country" : region, "Infected":[]}
+    for (let record of tmpdict[region]) {
+      let numvar = 'Confirmed'
+      if (groupbyname == "Confirmed") numvar = 'Confirmed'
+      else if (groupbyname == "Deaths") numvar = "Deaths"
+      else if (groupbyname == "Recovered") numvar = "Recovered"
+      let date = record["Date"].split(' ')[0].split('-').slice(1,3).join('/')
+      if (parseInt(record[numvar]) < 10) continue
+      countryobj["Infected"].push({"Date": date, "Num":parseInt(record[numvar]), "Country":region, "NumNormalized" : Math.round(10000*100*parseInt(record[numvar])/us_pop_vals[region])/10000})
+    }
+
+    if (countryobj["Infected"].length == 0) continue
+    tmplist.push(countryobj)
+  }
+
+  return tmplist
+}
+
+let filterUS2 = (data, groupbyname, filterbyname) => {
   let tmpdict = {}
   for (let record of data){
     if (filterbyname != undefined){
@@ -300,9 +329,9 @@ let filterUS = (data, groupbyname, filterbyname) => {
     recoveredlist = []
 
     if (filterbyname == "US"){
-      tmplist = filterUS(datacases, groupbyname, filterbyname)
-      deathlist = filterUS(datadeaths, groupbyname, filterbyname)
-      recoveredlist = filterUS(datarecovered, groupbyname, filterbyname)
+      tmplist = filterUS(datacases, "Confirmed")
+      deathlist = filterUS(datadeaths, "Deaths")
+      recoveredlist = filterUS(datarecovered, "Recovered")
     } else if (filterbyname == "Italy") {
       tmplist = filterItaly(datacases, "Confirmed")
       deathlist = filterItaly(datadeaths, "Deaths")
@@ -330,8 +359,6 @@ let filterUS = (data, groupbyname, filterbyname) => {
           .then((datarecovered) => {
             d3.csv(dataDeaths)
               .then((datadeaths) => {
-
-                console.log(dataCases)
 
                 let topdiv = mktopdiv()
                 svg.attr('transform', 'translate(0, '+ (topdiv.clientHeight + 20) +')')
@@ -537,10 +564,12 @@ let filterUS = (data, groupbyname, filterbyname) => {
     .transition(transitiontime)
     .attr('d', d => {
       let pathlist = []
-      for (let e in d["Infected"]){
+      let tmpinf = d["Infected"]
+      if (filterbyname == undefined) tmpinf = d["Infected"].slice(0, d["Infected"].length - 1)
+      for (let e in tmpinf){
         pathlist.push([rectsize + (e)*rectsize, scale(getEntryFromArr(deathlist, d["Infected"][e], entryname) + getEntryFromArr(recoveredlist, d["Infected"][e], entryname))])
       }
-      pathlist.push([rectsize + (d["Infected"].length-1)*rectsize, 0])
+      pathlist.push([rectsize + (tmpinf.length-1)*rectsize, 0])
       return d3line(pathlist)
     }).attr('opacity', () => (focus != undefined && focus != 'recovered')? 0 : 1)
 
@@ -871,9 +900,9 @@ let useLogScale = (val) => {
     .domain([0, 600])
     .range([0, cellheight*0.8])
 
-    fileCases = 'data/time_series_19-covid-Confirmed.csv'
-    fileRecovered = 'data/time_series_19-covid-Recovered.csv'
-    fileDeaths = 'data/time_series_19-covid-Deaths.csv'
+    fileCases = 'data/us_states.csv'
+    fileRecovered = 'data/us_states.csv'
+    fileDeaths = 'data/us_states.csv'
     draw(fileCases, fileRecovered, fileDeaths, translatenum, cutoffnum, linearScale, "Province/State", "US")
   }
 
@@ -899,9 +928,11 @@ let useLogScale = (val) => {
     .domain([0, 100000])
     .range([0, cellheight*0.8])
 
-    fileCases = 'data/time_series_19-covid-Confirmed.csv'
+    //fileCases = 'data/time_series_19-covid-Confirmed.csv'
+    fileCases = 'data/time_series_covid19_confirmed_global.csv'
     fileRecovered = 'data/time_series_19-covid-Recovered.csv'
-    fileDeaths = 'data/time_series_19-covid-Deaths.csv'
+    //fileDeaths = 'data/time_series_19-covid-Deaths.csv'
+    fileDeaths = 'data/time_series_covid19_deaths_global.csv'
     draw(fileCases, fileRecovered, fileDeaths, translatenum, cutoffnum, linearScale, "Country/Region")
   }
 
