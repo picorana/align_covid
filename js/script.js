@@ -568,7 +568,7 @@ let filterUS2 = (data, groupbyname, filterbyname) => {
     .attr('d', d => {
       let pathlist = []
       let tmpinf = d["Infected"]
-      if (filterbyname == undefined) tmpinf = d["Infected"].slice(0, d["Infected"].length - 1)
+      if (filterbyname == undefined) tmpinf = d["Infected"].slice(0, d["Infected"].length - 2)
       for (let e in tmpinf){
         pathlist.push([rectsize + (e)*rectsize, scale(getEntryFromArr(deathlist, d["Infected"][e], entryname) + getEntryFromArr(recoveredlist, d["Infected"][e], entryname))])
       }
@@ -658,7 +658,7 @@ let applyScales = (scaledict, entryname = "Num") => {
   .attr('d', d => {
     let pathlist = []
     let tmpinf = d["Infected"]
-    if (filterbyname == undefined) tmpinf = d["Infected"].slice(0, d["Infected"].length -1)
+    if (filterbyname == undefined) tmpinf = d["Infected"].slice(0, d["Infected"].length -2)
     for (let e in tmpinf){
       pathlist.push([rectsize + (e)*rectsize, scaledict[d["Country"]](getEntryFromArr(deathlist, d["Infected"][e], entryname) + getEntryFromArr(recoveredlist, d["Infected"][e], entryname))])
     }
