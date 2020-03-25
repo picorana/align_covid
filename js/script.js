@@ -197,7 +197,7 @@ let filterItaly = (data, groupbyname, filterbyname) => {
       if (groupbyname == "Confirmed") numvar = 'totale_casi'
       else if (groupbyname == "Deaths") numvar = "deceduti"
       else if (groupbyname == "Recovered") numvar = "dimessi_guariti"
-      let date = record["data"].split(' ')[0].split('-').slice(1,3).join('/')
+      let date = record["data"].split('T')[0].split('-').slice(1,3).join('/')
       if (parseInt(record[numvar]) < 10) continue
       countryobj["Infected"].push({"Date": date, "Num":parseInt(record[numvar]), "Country":region, "NumNormalized" : Math.round(10000*100*parseInt(record[numvar])/it_pop_vals[region])/10000})
     }
