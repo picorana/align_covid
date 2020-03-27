@@ -1,0 +1,23 @@
+Aligning Covid is a visualization that compares COVID-19 data across all the affected countries. 
+Similar outbreak dynamics have been experienced by different countries at different times. One relevant example is found in Italy and the United States: for a long time, the state of the spread in the United States seemed to follow similar dynamics to the one in Italy, but delayed by about 10 days.
+
+Aligning Covid shows the progression of the outbreak in every country aligned by number of infected people rather than by time, and displays the main events at specific points in time for each countries. The listed events are major regulation changes, such as mandatory school closures, lockdowns, and changes in CDC threat level assigned to the specific country. This allows for some interesting insights and some interesting questions to be formulated: for example, what causes the differences in countries declared CDC threat level 3 at different numbers of infected people? At what point did different countries decide to implement specific policies? 
+
+Considering only the number of confirmed infected people would be limiting, as, at this point, it is clear that the reported numbers could be untrustworthy, due to difficulties in testing and how troublesome it is to track down all the cases. Therefore, we allow users to change view in order to focus on the number of deaths only. In order to understand the gravity of the situation in each one of the countries, we also allow to see the numbers normalized by population and rank the countries based on percentage of infected population. Another view offers the user the option to show the growth rate of infection and of demises. Options to use different scales are also offered.
+
+A detailed comparison between US states, and another one between Italian regions can also be displayed.
+
+The data is collected every day from the dataset distributed by Johns Hopkins University (https://github.com/CSSEGISandData/COVID-19), that is currently one of the reference datasets to track the outbreak and on which one of the most relevant visualizations (https://gisanddata.maps.arcgis.com/apps/opsdashboard/index.html#/bda7594740fd40299423467b48e9ecf6) regarding coronavirus is based. For italian data, the source is the italian Protezione Civile (https://github.com/pcm-dpc/COVID-19) - the civil protection department of the state.
+
+A preliminar implementation of Aligning Covid can be found at: https://picorana.github.io/align_covid/
+The webpage is updated daily at 2 PM EST and at 10 PM EST. In the first days after being made public, it received over 6000 visualizations, with several visitors coming back in the following days to check back on the updated visualization day to day.  
+
+# Future work
+- Standardize the descriptions of the events in different countries, and implement alignment by event
+- Compare with other pandemic episodes of the past
+- implement option to select countries that the user wants to compare in detail
+- introducing views that enable the user to see additional factors involved in the outbreak and in the reported data, e.g. add a view to show the declared number of tests performed
+- add region comparisons for all the countries that provide detailed data (like what has already been done for the US and Italy)
+
+# Funding
+Stipend for 1 PhD student during Spring and Summer 1
