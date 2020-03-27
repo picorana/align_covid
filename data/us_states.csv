@@ -1,41 +1,34 @@
 Date,State,Confirmed,Recovered,Deaths
-2020-00-22,Washington,1,0,0
-2020-00-23,Washington,1,0,0
-2020-00-24,Washington,1,0,0
-2020-00-24,Chicago,1,0,0
-2020-00-25,Washington,1,0,0
-2020-00-25,Illinois,1,0,0
-2020-00-26,Washington,1,0,0
-2020-00-26,Illinois,1,0,0
-2020-00-26,California,2,0,0
-2020-00-26,Arizona,1,0,0
-2020-00-27,Washington,1,0,0
-2020-00-27,Illinois,1,0,0
-2020-00-27,California,2,0,0
-2020-00-27,Arizona,1,0,0
-2020-00-28,Washington,1,0,0
-2020-00-28,Illinois,1,0,0
-2020-00-28,California,2,0,0
-2020-00-28,Arizona,1,0,0
-2020-00-29,Washington,1,0,0
-2020-00-29,Illinois,1,0,0
-2020-00-29,California,2,0,0
-2020-00-29,Arizona,1,0,0
-2020-00-30,Washington,1,0,0
-2020-00-30,Illinois,1,0,0
-2020-00-30,California,2,0,0
-2020-00-30,Arizona,1,0,0
-2020-00-31,Illinois,2,0,0
-2020-00-31,California,2,0,0
-2020-00-31,Washington,1,0,0
-2020-00-31,Arizona,1,0,0
-2020-00-01,"Chicago, IL",2,0,0
-2020-00-01,"Boston, MA",1,0,0
-2020-00-01,"Los Angeles, CA",1,0,0
-2020-00-01,"Orange, CA",1,0,0
-2020-00-01,"Santa Clara, CA",1,0,0
-2020-00-01,"Seattle, WA",1,0,0
-2020-00-01,"Tempe, AZ",1,0,0
+2020-01-22,Washington,1,0,0
+2020-01-23,Washington,1,0,0
+2020-01-24,Washington,1,0,0
+2020-01-24,Chicago,1,0,0
+2020-01-25,Washington,1,0,0
+2020-01-25,Illinois,1,0,0
+2020-01-26,Washington,1,0,0
+2020-01-26,Illinois,1,0,0
+2020-01-26,California,2,0,0
+2020-01-26,Arizona,1,0,0
+2020-01-27,Washington,1,0,0
+2020-01-27,Illinois,1,0,0
+2020-01-27,California,2,0,0
+2020-01-27,Arizona,1,0,0
+2020-01-28,Washington,1,0,0
+2020-01-28,Illinois,1,0,0
+2020-01-28,California,2,0,0
+2020-01-28,Arizona,1,0,0
+2020-01-29,Washington,1,0,0
+2020-01-29,Illinois,1,0,0
+2020-01-29,California,2,0,0
+2020-01-29,Arizona,1,0,0
+2020-01-30,Washington,1,0,0
+2020-01-30,Illinois,1,0,0
+2020-01-30,California,2,0,0
+2020-01-30,Arizona,1,0,0
+2020-01-31,Illinois,2,0,0
+2020-01-31,California,2,0,0
+2020-01-31,Washington,1,0,0
+2020-01-31,Arizona,1,0,0
 2020-02-01,"Chicago, IL",2,0,0
 2020-02-01,"Boston, MA",1,0,0
 2020-02-01,"Los Angeles, CA",1,0,0
@@ -43,42 +36,363 @@ Date,State,Confirmed,Recovered,Deaths
 2020-02-01,"Santa Clara, CA",1,0,0
 2020-02-01,"Seattle, WA",1,0,0
 2020-02-01,"Tempe, AZ",1,0,0
+2020-02-02,"Chicago, IL",2,0,0
+2020-02-02,"Boston, MA",1,0,0
+2020-02-02,"Los Angeles, CA",1,0,0
+2020-02-02,"Orange, CA",1,0,0
+2020-02-02,"Santa Clara, CA",1,0,0
+2020-02-02,"Seattle, WA",1,0,0
+2020-02-02,"Tempe, AZ",1,0,0
+2020-02-03,"Chicago, IL",2,0,0
 2020-02-03,"San Benito, CA",2,0,0
 2020-02-03,"Santa Clara, CA",2,0,0
+2020-02-03,"Boston, MA",1,0,0
+2020-02-03,"Los Angeles, CA",1,0,0
+2020-02-03,"Orange, CA",1,0,0
+2020-02-03,"Seattle, WA",1,0,0
+2020-02-03,"Tempe, AZ",1,0,0
+2020-02-04,"Chicago, IL",2,0,0
+2020-02-04,"San Benito, CA",2,0,0
+2020-02-04,"Santa Clara, CA",2,0,0
+2020-02-04,"Boston, MA",1,0,0
+2020-02-04,"Los Angeles, CA",1,0,0
+2020-02-04,"Orange, CA",1,0,0
+2020-02-04,"Seattle, WA",1,0,0
+2020-02-04,"Tempe, AZ",1,0,0
+2020-02-05,"Chicago, IL",2,0,0
+2020-02-05,"San Benito, CA",2,0,0
+2020-02-05,"Santa Clara, CA",2,0,0
+2020-02-05,"Boston, MA",1,0,0
+2020-02-05,"Los Angeles, CA",1,0,0
 2020-02-05,"Madison, WI",1,0,0
+2020-02-05,"Orange, CA",1,0,0
+2020-02-05,"Seattle, WA",1,0,0
+2020-02-05,"Tempe, AZ",1,0,0
+2020-02-06,"Chicago, IL",2,0,0
+2020-02-06,"San Benito, CA",2,0,0
+2020-02-06,"Santa Clara, CA",2,0,0
+2020-02-06,"Boston, MA",1,0,0
+2020-02-06,"Los Angeles, CA",1,0,0
+2020-02-06,"Madison, WI",1,0,0
+2020-02-06,"Orange, CA",1,0,0
+2020-02-06,"Seattle, WA",1,0,0
+2020-02-06,"Tempe, AZ",1,0,0
+2020-02-07,"Chicago, IL",2,0,0
+2020-02-07,"San Benito, CA",2,0,0
+2020-02-07,"Santa Clara, CA",2,0,0
+2020-02-07,"Boston, MA",1,0,0
+2020-02-07,"Los Angeles, CA",1,0,0
+2020-02-07,"Madison, WI",1,0,0
+2020-02-07,"Orange, CA",1,0,0
+2020-02-07,"Seattle, WA",1,0,0
+2020-02-07,"Tempe, AZ",1,0,0
+2020-02-08,"Chicago, IL",2,0,0
+2020-02-08,"San Benito, CA",2,0,0
+2020-02-08,"Santa Clara, CA",2,0,0
+2020-02-08,"Boston, MA",1,0,0
+2020-02-08,"Los Angeles, CA",1,0,0
+2020-02-08,"Madison, WI",1,0,0
+2020-02-08,"Orange, CA",1,0,0
+2020-02-08,"Seattle, WA",1,0,0
+2020-02-08,"Tempe, AZ",1,0,0
 2020-02-09,"Chicago, IL",2,2,0
+2020-02-09,"San Benito, CA",2,0,0
+2020-02-09,"Santa Clara, CA",2,0,0
+2020-02-09,"Boston, MA",1,0,0
+2020-02-09,"Los Angeles, CA",1,0,0
+2020-02-09,"Madison, WI",1,0,0
+2020-02-09,"Orange, CA",1,0,0
 2020-02-09,"Seattle, WA",1,1,0
+2020-02-09,"Tempe, AZ",1,0,0
+2020-02-10,"Chicago, IL",2,2,0
+2020-02-10,"San Benito, CA",2,0,0
+2020-02-10,"Santa Clara, CA",2,0,0
+2020-02-10,"Boston, MA",1,0,0
+2020-02-10,"Los Angeles, CA",1,0,0
+2020-02-10,"Madison, WI",1,0,0
+2020-02-10,"Orange, CA",1,0,0
+2020-02-10,"Seattle, WA",1,1,0
+2020-02-10,"Tempe, AZ",1,0,0
+2020-02-11,"Chicago, IL",2,2,0
+2020-02-11,"San Benito, CA",2,0,0
+2020-02-11,"Santa Clara, CA",2,0,0
+2020-02-11,"Boston, MA",1,0,0
+2020-02-11,"Los Angeles, CA",1,0,0
+2020-02-11,"Madison, WI",1,0,0
+2020-02-11,"Orange, CA",1,0,0
 2020-02-11,"San Diego County, CA",1,0,0
+2020-02-11,"Seattle, WA",1,1,0
+2020-02-11,"Tempe, AZ",1,0,0
+2020-02-12,"Chicago, IL",2,2,0
+2020-02-12,"San Benito, CA",2,0,0
+2020-02-12,"Santa Clara, CA",2,0,0
+2020-02-12,"Boston, MA",1,0,0
+2020-02-12,"Los Angeles, CA",1,0,0
+2020-02-12,"Madison, WI",1,0,0
+2020-02-12,"Orange, CA",1,0,0
+2020-02-12,"San Diego County, CA",1,0,0
+2020-02-12,"Seattle, WA",1,1,0
+2020-02-12,"Tempe, AZ",1,0,0
+2020-02-13,"Chicago, IL",2,2,0
+2020-02-13,"San Benito, CA",2,0,0
 2020-02-13,"San Diego County, CA",2,0,0
+2020-02-13,"Santa Clara, CA",2,0,0
+2020-02-13,"Boston, MA",1,0,0
+2020-02-13,"Los Angeles, CA",1,0,0
+2020-02-13,"Madison, WI",1,0,0
+2020-02-13,"Orange, CA",1,0,0
 2020-02-13,"San Antonio, TX",1,0,0
+2020-02-13,"Seattle, WA",1,1,0
+2020-02-13,"Tempe, AZ",1,0,0
+2020-02-14,"Chicago, IL",2,2,0
+2020-02-14,"San Benito, CA",2,0,0
+2020-02-14,"San Diego County, CA",2,0,0
+2020-02-14,"Santa Clara, CA",2,0,0
+2020-02-14,"Boston, MA",1,0,0
+2020-02-14,"Los Angeles, CA",1,0,0
+2020-02-14,"Madison, WI",1,0,0
+2020-02-14,"Orange, CA",1,0,0
+2020-02-14,"San Antonio, TX",1,0,0
+2020-02-14,"Seattle, WA",1,1,0
+2020-02-14,"Tempe, AZ",1,0,0
+2020-02-15,"Chicago, IL",2,2,0
+2020-02-15,"San Benito, CA",2,0,0
+2020-02-15,"San Diego County, CA",2,0,0
+2020-02-15,"Santa Clara, CA",2,0,0
+2020-02-15,"Boston, MA",1,0,0
+2020-02-15,"Los Angeles, CA",1,0,0
+2020-02-15,"Madison, WI",1,0,0
+2020-02-15,"Orange, CA",1,0,0
+2020-02-15,"San Antonio, TX",1,0,0
+2020-02-15,"Seattle, WA",1,1,0
+2020-02-15,"Tempe, AZ",1,0,0
+2020-02-16,"Chicago, IL",2,2,0
+2020-02-16,"San Benito, CA",2,0,0
+2020-02-16,"San Diego County, CA",2,0,0
+2020-02-16,"Santa Clara, CA",2,0,0
+2020-02-16,"Boston, MA",1,0,0
+2020-02-16,"Los Angeles, CA",1,0,0
+2020-02-16,"Madison, WI",1,0,0
+2020-02-16,"Orange, CA",1,0,0
+2020-02-16,"San Antonio, TX",1,0,0
+2020-02-16,"Seattle, WA",1,1,0
+2020-02-16,"Tempe, AZ",1,0,0
+2020-02-17,"Chicago, IL",2,2,0
+2020-02-17,"San Benito, CA",2,0,0
+2020-02-17,"San Diego County, CA",2,0,0
+2020-02-17,"Santa Clara, CA",2,0,0
+2020-02-17,"Boston, MA",1,0,0
+2020-02-17,"Los Angeles, CA",1,0,0
+2020-02-17,"Madison, WI",1,0,0
+2020-02-17,"Orange, CA",1,0,0
+2020-02-17,"San Antonio, TX",1,0,0
+2020-02-17,"Seattle, WA",1,1,0
+2020-02-17,"Tempe, AZ",1,0,0
+2020-02-18,"Chicago, IL",2,2,0
+2020-02-18,"San Benito, CA",2,0,0
+2020-02-18,"San Diego County, CA",2,0,0
+2020-02-18,"Santa Clara, CA",2,0,0
+2020-02-18,"Boston, MA",1,0,0
+2020-02-18,"Los Angeles, CA",1,0,0
+2020-02-18,"Madison, WI",1,0,0
+2020-02-18,"Orange, CA",1,0,0
+2020-02-18,"San Antonio, TX",1,0,0
+2020-02-18,"Seattle, WA",1,1,0
+2020-02-18,"Tempe, AZ",1,0,0
+2020-02-19,"Chicago, IL",2,2,0
+2020-02-19,"San Benito, CA",2,0,0
+2020-02-19,"San Diego County, CA",2,0,0
+2020-02-19,"Santa Clara, CA",2,0,0
+2020-02-19,"Boston, MA",1,0,0
+2020-02-19,"Los Angeles, CA",1,0,0
+2020-02-19,"Madison, WI",1,0,0
+2020-02-19,"Orange, CA",1,0,0
+2020-02-19,"San Antonio, TX",1,0,0
+2020-02-19,"Seattle, WA",1,1,0
+2020-02-19,"Tempe, AZ",1,0,0
+2020-02-20,"Chicago, IL",2,2,0
+2020-02-20,"San Benito, CA",2,0,0
+2020-02-20,"San Diego County, CA",2,0,0
+2020-02-20,"Santa Clara, CA",2,0,0
+2020-02-20,"Boston, MA",1,0,0
+2020-02-20,"Los Angeles, CA",1,0,0
+2020-02-20,"Madison, WI",1,0,0
+2020-02-20,"Orange, CA",1,0,0
+2020-02-20,"San Antonio, TX",1,0,0
+2020-02-20,"Seattle, WA",1,1,0
+2020-02-20,"Tempe, AZ",1,0,0
 2020-02-21,"Ashland, NE",11,0,0
 2020-02-21,"Travis, CA",5,0,0
+2020-02-21,"Chicago, IL",2,2,0
 2020-02-21,"Lackland, TX",2,0,0
+2020-02-21,"San Benito, CA",2,0,0
 2020-02-21,"San Diego County, CA",2,1,0
 2020-02-21,"Santa Clara, CA",2,1,0
+2020-02-21,"Boston, MA",1,0,0
 2020-02-21,"Humboldt County, CA",1,0,0
+2020-02-21,"Los Angeles, CA",1,0,0
+2020-02-21,"Madison, WI",1,0,0
+2020-02-21,"Orange, CA",1,0,0
 2020-02-21,"Sacramento County, CA",1,0,0
+2020-02-21,"San Antonio, TX",1,0,0
+2020-02-21,"Seattle, WA",1,1,0
+2020-02-21,"Tempe, AZ",1,0,0
 2020-02-22,"Omaha, NE (From Diamond Princess)",11,0,0
 2020-02-22,"Travis, CA (From Diamond Princess)",5,0,0
+2020-02-22,"Chicago, IL",2,2,0
 2020-02-22,"Lackland, TX (From Diamond Princess)",2,0,0
+2020-02-22,"San Benito, CA",2,0,0
+2020-02-22,"San Diego County, CA",2,1,0
+2020-02-22,"Santa Clara, CA",2,1,0
+2020-02-22,"Boston, MA",1,0,0
+2020-02-22,"Humboldt County, CA",1,0,0
+2020-02-22,"Los Angeles, CA",1,0,0
+2020-02-22,"Madison, WI",1,0,0
+2020-02-22,"Orange, CA",1,0,0
+2020-02-22,"Sacramento County, CA",1,0,0
+2020-02-22,"San Antonio, TX",1,0,0
+2020-02-22,"Seattle, WA",1,1,0
+2020-02-22,"Tempe, AZ",1,0,0
+2020-02-23,"Omaha, NE (From Diamond Princess)",11,0,0
+2020-02-23,"Travis, CA (From Diamond Princess)",5,0,0
+2020-02-23,"Chicago, IL",2,2,0
+2020-02-23,"Lackland, TX (From Diamond Princess)",2,0,0
+2020-02-23,"San Benito, CA",2,0,0
+2020-02-23,"San Diego County, CA",2,1,0
+2020-02-23,"Santa Clara, CA",2,1,0
+2020-02-23,"Boston, MA",1,0,0
+2020-02-23,"Humboldt County, CA",1,0,0
+2020-02-23,"Los Angeles, CA",1,0,0
+2020-02-23,"Madison, WI",1,0,0
+2020-02-23,"Orange, CA",1,0,0
+2020-02-23,"Sacramento County, CA",1,0,0
+2020-02-23,"San Antonio, TX",1,0,0
+2020-02-23,"Seattle, WA",1,1,0
+2020-02-23,"Tempe, AZ",1,0,0
 2020-02-24,Unassigned Location (From Diamond Princess),36,0,0
+2020-02-24,"Chicago, IL",2,2,0
+2020-02-24,"San Benito, CA",2,0,0
+2020-02-24,"San Diego County, CA",2,1,0
+2020-02-24,"Santa Clara, CA",2,1,0
+2020-02-24,"Boston, MA",1,0,0
+2020-02-24,"Humboldt County, CA",1,0,0
+2020-02-24,"Los Angeles, CA",1,0,0
+2020-02-24,"Madison, WI",1,0,0
+2020-02-24,"Orange, CA",1,0,0
+2020-02-24,"Sacramento County, CA",1,0,0
+2020-02-24,"San Antonio, TX",1,0,0
+2020-02-24,"Seattle, WA",1,1,0
+2020-02-24,"Tempe, AZ",1,0,0
 2020-02-24,"Lackland, TX (From Diamond Princess)",0,0,0
 2020-02-24,"Omaha, NE (From Diamond Princess)",0,0,0
 2020-02-24,"Travis, CA (From Diamond Princess)",0,0,0
 2020-02-25,Unassigned Location (From Diamond Princess),36,0,0
+2020-02-25,"Chicago, IL",2,2,0
+2020-02-25,"San Benito, CA",2,0,0
+2020-02-25,"San Diego County, CA",2,1,0
+2020-02-25,"Santa Clara, CA",2,1,0
+2020-02-25,"Boston, MA",1,0,0
+2020-02-25,"Humboldt County, CA",1,0,0
+2020-02-25,"Los Angeles, CA",1,0,0
+2020-02-25,"Madison, WI",1,0,0
+2020-02-25,"Orange, CA",1,0,0
+2020-02-25,"Sacramento County, CA",1,0,0
+2020-02-25,"San Antonio, TX",1,0,0
+2020-02-25,"Seattle, WA",1,1,0
 2020-02-25,"Tempe, AZ",1,1,0
+2020-02-25,"Lackland, TX (From Diamond Princess)",0,0,0
+2020-02-25,"Omaha, NE (From Diamond Princess)",0,0,0
+2020-02-25,"Travis, CA (From Diamond Princess)",0,0,0
 2020-02-26,Unassigned Location (From Diamond Princess),42,0,0
+2020-02-26,"Chicago, IL",2,2,0
+2020-02-26,"San Benito, CA",2,0,0
+2020-02-26,"San Diego County, CA",2,1,0
+2020-02-26,"Santa Clara, CA",2,1,0
+2020-02-26,"Boston, MA",1,0,0
+2020-02-26,"Humboldt County, CA",1,0,0
+2020-02-26,"Los Angeles, CA",1,0,0
+2020-02-26,"Madison, WI",1,0,0
+2020-02-26,"Orange, CA",1,0,0
+2020-02-26,"Sacramento County, CA",1,0,0
+2020-02-26,"San Antonio, TX",1,0,0
+2020-02-26,"Seattle, WA",1,1,0
+2020-02-26,"Tempe, AZ",1,1,0
+2020-02-26,"Lackland, TX (From Diamond Princess)",0,0,0
+2020-02-26,"Omaha, NE (From Diamond Princess)",0,0,0
+2020-02-26,"Travis, CA (From Diamond Princess)",0,0,0
+2020-02-27,Unassigned Location (From Diamond Princess),42,0,0
+2020-02-27,"Chicago, IL",2,2,0
 2020-02-27,"Sacramento County, CA",2,0,0
+2020-02-27,"San Benito, CA",2,0,0
+2020-02-27,"San Diego County, CA",2,1,0
+2020-02-27,"Santa Clara, CA",2,1,0
+2020-02-27,"Boston, MA",1,0,0
+2020-02-27,"Humboldt County, CA",1,0,0
+2020-02-27,"Los Angeles, CA",1,0,0
+2020-02-27,"Madison, WI",1,0,0
+2020-02-27,"Orange, CA",1,0,0
+2020-02-27,"San Antonio, TX",1,0,0
+2020-02-27,"Seattle, WA",1,1,0
+2020-02-27,"Tempe, AZ",1,1,0
+2020-02-27,"Lackland, TX (From Diamond Princess)",0,0,0
+2020-02-27,"Omaha, NE (From Diamond Princess)",0,0,0
+2020-02-27,"Travis, CA (From Diamond Princess)",0,0,0
 2020-02-28,Unassigned Location (From Diamond Princess),44,0,0
+2020-02-28,"Chicago, IL",2,2,0
+2020-02-28,"Sacramento County, CA",2,0,0
+2020-02-28,"San Benito, CA",2,0,0
+2020-02-28,"San Diego County, CA",2,1,0
+2020-02-28,"Santa Clara, CA",2,1,0
 2020-02-28,"Boston, MA",1,1,0
+2020-02-28,"Humboldt County, CA",1,0,0
+2020-02-28,"Los Angeles, CA",1,0,0
+2020-02-28,"Madison, WI",1,0,0
+2020-02-28,"Orange, CA",1,0,0
+2020-02-28,"San Antonio, TX",1,0,0
+2020-02-28,"Seattle, WA",1,1,0
+2020-02-28,"Tempe, AZ",1,1,0
+2020-02-28,"Lackland, TX (From Diamond Princess)",0,0,0
+2020-02-28,"Omaha, NE (From Diamond Princess)",0,0,0
+2020-02-28,"Travis, CA (From Diamond Princess)",0,0,0
+2020-02-29,Unassigned Location (From Diamond Princess),44,0,0
 2020-02-29,"Seattle, WA",6,1,1
 2020-02-29,"Santa Clara, CA",3,1,0
+2020-02-29,"Chicago, IL",2,2,0
+2020-02-29,"Sacramento County, CA",2,0,0
+2020-02-29,"San Benito, CA",2,0,0
+2020-02-29,"San Diego County, CA",2,1,0
+2020-02-29,"Boston, MA",1,1,0
+2020-02-29,"Humboldt County, CA",1,0,0
+2020-02-29,"Los Angeles, CA",1,0,0
+2020-02-29,"Madison, WI",1,0,0
+2020-02-29,"Orange, CA",1,0,0
 2020-02-29,"Portland, OR",1,0,0
+2020-02-29,"San Antonio, TX",1,0,0
 2020-02-29,"Snohomish County, WA",1,0,0
+2020-02-29,"Tempe, AZ",1,1,0
+2020-02-29,"Lackland, TX (From Diamond Princess)",0,0,0
+2020-02-29,"Omaha, NE (From Diamond Princess)",0,0,0
+2020-02-29,"Travis, CA (From Diamond Princess)",0,0,0
+2020-03-01,Unassigned Location (From Diamond Princess),44,0,0
 2020-03-01,"Seattle, WA",9,1,1
 2020-03-01,"Chicago, IL",3,2,0
+2020-03-01,"Santa Clara, CA",3,1,0
+2020-03-01,"Sacramento County, CA",2,0,0
+2020-03-01,"San Benito, CA",2,0,0
+2020-03-01,"San Diego County, CA",2,1,0
 2020-03-01,"Snohomish County, WA",2,0,0
+2020-03-01,"Boston, MA",1,1,0
+2020-03-01,"Humboldt County, CA",1,0,0
+2020-03-01,"Los Angeles, CA",1,0,0
+2020-03-01,"Madison, WI",1,0,0
+2020-03-01,"Orange, CA",1,0,0
+2020-03-01,"Portland, OR",1,0,0
 2020-03-01,"Providence, RI",1,0,0
+2020-03-01,"San Antonio, TX",1,0,0
+2020-03-01,"Tempe, AZ",1,1,0
+2020-03-01,"Lackland, TX (From Diamond Princess)",0,0,0
+2020-03-01,"Omaha, NE (From Diamond Princess)",0,0,0
+2020-03-01,"Travis, CA (From Diamond Princess)",0,0,0
 2020-03-02,Unassigned Location (From Diamond Princess),45,0,0
 2020-03-02,"King County, WA",14,1,5
 2020-03-02,"Santa Clara, CA",9,1,0
@@ -86,82 +400,203 @@ Date,State,Confirmed,Recovered,Deaths
 2020-03-02,"Snohomish County, WA",4,0,1
 2020-03-02,"Portland, OR",2,0,0
 2020-03-02,"Providence, RI",2,0,0
+2020-03-02,"Sacramento County, CA",2,0,0
+2020-03-02,"San Benito, CA",2,0,0
+2020-03-02,"San Diego County, CA",2,1,0
+2020-03-02,"Boston, MA",1,1,0
 2020-03-02,"Grafton County, NH",1,0,0
 2020-03-02,"Hillsborough, FL",1,0,0
+2020-03-02,"Humboldt County, CA",1,0,0
+2020-03-02,"Los Angeles, CA",1,0,0
+2020-03-02,"Madison, WI",1,0,0
 2020-03-02,"New York City, NY",1,0,0
+2020-03-02,"Orange, CA",1,0,0
 2020-03-02,"Placer County, CA",1,0,0
+2020-03-02,"San Antonio, TX",1,0,0
 2020-03-02,"San Mateo, CA",1,0,0
 2020-03-02,"Sarasota, FL",1,0,0
 2020-03-02,"Sonoma County, CA",1,0,0
+2020-03-02,"Tempe, AZ",1,1,0
 2020-03-02,"Umatilla, OR",1,0,0
+2020-03-02,"Lackland, TX (From Diamond Princess)",0,0,0
+2020-03-02,"Omaha, NE (From Diamond Princess)",0,0,0
+2020-03-02,"Travis, CA (From Diamond Princess)",0,0,0
+2020-03-03,Unassigned Location (From Diamond Princess),45,0,0
 2020-03-03,"King County, WA",21,1,6
 2020-03-03,"Santa Clara, CA",11,1,0
 2020-03-03,"Snohomish County, WA",6,0,1
+2020-03-03,"Cook County, IL",4,2,0
 2020-03-03,"Fulton County, GA",2,0,0
 2020-03-03,"Grafton County, NH",2,0,0
 2020-03-03,"Hillsborough, FL",2,0,0
+2020-03-03,"Providence, RI",2,0,0
+2020-03-03,"Sacramento County, CA",2,0,0
+2020-03-03,"San Benito, CA",2,0,0
+2020-03-03,"San Diego County, CA",2,1,0
 2020-03-03,"San Mateo, CA",2,0,0
 2020-03-03,"Washington County, OR",2,0,0
 2020-03-03," Norfolk County, MA",1,0,0
 2020-03-03,"Berkeley, CA",1,0,0
+2020-03-03,"Boston, MA",1,1,0
+2020-03-03,"Humboldt County, CA",1,0,0
+2020-03-03,"Los Angeles, CA",1,0,0
 2020-03-03,"Madison, WI",1,1,0
 2020-03-03,"Maricopa County, AZ",1,0,0
+2020-03-03,"New York City, NY",1,0,0
+2020-03-03,"Orange, CA",1,0,0
+2020-03-03,"Placer County, CA",1,0,0
+2020-03-03,"San Antonio, TX",1,0,0
+2020-03-03,"Sarasota, FL",1,0,0
+2020-03-03,"Sonoma County, CA",1,0,0
+2020-03-03,"Tempe, AZ",1,1,0
+2020-03-03,"Umatilla, OR",1,0,0
 2020-03-03,"Wake County, NC",1,0,0
 2020-03-03,"Westchester County, NY",1,0,0
+2020-03-03,"Lackland, TX (From Diamond Princess)",0,0,0
+2020-03-03,"Omaha, NE (From Diamond Princess)",0,0,0
+2020-03-03,"Travis, CA (From Diamond Princess)",0,0,0
+2020-03-04,Unassigned Location (From Diamond Princess),45,0,0
 2020-03-04,"King County, WA",31,1,9
+2020-03-04,"Santa Clara, CA",11,1,0
 2020-03-04,"Westchester County, NY",10,0,0
 2020-03-04,"Snohomish County, WA",8,0,1
 2020-03-04,"Los Angeles, CA",7,0,0
+2020-03-04,"Cook County, IL",4,2,0
 2020-03-04,"Orange County, CA",3,0,0
+2020-03-04,"Fulton County, GA",2,0,0
+2020-03-04,"Grafton County, NH",2,0,0
+2020-03-04,"Hillsborough, FL",2,0,0
 2020-03-04,"Placer County, CA",2,0,1
+2020-03-04,"Providence, RI",2,0,0
+2020-03-04,"Sacramento County, CA",2,0,0
+2020-03-04,"San Benito, CA",2,0,0
+2020-03-04,"San Diego County, CA",2,1,0
+2020-03-04,"San Mateo, CA",2,0,0
+2020-03-04,"Washington County, OR",2,0,0
+2020-03-04," Norfolk County, MA",1,0,0
+2020-03-04,"Berkeley, CA",1,0,0
+2020-03-04,"Boston, MA",1,1,0
 2020-03-04,"Contra Costa County, CA",1,0,0
+2020-03-04,"Humboldt County, CA",1,0,0
+2020-03-04,"Madison, WI",1,1,0
+2020-03-04,"Maricopa County, AZ",1,0,0
+2020-03-04,"New York City, NY",1,0,0
+2020-03-04,"San Antonio, TX",1,0,0
+2020-03-04,"Sarasota, FL",1,0,0
+2020-03-04,"Sonoma County, CA",1,0,0
+2020-03-04,"Tempe, AZ",1,1,0
+2020-03-04,"Umatilla, OR",1,0,0
+2020-03-04,"Wake County, NC",1,0,0
+2020-03-04,"Lackland, TX (From Diamond Princess)",0,0,0
+2020-03-04,"Omaha, NE (From Diamond Princess)",0,0,0
+2020-03-04,"Travis, CA (From Diamond Princess)",0,0,0
 2020-03-05,"King County, WA",51,1,10
+2020-03-05,Unassigned Location (From Diamond Princess),45,0,0
 2020-03-05,"Santa Clara, CA",20,1,0
 2020-03-05,"Snohomish County, WA",18,0,1
 2020-03-05,"Westchester County, NY",18,0,0
 2020-03-05,"Los Angeles, CA",11,0,0
 2020-03-05,"Cook County, IL",5,2,0
 2020-03-05,"New York City, NY",4,0,0
+2020-03-05,"Orange County, CA",3,0,0
 2020-03-05,"San Diego County, CA",3,1,0
 2020-03-05,"Bergen County, NJ",2,0,0
+2020-03-05,"Fulton County, GA",2,0,0
+2020-03-05,"Grafton County, NH",2,0,0
 2020-03-05,"Harris County, TX",2,0,0
+2020-03-05,"Hillsborough, FL",2,0,0
+2020-03-05,"Placer County, CA",2,0,1
+2020-03-05,"Providence, RI",2,0,0
+2020-03-05,"Sacramento County, CA",2,0,0
+2020-03-05,"San Benito, CA",2,0,0
 2020-03-05,"San Francisco County, CA",2,0,0
+2020-03-05,"San Mateo, CA",2,0,0
+2020-03-05,"Washington County, OR",2,0,0
+2020-03-05," Norfolk County, MA",1,0,0
+2020-03-05,"Berkeley, CA",1,0,0
+2020-03-05,"Boston, MA",1,1,0
 2020-03-05,"Clark County, NV",1,0,0
+2020-03-05,"Contra Costa County, CA",1,0,0
 2020-03-05,"Fort Bend County, TX",1,0,0
 2020-03-05,"Grant County, WA",1,0,0
+2020-03-05,"Humboldt County, CA",1,0,0
+2020-03-05,"Madison, WI",1,1,0
+2020-03-05,"Maricopa County, AZ",1,0,0
 2020-03-05,"Queens County, NY",1,0,0
+2020-03-05,"San Antonio, TX",1,0,0
 2020-03-05,"Santa Rosa County, FL",1,0,0
+2020-03-05,"Sarasota, FL",1,0,0
+2020-03-05,"Sonoma County, CA",1,0,0
+2020-03-05,"Tempe, AZ",1,1,0
+2020-03-05,"Umatilla, OR",1,0,0
+2020-03-05,"Wake County, NC",1,0,0
 2020-03-05,"Williamson County, TN",1,0,0
+2020-03-05,"Lackland, TX (From Diamond Princess)",0,0,0
+2020-03-05,"Omaha, NE (From Diamond Princess)",0,0,0
+2020-03-05,"Travis, CA (From Diamond Princess)",0,0,0
 2020-03-06,"King County, WA",58,1,12
+2020-03-06,Unassigned Location (From Diamond Princess),45,0,0
+2020-03-06,"Santa Clara, CA",20,1,0
 2020-03-06,"Snohomish County, WA",19,0,1
 2020-03-06,"Westchester County, NY",19,0,0
 2020-03-06,"New York County, NY",16,0,0
 2020-03-06,"Los Angeles, CA",13,0,0
+2020-03-06,"Cook County, IL",5,2,0
 2020-03-06,"Placer County, CA",5,0,1
 2020-03-06,"Unassigned Location, WA",5,0,0
 2020-03-06,"Contra Costa County, CA",3,0,0
 2020-03-06,"Harris County, TX",3,0,0
 2020-03-06,"Montgomery County, MD",3,0,0
+2020-03-06,"Orange County, CA",3,0,0
+2020-03-06,"San Diego County, CA",3,1,0
 2020-03-06,"Suffolk County, MA",3,1,0
 2020-03-06," Norfolk County, MA",2,0,0
+2020-03-06,"Bergen County, NJ",2,0,0
 2020-03-06,"Denver County, CO",2,0,0
+2020-03-06,"Fulton County, GA",2,0,0
+2020-03-06,"Grafton County, NH",2,0,0
+2020-03-06,"Hillsborough, FL",2,0,0
 2020-03-06,"Maricopa County, AZ",2,0,0
+2020-03-06,"Providence, RI",2,0,0
+2020-03-06,"Sacramento County, CA",2,0,0
+2020-03-06,"San Benito, CA",2,0,0
+2020-03-06,"San Francisco County, CA",2,0,0
+2020-03-06,"San Mateo, CA",2,0,0
 2020-03-06,"Summit County, CO",2,0,0
+2020-03-06,"Washington County, OR",2,0,0
+2020-03-06,"Berkeley, CA",1,0,0
 2020-03-06,"Chatham County, NC",1,0,0
+2020-03-06,"Clark County, NV",1,0,0
 2020-03-06,"Delaware County, PA",1,0,0
 2020-03-06,"Douglas County, NE",1,0,0
 2020-03-06,"Fayette County, KY",1,0,0
 2020-03-06,"Floyd County, GA",1,0,0
+2020-03-06,"Fort Bend County, TX",1,0,0
+2020-03-06,"Grant County, WA",1,0,0
+2020-03-06,"Humboldt County, CA",1,0,0
+2020-03-06,"Madison, WI",1,1,0
 2020-03-06,"Marion County, IN",1,0,0
 2020-03-06,"Middlesex County, MA",1,0,0
 2020-03-06,"Nassau County, NY",1,0,0
 2020-03-06,"Norwell County, MA",1,0,0
 2020-03-06,"Ramsey County, MN",1,0,0
+2020-03-06,"San Antonio, TX",1,0,0
+2020-03-06,"Santa Rosa County, FL",1,0,0
+2020-03-06,"Sarasota, FL",1,0,0
+2020-03-06,"Sonoma County, CA",1,0,0
+2020-03-06,"Tempe, AZ",1,1,0
+2020-03-06,"Umatilla, OR",1,0,0
+2020-03-06,"Wake County, NC",1,0,0
 2020-03-06,"Washoe County, NV",1,0,0
 2020-03-06,"Wayne County, PA",1,0,0
+2020-03-06,"Williamson County, TN",1,0,0
 2020-03-06,"Yolo County, CA",1,0,0
+2020-03-06,"Lackland, TX (From Diamond Princess)",0,0,0
+2020-03-06,"Omaha, NE (From Diamond Princess)",0,0,0
+2020-03-06,"Travis, CA (From Diamond Princess)",0,0,0
 2020-03-07,"King County, WA",71,1,15
 2020-03-07,"Westchester County, NY",57,0,0
+2020-03-07,Unassigned Location (From Diamond Princess),45,0,0
 2020-03-07,"Santa Clara County, CA",32,1,0
 2020-03-07,"Snohomish County, WA",27,0,1
 2020-03-07,Grand Princess Cruise Ship,21,0,0
@@ -170,43 +605,83 @@ Date,State,Confirmed,Recovered,Deaths
 2020-03-07,"San Francisco County, CA",9,0,0
 2020-03-07,"Cook County, IL",6,2,0
 2020-03-07,"Harris County, TX",5,0,0
+2020-03-07,"Placer County, CA",5,0,1
+2020-03-07,"Unassigned Location, WA",5,0,0
 2020-03-07,"Bergen County, NJ",4,0,0
 2020-03-07,"Nassau County, NY",4,0,0
+2020-03-07,"Contra Costa County, CA",3,0,0
 2020-03-07,"Douglas County, CO",3,0,0
 2020-03-07,"Fort Bend County, TX",3,0,0
 2020-03-07,"Fulton County, GA",3,0,0
 2020-03-07,"Maricopa County, AZ",3,1,0
+2020-03-07,"Montgomery County, MD",3,0,0
+2020-03-07,"Orange County, CA",3,0,0
 2020-03-07,"Providence County, RI",3,0,0
+2020-03-07,"San Diego County, CA",3,1,0
+2020-03-07,"Suffolk County, MA",3,1,0
 2020-03-07,"Washington County, OR",3,0,0
+2020-03-07," Norfolk County, MA",2,0,0
 2020-03-07,"Alameda County, CA",2,0,0
 2020-03-07,"Broward County, FL",2,0,0
+2020-03-07,"Denver County, CO",2,0,0
 2020-03-07,"Fairfield County, CT",2,0,0
 2020-03-07,"Floyd County, GA",2,0,0
+2020-03-07,"Grafton County, NH",2,0,0
+2020-03-07,"Hillsborough, FL",2,0,0
 2020-03-07,"Lee County, FL",2,0,0
 2020-03-07,"Pinal County, AZ",2,0,0
 2020-03-07,"Rockland County, NY",2,0,0
+2020-03-07,"Sacramento County, CA",2,0,0
+2020-03-07,"San Benito, CA",2,0,0
+2020-03-07,"San Mateo, CA",2,0,0
 2020-03-07,"Saratoga County, NY",2,0,0
+2020-03-07,"Summit County, CO",2,0,0
 2020-03-07,"Charleston County, SC",1,0,0
+2020-03-07,"Chatham County, NC",1,0,0
+2020-03-07,"Clark County, NV",1,0,0
 2020-03-07,"Clark County, WA",1,0,0
 2020-03-07,"Cobb County, GA",1,0,0
 2020-03-07,"Davis County, UT",1,0,0
+2020-03-07,"Delaware County, PA",1,0,0
+2020-03-07,"Douglas County, NE",1,0,0
 2020-03-07,"El Paso County, CO",1,0,0
+2020-03-07,"Fayette County, KY",1,0,0
+2020-03-07,"Grant County, WA",1,0,0
 2020-03-07,"Honolulu County, HI",1,0,0
+2020-03-07,"Humboldt County, CA",1,0,0
 2020-03-07,"Jackson County, OR ",1,0,0
 2020-03-07,"Jefferson County, WA",1,0,0
 2020-03-07,"Kershaw County, SC",1,0,0
 2020-03-07,"Klamath County, OR",1,0,0
 2020-03-07,"Madera County, CA",1,0,0
+2020-03-07,"Madison, WI",1,1,0
+2020-03-07,"Marion County, IN",1,0,0
 2020-03-07,"Middlesex County, MA",1,0,0
 2020-03-07,"Pierce County, WA",1,0,0
 2020-03-07,"Plymouth County, MA",1,0,0
+2020-03-07,"Ramsey County, MN",1,0,0
+2020-03-07,"San Antonio, TX",1,0,0
 2020-03-07,"Santa Cruz County, CA",1,0,0
+2020-03-07,"Santa Rosa County, FL",1,0,0
+2020-03-07,"Sarasota, FL",1,0,0
+2020-03-07,"Sonoma County, CA",1,0,0
 2020-03-07,"Tulsa County, OK",1,0,0
+2020-03-07,"Umatilla, OR",1,0,0
+2020-03-07,"Wake County, NC",1,0,0
+2020-03-07,"Washoe County, NV",1,0,0
+2020-03-07,"Wayne County, PA",1,0,0
+2020-03-07,"Williamson County, TN",1,0,0
+2020-03-07,"Yolo County, CA",1,0,0
+2020-03-07,"Lackland, TX (From Diamond Princess)",0,0,0
 2020-03-07,"Montgomery County, TX",0,0,0
+2020-03-07,"Omaha, NE (From Diamond Princess)",0,0,0
+2020-03-07,"Travis, CA (From Diamond Princess)",0,0,0
 2020-03-08,"King County, WA",83,1,17
 2020-03-08,"Westchester County, NY",83,0,0
+2020-03-08,Unassigned Location (From Diamond Princess),45,0,0
 2020-03-08,"Santa Clara County, CA",38,1,0
 2020-03-08,"Snohomish County, WA",31,0,1
+2020-03-08,Grand Princess Cruise Ship,21,0,0
 2020-03-08,"Los Angeles, CA",14,0,0
 2020-03-08,"Contra Costa County, CA",12,0,0
 2020-03-08,"New York County, NY",12,0,0
@@ -217,73 +692,212 @@ Date,State,Confirmed,Recovered,Deaths
 2020-03-08,"Middlesex County, MA",7,0,0
 2020-03-08,"Fort Bend County, TX",6,0,0
 2020-03-08,"Norfolk County, MA",6,0,0
+2020-03-08,"Harris County, TX",5,0,0
 2020-03-08,"Nassau County, NY",5,0,0
+2020-03-08,"Placer County, CA",5,0,1
+2020-03-08,"Unassigned Location, WA",5,0,0
 2020-03-08,"Bergen County, NJ",4,0,0
 2020-03-08,"Grafton County, NH",4,0,0
 2020-03-08,"Montgomery County, MD",4,0,0
 2020-03-08,"Montgomery County, PA",4,0,0
 2020-03-08,"Pierce County, WA",4,0,0
+2020-03-08,"Douglas County, CO",3,0,0
+2020-03-08,"Fulton County, GA",3,0,0
+2020-03-08,"Maricopa County, AZ",3,1,0
+2020-03-08,"Orange County, CA",3,0,0
+2020-03-08,"Providence County, RI",3,0,0
+2020-03-08,"San Diego County, CA",3,1,0
+2020-03-08,"Alameda County, CA",2,0,0
+2020-03-08,"Broward County, FL",2,0,0
 2020-03-08,"Clark County, NV",2,0,0
+2020-03-08,"Denver County, CO",2,0,0
 2020-03-08,"Fairfax County, VA",2,0,0
+2020-03-08,"Hillsborough, FL",2,0,0
 2020-03-08,"Jackson County, OR ",2,0,0
 2020-03-08,"Lee County, FL",2,0,1
+2020-03-08,"Pinal County, AZ",2,0,0
 2020-03-08,"Rockingham County, NH",2,0,0
+2020-03-08,"Rockland County, NY",2,0,0
+2020-03-08,"Sacramento County, CA",2,0,0
+2020-03-08,"San Benito, CA",2,0,0
+2020-03-08,"San Mateo, CA",2,0,0
+2020-03-08,"Saratoga County, NY",2,0,0
+2020-03-08,"Summit County, CO",2,0,0
 2020-03-08,"Washington, D.C.",2,0,0
 2020-03-08,"Washoe County, NV",2,0,0
 2020-03-08,"Berkshire County, MA",1,0,0
+2020-03-08,"Charleston County, SC",1,0,0
+2020-03-08,"Chatham County, NC",1,0,0
+2020-03-08,"Clark County, WA",1,0,0
+2020-03-08,"Cobb County, GA",1,0,0
 2020-03-08,"Davidson County, TN",1,0,0
+2020-03-08,"Davis County, UT",1,0,0
+2020-03-08,"Delaware County, PA",1,0,0
+2020-03-08,"Douglas County, NE",1,0,0
 2020-03-08,"Douglas County, OR",1,0,0
+2020-03-08,"El Paso County, CO",1,0,0
 2020-03-08,"Fairfield County, CT",1,0,0
+2020-03-08,"Fayette County, KY",1,0,0
 2020-03-08,"Fresno County, CA",1,0,0
+2020-03-08,"Grant County, WA",1,0,0
 2020-03-08,"Harford County, MD",1,0,0
 2020-03-08,"Hendricks County, IN",1,0,0
+2020-03-08,"Honolulu County, HI",1,0,0
 2020-03-08,"Hudson County, NJ",1,0,0
+2020-03-08,"Humboldt County, CA",1,0,0
+2020-03-08,"Jefferson County, WA",1,0,0
 2020-03-08,"Johnson County, KS",1,0,0
+2020-03-08,"Kershaw County, SC",1,0,0
 2020-03-08,"Kittitas County, WA",1,0,0
+2020-03-08,"Klamath County, OR",1,0,0
+2020-03-08,"Madera County, CA",1,0,0
+2020-03-08,"Madison, WI",1,1,0
 2020-03-08,"Manatee County, FL",1,0,0
+2020-03-08,"Marion County, IN",1,0,0
 2020-03-08,"Marion County, OR",1,0,0
 2020-03-08,"Okaloosa County, FL",1,0,0
+2020-03-08,"Plymouth County, MA",1,0,0
 2020-03-08,"Polk County, GA",1,0,0
+2020-03-08,"Ramsey County, MN",1,0,0
 2020-03-08,"Riverside County, CA",1,0,0
+2020-03-08,"San Antonio, TX",1,0,0
 2020-03-08,"Santa Rosa County, FL",1,0,1
+2020-03-08,"Sarasota, FL",1,0,0
 2020-03-08,"Shelby County, TN",1,0,0
+2020-03-08,"Sonoma County, CA",1,0,0
 2020-03-08,"Spokane County, WA",1,0,0
 2020-03-08,"St. Louis County, MO",1,0,0
 2020-03-08,"Suffolk County, NY",1,0,0
+2020-03-08,"Tulsa County, OK",1,0,0
 2020-03-08,"Ulster County, NY",1,0,0
+2020-03-08,"Umatilla, OR",1,0,0
 2020-03-08,"Unassigned Location, VT",1,0,0
 2020-03-08,"Unknown Location, MA",1,0,0
 2020-03-08,"Volusia County, FL",1,0,0
+2020-03-08,"Wake County, NC",1,0,0
+2020-03-08,"Wayne County, PA",1,0,0
+2020-03-08,"Williamson County, TN",1,0,0
+2020-03-08,"Yolo County, CA",1,0,0
+2020-03-08,"Lackland, TX (From Diamond Princess)",0,0,0
+2020-03-08,"Montgomery County, TX",0,0,0
+2020-03-08,"Omaha, NE (From Diamond Princess)",0,0,0
+2020-03-08,"Travis, CA (From Diamond Princess)",0,0,0
 2020-03-09,"Westchester County, NY",98,0,0
+2020-03-09,"King County, WA",83,1,17
+2020-03-09,Unassigned Location (From Diamond Princess),45,0,0
+2020-03-09,"Santa Clara County, CA",38,1,0
+2020-03-09,"Snohomish County, WA",31,0,1
+2020-03-09,Grand Princess Cruise Ship,21,0,0
 2020-03-09,"New York County, NY",19,0,0
 2020-03-09,"Nassau County, NY",17,0,0
+2020-03-09,"Los Angeles, CA",14,0,0
+2020-03-09,"Contra Costa County, CA",12,0,0
+2020-03-09,"San Francisco County, CA",9,0,0
+2020-03-09,"Suffolk County, MA",8,1,0
+2020-03-09,"Washington County, OR",8,0,0
+2020-03-09,"Cook County, IL",7,2,0
+2020-03-09,"Middlesex County, MA",7,0,0
 2020-03-09,"Placer County, CA",7,0,1
+2020-03-09,"Fort Bend County, TX",6,0,0
 2020-03-09,"Harris County, TX",6,0,0
+2020-03-09,"Norfolk County, MA",6,0,0
 2020-03-09,"Fulton County, GA",5,0,0
 2020-03-09,"Montgomery County, PA",5,0,0
+2020-03-09,"Unassigned Location, WA",5,0,0
+2020-03-09,"Bergen County, NJ",4,0,0
+2020-03-09,"Grafton County, NH",4,0,0
 2020-03-09,"Kershaw County, SC",4,0,0
+2020-03-09,"Montgomery County, MD",4,0,0
 2020-03-09,"Orange County, CA",4,0,0
+2020-03-09,"Pierce County, WA",4,0,0
 2020-03-09,"Rockland County, NY",4,0,0
 2020-03-09,"Broward County, FL",3,0,0
 2020-03-09,"Cobb County, GA",3,0,0
+2020-03-09,"Douglas County, CO",3,0,0
 2020-03-09,"Douglas County, NE",3,0,0
 2020-03-09,"Johnson County, IA",3,0,0
+2020-03-09,"Maricopa County, AZ",3,1,0
+2020-03-09,"Providence County, RI",3,0,0
+2020-03-09,"San Diego County, CA",3,1,0
 2020-03-09,"Sonoma County, CA",3,0,0
+2020-03-09,"Alameda County, CA",2,0,0
+2020-03-09,"Clark County, NV",2,0,0
+2020-03-09,"Denver County, CO",2,0,0
+2020-03-09,"Fairfax County, VA",2,0,0
 2020-03-09,"Harrison County, KY",2,0,0
 2020-03-09,"Hendricks County, IN",2,0,0
+2020-03-09,"Hillsborough, FL",2,0,0
 2020-03-09,"Honolulu County, HI",2,0,0
+2020-03-09,"Jackson County, OR ",2,0,0
+2020-03-09,"Lee County, FL",2,0,1
 2020-03-09,"Manatee County, FL",2,0,0
+2020-03-09,"Pinal County, AZ",2,0,0
+2020-03-09,"Sacramento County, CA",2,0,0
+2020-03-09,"San Benito, CA",2,0,0
+2020-03-09,"San Mateo, CA",2,0,0
+2020-03-09,"Saratoga County, NY",2,0,0
+2020-03-09,"Summit County, CO",2,0,0
+2020-03-09,"Washington, D.C.",2,0,0
+2020-03-09,"Washoe County, NV",2,0,0
 2020-03-09,"Bennington County, VT",1,0,0
+2020-03-09,"Berkshire County, MA",1,0,0
 2020-03-09,"Carver County, MN",1,0,0
+2020-03-09,"Charleston County, SC",1,0,0
 2020-03-09,"Charlotte County, FL",1,0,0
+2020-03-09,"Chatham County, NC",1,0,0
 2020-03-09,"Cherokee County, GA",1,0,0
+2020-03-09,"Clark County, WA",1,0,0
 2020-03-09,"Collin County, TX",1,0,0
+2020-03-09,"Davidson County, TN",1,0,0
+2020-03-09,"Davis County, UT",1,0,0
+2020-03-09,"Delaware County, PA",1,0,0
+2020-03-09,"Douglas County, OR",1,0,0
+2020-03-09,"El Paso County, CO",1,0,0
+2020-03-09,"Fairfield County, CT",1,0,0
+2020-03-09,"Fayette County, KY",1,0,0
+2020-03-09,"Fresno County, CA",1,0,0
 2020-03-09,"Grant County, WA",1,0,1
+2020-03-09,"Harford County, MD",1,0,0
+2020-03-09,"Hudson County, NJ",1,0,0
+2020-03-09,"Humboldt County, CA",1,0,0
 2020-03-09,"Jefferson County, KY",1,0,0
+2020-03-09,"Jefferson County, WA",1,0,0
 2020-03-09,"Jefferson Parish, LA",1,0,0
+2020-03-09,"Johnson County, KS",1,0,0
+2020-03-09,"Kittitas County, WA",1,0,0
+2020-03-09,"Klamath County, OR",1,0,0
+2020-03-09,"Madera County, CA",1,0,0
+2020-03-09,"Madison, WI",1,1,0
+2020-03-09,"Marion County, IN",1,0,0
+2020-03-09,"Marion County, OR",1,0,0
+2020-03-09,"Okaloosa County, FL",1,0,0
+2020-03-09,"Plymouth County, MA",1,0,0
+2020-03-09,"Polk County, GA",1,0,0
+2020-03-09,"Ramsey County, MN",1,0,0
+2020-03-09,"Riverside County, CA",1,0,0
 2020-03-09,"Rockingham County, NH",1,0,0
+2020-03-09,"San Antonio, TX",1,0,0
+2020-03-09,"Santa Rosa County, FL",1,0,1
+2020-03-09,"Sarasota, FL",1,0,0
 2020-03-09,"Shasta County, CA",1,0,0
+2020-03-09,"Shelby County, TN",1,0,0
 2020-03-09,"Spartanburg County, SC",1,0,0
+2020-03-09,"Spokane County, WA",1,0,0
+2020-03-09,"St. Louis County, MO",1,0,0
+2020-03-09,"Suffolk County, NY",1,0,0
+2020-03-09,"Tulsa County, OK",1,0,0
+2020-03-09,"Ulster County, NY",1,0,0
+2020-03-09,"Umatilla, OR",1,0,0
+2020-03-09,"Unknown Location, MA",1,0,0
+2020-03-09,"Volusia County, FL",1,0,0
+2020-03-09,"Wake County, NC",1,0,0
+2020-03-09,"Wayne County, PA",1,0,0
+2020-03-09,"Williamson County, TN",1,0,0
+2020-03-09,"Yolo County, CA",1,0,0
+2020-03-09,"Lackland, TX (From Diamond Princess)",0,0,0
+2020-03-09,"Montgomery County, TX",0,0,0
+2020-03-09,"Omaha, NE (From Diamond Princess)",0,0,0
+2020-03-09,"Travis, CA (From Diamond Princess)",0,0,0
 2020-03-10,Washington,267,1,23
 2020-03-10,New York,173,0,0
 2020-03-10,California,144,2,2
@@ -340,11 +954,13 @@ Date,State,Confirmed,Recovered,Deaths
 2020-03-11,New York,220,0,0
 2020-03-11,California,177,2,3
 2020-03-11,Massachusetts,95,1,0
+2020-03-11,Diamond Princess,46,0,0
 2020-03-11,Colorado,34,0,0
 2020-03-11,Florida,28,0,2
 2020-03-11,Illinois,25,2,0
 2020-03-11,Georgia,23,0,0
 2020-03-11,New Jersey,23,0,1
+2020-03-11,Grand Princess,21,0,0
 2020-03-11,Texas,21,0,0
 2020-03-11,Oregon,19,0,0
 2020-03-11,Pennsylvania,16,0,0
@@ -359,6 +975,7 @@ Date,State,Confirmed,Recovered,Deaths
 2020-03-11,Kentucky,8,0,0
 2020-03-11,South Dakota,8,0,1
 2020-03-11,Nevada,7,0,0
+2020-03-11,North Carolina,7,0,0
 2020-03-11,Louisiana,6,0,0
 2020-03-11,Wisconsin,6,1,0
 2020-03-11,Minnesota,5,0,0
@@ -369,30 +986,27 @@ Date,State,Confirmed,Recovered,Deaths
 2020-03-11,Connecticut,3,0,0
 2020-03-11,New Mexico,3,0,0
 2020-03-11,Utah,3,0,0
+2020-03-11,Hawaii,2,0,0
 2020-03-11,Michigan,2,0,0
+2020-03-11,Oklahoma,2,0,0
 2020-03-11,Arkansas,1,0,0
 2020-03-11,Delaware,1,0,0
+2020-03-11,Kansas,1,0,0
+2020-03-11,Missouri,1,0,0
 2020-03-11,Montana,1,0,0
-2020-03-11,Diamond Princess,46,0,0
-2020-03-11,Alabama,5,0,0
-2020-03-11,Grand Princess,21,0,0
-2020-03-11,Alaska,1,0,0
-2020-03-11,Hawaii,2,0,0
-2020-03-11,Idaho,1,0,0
-2020-03-11,Kansas,5,0,1
-2020-03-11,Maine,1,0,0
-2020-03-11,Mississippi,1,0,0
-2020-03-11,Missouri,2,0,0
-2020-03-11,North Carolina,17,0,0
-2020-03-11,North Dakota,1,0,0
-2020-03-11,Oklahoma,2,0,0
-2020-03-11,Vermont,2,0,0
+2020-03-11,Vermont,1,0,0
+2020-03-11,Alaska,0,0,0
+2020-03-11,Idaho,0,0,0
+2020-03-11,Maine,0,0,0
+2020-03-11,Mississippi,0,0,0
+2020-03-11,North Dakota,0,0,0
 2020-03-11,West Virginia,0,0,0
-2020-03-11,Wyoming,1,0,0
+2020-03-11,Wyoming,0,0,0
 2020-03-12,Washington,442,1,31
 2020-03-12,New York,328,0,0
 2020-03-12,California,221,6,4
 2020-03-12,Massachusetts,108,1,0
+2020-03-12,Diamond Princess,46,0,0
 2020-03-12,Colorado,45,0,0
 2020-03-12,Florida,35,0,2
 2020-03-12,Illinois,32,2,0
@@ -401,6 +1015,7 @@ Date,State,Confirmed,Recovered,Deaths
 2020-03-12,Texas,27,0,0
 2020-03-12,Oregon,24,0,0
 2020-03-12,Pennsylvania,22,0,0
+2020-03-12,Grand Princess,21,0,0
 2020-03-12,Louisiana,19,0,0
 2020-03-12,Tennessee,18,0,0
 2020-03-12,Virginia,17,0,0
@@ -410,20 +1025,88 @@ Date,State,Confirmed,Recovered,Deaths
 2020-03-12,Indiana,13,0,0
 2020-03-12,Maryland,12,0,0
 2020-03-12,South Carolina,12,0,0
+2020-03-12,District of Columbia,10,0,0
 2020-03-12,Kentucky,10,0,0
 2020-03-12,Nebraska,10,0,0
+2020-03-12,Arizona,9,1,0
 2020-03-12,Minnesota,9,0,0
+2020-03-12,South Dakota,8,0,1
 2020-03-12,Wisconsin,8,1,0
 2020-03-12,Arkansas,6,0,0
 2020-03-12,New Hampshire,6,0,0
 2020-03-12,Connecticut,5,0,0
 2020-03-12,New Mexico,5,0,0
 2020-03-12,Ohio,5,0,0
+2020-03-12,Rhode Island,5,0,0
 2020-03-12,Utah,5,0,0
+2020-03-12,Hawaii,2,0,0
+2020-03-12,Michigan,2,0,0
+2020-03-12,Oklahoma,2,0,0
 2020-03-12,Vermont,2,0,0
+2020-03-12,Delaware,1,0,0
+2020-03-12,Kansas,1,0,0
 2020-03-12,Mississippi,1,0,0
+2020-03-12,Missouri,1,0,0
+2020-03-12,Montana,1,0,0
 2020-03-12,North Dakota,1,0,0
 2020-03-12,Wyoming,1,0,0
+2020-03-12,Alaska,0,0,0
+2020-03-12,Idaho,0,0,0
+2020-03-12,Maine,0,0,0
+2020-03-12,West Virginia,0,0,0
+2020-03-13,Diamond Princess,46,0,0
+2020-03-13,Alabama,5,0,0
+2020-03-13,Grand Princess,21,0,0
+2020-03-13,Alaska,1,0,0
+2020-03-13,Arizona,9,1,0
+2020-03-13,Arkansas,6,0,0
+2020-03-13,California,282,6,4
+2020-03-13,Colorado,49,0,0
+2020-03-13,Connecticut,11,0,0
+2020-03-13,Delaware,4,0,0
+2020-03-13,District of Columbia,10,0,0
+2020-03-13,Florida,50,0,2
+2020-03-13,Georgia,42,0,1
+2020-03-13,Hawaii,2,0,0
+2020-03-13,Idaho,1,0,0
+2020-03-13,Illinois,46,2,0
+2020-03-13,Indiana,13,0,0
+2020-03-13,Iowa,17,0,0
+2020-03-13,Kansas,5,0,1
+2020-03-13,Kentucky,14,0,0
+2020-03-13,Louisiana,36,0,0
+2020-03-13,Maine,1,0,0
+2020-03-13,Maryland,18,0,0
+2020-03-13,Massachusetts,123,1,0
+2020-03-13,Michigan,16,0,0
+2020-03-13,Minnesota,14,0,0
+2020-03-13,Mississippi,1,0,0
+2020-03-13,Missouri,2,0,0
+2020-03-13,Montana,1,0,0
+2020-03-13,Nebraska,13,0,0
+2020-03-13,Nevada,17,0,0
+2020-03-13,New Hampshire,6,0,0
+2020-03-13,New Jersey,29,0,1
+2020-03-13,New Mexico,10,0,0
+2020-03-13,New York,421,0,0
+2020-03-13,North Carolina,17,0,0
+2020-03-13,North Dakota,1,0,0
+2020-03-13,Ohio,13,0,0
+2020-03-13,Oklahoma,2,0,0
+2020-03-13,Oregon,30,0,0
+2020-03-13,Pennsylvania,41,0,0
+2020-03-13,Rhode Island,14,0,0
+2020-03-13,South Carolina,13,0,0
+2020-03-13,South Dakota,8,0,1
+2020-03-13,Tennessee,26,0,0
+2020-03-13,Texas,43,0,0
+2020-03-13,Utah,9,0,0
+2020-03-13,Vermont,2,0,0
+2020-03-13,Virginia,30,0,0
+2020-03-13,Washington,568,1,37
+2020-03-13,West Virginia,0,0,0
+2020-03-13,Wisconsin,19,1,0
+2020-03-13,Wyoming,1,0,0
 2020-03-14,Washington,572,1,37
 2020-03-14,New York,525,0,2
 2020-03-14,California,340,6,5
@@ -436,6 +1119,7 @@ Date,State,Confirmed,Recovered,Deaths
 2020-03-14,Illinois,64,2,0
 2020-03-14,Texas,57,0,0
 2020-03-14,Pennsylvania,47,0,0
+2020-03-14,Diamond Princess,46,0,0
 2020-03-14,Virginia,41,0,1
 2020-03-14,Oregon,32,0,0
 2020-03-14,Tennessee,32,0,0
@@ -445,14 +1129,18 @@ Date,State,Confirmed,Recovered,Deaths
 2020-03-14,Michigan,25,0,0
 2020-03-14,North Carolina,24,0,0
 2020-03-14,Connecticut,22,0,0
+2020-03-14,Grand Princess,21,0,0
 2020-03-14,Minnesota,21,0,0
 2020-03-14,Nevada,21,0,0
 2020-03-14,Rhode Island,20,0,0
 2020-03-14,South Carolina,19,0,0
+2020-03-14,Iowa,17,0,0
 2020-03-14,Indiana,16,0,0
+2020-03-14,Kentucky,14,0,0
 2020-03-14,Nebraska,14,0,0
 2020-03-14,Arizona,12,1,0
 2020-03-14,Arkansas,12,0,0
+2020-03-14,District of Columbia,10,0,0
 2020-03-14,New Mexico,10,0,0
 2020-03-14,Utah,10,0,0
 2020-03-14,South Dakota,9,0,1
@@ -470,30 +1158,38 @@ Date,State,Confirmed,Recovered,Deaths
 2020-03-14,Puerto Rico,3,0,0
 2020-03-14,Idaho,2,0,0
 2020-03-14,Wyoming,2,0,0
+2020-03-14,North Dakota,1,0,0
 2020-03-14,"Virgin Islands, U.S.",1,0,0
-2020-03-13,Iowa,17,0,0
-2020-03-13,Kentucky,14,0,0
-2020-03-13,Alaska,1,0,0
+2020-03-14,West Virginia,0,0,0
 2020-03-15,New York,732,0,3
 2020-03-15,Washington,643,1,40
 2020-03-15,California,426,6,6
+2020-03-15,Massachusetts,164,1,0
 2020-03-15,Florida,115,0,4
+2020-03-15,Colorado,131,0,1
 2020-03-15,Georgia,99,0,1
 2020-03-15,Louisiana,91,0,2
 2020-03-15,New Jersey,98,0,2
 2020-03-15,Illinois,93,2,0
 2020-03-15,Texas,72,0,0
+2020-03-15,Pennsylvania,66,0,0
+2020-03-15,Diamond Princess,46,0,0
 2020-03-15,Virginia,45,0,1
 2020-03-15,Oregon,36,0,1
 2020-03-15,Minnesota,35,0,0
 2020-03-15,Michigan,33,0,0
 2020-03-15,North Carolina,33,0,0
+2020-03-15,Tennessee,39,0,0
 2020-03-15,Maryland,32,0,0
 2020-03-15,Ohio,37,0,0
 2020-03-15,Wisconsin,32,1,0
 2020-03-15,Connecticut,24,0,0
 2020-03-15,Utah,28,0,0
+2020-03-15,Grand Princess,21,0,0
+2020-03-15,Nevada,24,0,0
 2020-03-15,Indiana,20,0,0
+2020-03-15,Rhode Island,20,0,0
+2020-03-15,South Carolina,28,0,0
 2020-03-15,Iowa,18,0,0
 2020-03-15,Kentucky,20,0,0
 2020-03-15,Nebraska,17,0,0
@@ -501,13 +1197,26 @@ Date,State,Confirmed,Recovered,Deaths
 2020-03-15,District of Columbia,16,0,0
 2020-03-15,New Mexico,13,0,0
 2020-03-15,Alabama,12,0,0
+2020-03-15,Arizona,13,1,0
+2020-03-15,South Dakota,9,0,1
+2020-03-15,Kansas,8,0,1
 2020-03-15,Montana,7,0,0
+2020-03-15,New Hampshire,13,0,0
+2020-03-15,Delaware,7,0,0
 2020-03-15,Hawaii,6,0,0
 2020-03-15,Maine,12,0,0
+2020-03-15,Mississippi,10,0,0
 2020-03-15,Idaho,5,0,0
 2020-03-15,Missouri,5,0,0
+2020-03-15,Vermont,8,0,0
+2020-03-15,Oklahoma,7,0,0
 2020-03-15,Guam,3,0,0
+2020-03-15,Puerto Rico,5,0,0
 2020-03-15,Wyoming,3,0,0
+2020-03-15,Alaska,1,0,0
+2020-03-15,North Dakota,1,0,0
+2020-03-15,"Virgin Islands, U.S.",1,0,0
+2020-03-15,West Virginia,0,0,0
 2020-03-16,New York,967,0,10
 2020-03-16,Washington,904,1,48
 2020-03-16,California,557,6,7
@@ -554,9 +1263,16 @@ Date,State,Confirmed,Recovered,Deaths
 2020-03-16,South Dakota,10,0,1
 2020-03-16,Delaware,8,0,0
 2020-03-16,Hawaii,7,0,0
+2020-03-16,Montana,7,0,0
 2020-03-16,Missouri,6,0,0
+2020-03-16,Idaho,5,0,0
 2020-03-16,Puerto Rico,5,0,0
+2020-03-16,Guam,3,0,0
+2020-03-16,Wyoming,3,0,0
+2020-03-16,Alaska,1,0,0
+2020-03-16,North Dakota,1,0,0
 2020-03-16,Virgin Islands,1,0,0
+2020-03-16,West Virginia,0,0,0
 2020-03-17,New York,1706,0,13
 2020-03-17,Washington,1076,1,55
 2020-03-17,California,698,6,12
@@ -581,14 +1297,18 @@ Date,State,Confirmed,Recovered,Deaths
 2020-03-17,Minnesota,60,0,0
 2020-03-17,Nevada,56,0,1
 2020-03-17,Utah,51,0,0
+2020-03-17,Diamond Princess,47,0,0
 2020-03-17,South Carolina,47,0,1
 2020-03-17,Alabama,39,0,0
 2020-03-17,Maine,32,0,0
 2020-03-17,Indiana,30,0,2
 2020-03-17,Kentucky,26,1,1
 2020-03-17,New Hampshire,26,0,0
+2020-03-17,Iowa,23,0,0
 2020-03-17,New Mexico,23,0,0
 2020-03-17,Rhode Island,23,0,0
+2020-03-17,Arkansas,22,0,0
+2020-03-17,District of Columbia,22,0,0
 2020-03-17,Grand Princess,21,0,0
 2020-03-17,Mississippi,21,0,0
 2020-03-17,Nebraska,21,0,0
@@ -596,13 +1316,16 @@ Date,State,Confirmed,Recovered,Deaths
 2020-03-17,Oklahoma,19,0,0
 2020-03-17,Kansas,18,0,1
 2020-03-17,Delaware,16,0,0
+2020-03-17,Vermont,12,0,0
 2020-03-17,Missouri,11,0,0
 2020-03-17,South Dakota,11,0,1
 2020-03-17,Wyoming,11,0,0
 2020-03-17,Hawaii,10,0,0
 2020-03-17,Montana,9,0,0
 2020-03-17,Idaho,8,0,0
+2020-03-17,Puerto Rico,5,0,0
 2020-03-17,Alaska,3,0,0
+2020-03-17,Guam,3,0,0
 2020-03-17,North Dakota,3,0,0
 2020-03-17,Virgin Islands,2,0,0
 2020-03-17,West Virginia,1,0,0
@@ -626,8 +1349,12 @@ Date,State,Confirmed,Recovered,Deaths
 2020-03-18,Minnesota,77,0,0
 2020-03-18,Virginia,77,0,2
 2020-03-18,North Carolina,70,0,0
+2020-03-18,Connecticut,68,0,0
 2020-03-18,Oregon,68,0,2
 2020-03-18,Nevada,55,0,1
+2020-03-18,Utah,51,0,0
+2020-03-18,Diamond Princess,47,0,0
+2020-03-18,South Carolina,47,0,1
 2020-03-18,Alabama,46,0,0
 2020-03-18,Maine,42,0,0
 2020-03-18,Indiana,39,0,2
@@ -638,18 +1365,27 @@ Date,State,Confirmed,Recovered,Deaths
 2020-03-18,Iowa,29,0,0
 2020-03-18,Arizona,27,0,0
 2020-03-18,Kentucky,27,0,1
+2020-03-18,New Hampshire,26,0,0
 2020-03-18,Nebraska,24,0,0
+2020-03-18,New Mexico,23,0,0
+2020-03-18,Grand Princess,21,0,0
 2020-03-18,Delaware,19,0,0
+2020-03-18,Oklahoma,19,0,0
+2020-03-18,Kansas,18,0,1
 2020-03-18,Missouri,18,0,0
 2020-03-18,Vermont,18,0,0
 2020-03-18,Wyoming,15,0,0
 2020-03-18,Hawaii,14,0,0
 2020-03-18,Montana,11,0,0
+2020-03-18,South Dakota,11,0,1
 2020-03-18,Idaho,9,0,0
 2020-03-18,Alaska,6,0,0
 2020-03-18,North Dakota,6,0,0
 2020-03-18,Guam,5,0,0
+2020-03-18,Puerto Rico,5,0,0
 2020-03-18,United States Virgin Islands,2,0,0
+2020-03-18,Virgin Islands,2,0,0
+2020-03-18,West Virginia,1,0,0
 2020-03-19,New York,5365,0,34
 2020-03-19,Washington,1376,0,74
 2020-03-19,California,952,0,18
@@ -680,6 +1416,7 @@ Date,State,Confirmed,Recovered,Deaths
 2020-03-19,Indiana,60,0,2
 2020-03-19,Maine,52,0,0
 2020-03-19,Mississippi,50,0,1
+2020-03-19,Diamond Princess,47,0,0
 2020-03-19,Arizona,45,0,0
 2020-03-19,Iowa,44,0,0
 2020-03-19,New Hampshire,44,0,0
@@ -699,8 +1436,12 @@ Date,State,Confirmed,Recovered,Deaths
 2020-03-19,Hawaii,16,0,0
 2020-03-19,Guam,12,0,0
 2020-03-19,Idaho,11,0,0
+2020-03-19,Montana,11,0,0
+2020-03-19,South Dakota,11,0,1
 2020-03-19,Alaska,9,0,0
+2020-03-19,Puerto Rico,5,0,0
 2020-03-19,Virgin Islands,3,0,0
+2020-03-19,United States Virgin Islands,2,0,0
 2020-03-19,West Virginia,2,0,0
 2020-03-20,New York,8310,0,42
 2020-03-20,Washington,1524,0,83
@@ -741,6 +1482,7 @@ Date,State,Confirmed,Recovered,Deaths
 2020-03-20,Kentucky,47,0,2
 2020-03-20,Iowa,45,0,0
 2020-03-20,Kansas,44,0,1
+2020-03-20,New Hampshire,44,0,0
 2020-03-20,New Mexico,43,0,0
 2020-03-20,Delaware,38,0,0
 2020-03-20,Nebraska,37,0,0
@@ -796,71 +1538,82 @@ Date,State,Confirmed,Recovered,Deaths
 2020-03-21,Kansas,57,0,2
 2020-03-21,New Hampshire,55,0,0
 2020-03-21,Oklahoma,53,0,1
+2020-03-21,Diamond Princess,49,0,0
 2020-03-21,Delaware,45,0,0
+2020-03-21,New Mexico,43,0,0
 2020-03-21,Nebraska,38,0,0
 2020-03-21,Hawaii,37,0,0
 2020-03-21,Idaho,36,0,0
+2020-03-21,Vermont,29,0,2
 2020-03-21,North Dakota,28,0,0
+2020-03-21,Grand Princess,23,0,0
 2020-03-21,Wyoming,23,0,0
 2020-03-21,Montana,21,0,0
 2020-03-21,Puerto Rico,21,0,1
 2020-03-21,Alaska,15,0,0
 2020-03-21,Guam,15,0,0
+2020-03-21,South Dakota,14,0,1
 2020-03-21,West Virginia,8,0,0
 2020-03-21,United States Virgin Islands,6,0,0
-2020-03-22,New York,15793,0,117
-2020-03-22,Washington,1996,0,95
+2020-03-22,New York,15800,0,117
+2020-03-22,Washington,1997,0,97
 2020-03-22,New Jersey,1914,0,20
-2020-03-22,California,1642,0,30
+2020-03-22,California,1646,0,30
 2020-03-22,Illinois,1049,0,9
-2020-03-22,Michigan,1037,0,9
+2020-03-22,Michigan,1035,0,9
+2020-03-22,Florida,1004,0,13
 2020-03-22,Louisiana,837,0,20
-2020-03-22,Florida,830,0,13
 2020-03-22,Massachusetts,646,0,5
-2020-03-22,Texas,627,0,6
-2020-03-22,Georgia,600,0,23
-2020-03-22,Pennsylvania,509,0,3
+2020-03-22,Texas,643,0,7
+2020-03-22,Georgia,621,0,25
+2020-03-22,Colorado,591,0,6
+2020-03-22,Pennsylvania,509,0,4
 2020-03-22,Tennessee,505,0,2
-2020-03-22,Colorado,476,0,6
 2020-03-22,Wisconsin,381,0,4
-2020-03-22,Ohio,355,0,3
-2020-03-22,North Carolina,302,0,0
+2020-03-22,Ohio,356,0,3
+2020-03-22,Connecticut,327,0,8
+2020-03-22,North Carolina,305,0,0
 2020-03-22,Maryland,244,0,3
-2020-03-22,Connecticut,223,0,5
-2020-03-22,Virginia,221,0,6
+2020-03-22,Virginia,220,0,6
 2020-03-22,Mississippi,207,0,1
-2020-03-22,Indiana,201,0,6
+2020-03-22,Indiana,204,0,6
 2020-03-22,South Carolina,196,0,3
 2020-03-22,Nevada,190,0,2
-2020-03-22,Utah,181,0,1
-2020-03-22,Minnesota,169,0,1
+2020-03-22,Utah,162,0,1
+2020-03-22,Minnesota,167,0,1
 2020-03-22,Arkansas,165,0,0
-2020-03-22,Oregon,161,0,4
+2020-03-22,Oregon,161,0,5
+2020-03-22,Alabama,157,0,0
 2020-03-22,Arizona,152,0,2
-2020-03-22,Alabama,138,0,0
-2020-03-22,District of Columbia,102,0,2
-2020-03-22,Missouri,100,0,3
-2020-03-22,Kentucky,99,0,3
+2020-03-22,Kentucky,103,0,3
+2020-03-22,Missouri,87,0,3
 2020-03-22,Iowa,90,0,0
 2020-03-22,Maine,89,0,0
 2020-03-22,Rhode Island,83,0,0
+2020-03-22,New Hampshire,74,0,0
 2020-03-22,Oklahoma,67,0,2
-2020-03-22,New Hampshire,65,0,0
-2020-03-22,Kansas,64,0,2
+2020-03-22,Kansas,65,0,2
 2020-03-22,New Mexico,57,0,0
+2020-03-22,Hawaii,53,0,0
+2020-03-22,Delaware,56,0,0
 2020-03-22,Vermont,52,0,2
 2020-03-22,Nebraska,51,0,0
-2020-03-22,Hawaii,48,0,0
-2020-03-22,Delaware,47,0,0
+2020-03-22,Diamond Princess,49,0,0
 2020-03-22,Idaho,42,0,0
-2020-03-22,Montana,31,0,0
+2020-03-22,Montana,34,0,0
 2020-03-22,Grand Princess,30,0,1
+2020-03-22,North Dakota,28,0,0
 2020-03-22,Guam,27,0,1
-2020-03-22,Wyoming,24,0,0
+2020-03-22,Wyoming,26,0,0
 2020-03-22,Puerto Rico,23,0,1
-2020-03-22,Alaska,21,0,0
 2020-03-22,South Dakota,21,0,1
-2020-03-22,West Virginia,12,0,0
+2020-03-22,Alaska,20,0,0
+2020-03-22,West Virginia,16,0,0
+2020-03-22,Virgin Islands,6,0,0
+2020-03-22,Wuhan Evacuee,4,0,0
+2020-03-22,District of Columbia,102,0,2
+2020-03-22,American Samoa,0,0,0
+2020-03-22,Northern Mariana Islands,0,0,0
 2020-03-23,South Carolina,298,0,5
 2020-03-23,Louisiana,1172,0,35
 2020-03-23,Virginia,254,0,6
@@ -1039,3 +1792,62 @@ Date,State,Confirmed,Recovered,Deaths
 2020-03-25,Puerto Rico,51,0,2
 2020-03-25,Recovered,0,361,0
 2020-03-25,Virgin Islands,17,0,0
+2020-03-26,South Carolina,424,0,9
+2020-03-26,Louisiana,2304,0,83
+2020-03-26,Virginia,466,0,10
+2020-03-26,Idaho,146,0,3
+2020-03-26,Iowa,179,0,1
+2020-03-26,Kentucky,247,0,5
+2020-03-26,Missouri,520,0,9
+2020-03-26,Oklahoma,248,0,7
+2020-03-26,Colorado,1430,0,19
+2020-03-26,Illinois,2538,0,26
+2020-03-26,Indiana,645,0,17
+2020-03-26,Mississippi,485,0,6
+2020-03-26,Nebraska,74,0,0
+2020-03-26,North Dakota,51,0,0
+2020-03-26,Ohio,868,0,15
+2020-03-26,Pennsylvania,1795,0,18
+2020-03-26,Washington,3207,0,150
+2020-03-26,Wisconsin,728,0,10
+2020-03-26,Vermont,158,0,9
+2020-03-26,Minnesota,344,0,2
+2020-03-26,Florida,2357,0,29
+2020-03-26,North Carolina,738,0,3
+2020-03-26,California,3899,0,81
+2020-03-26,New York,37877,0,385
+2020-03-26,Wyoming,53,0,0
+2020-03-26,Michigan,2845,0,61
+2020-03-26,Alaska,56,0,1
+2020-03-26,Maryland,583,0,4
+2020-03-26,Kansas,172,0,3
+2020-03-26,Tennessee,1097,0,3
+2020-03-26,Texas,1563,0,21
+2020-03-26,Maine,155,0,0
+2020-03-26,Arizona,508,0,8
+2020-03-26,Georgia,1525,0,48
+2020-03-26,Arkansas,335,0,2
+2020-03-26,New Jersey,6876,0,81
+2020-03-26,South Dakota,46,0,1
+2020-03-26,Alabama,517,0,1
+2020-03-26,Oregon,316,0,11
+2020-03-26,West Virginia,52,0,0
+2020-03-26,Massachusetts,2417,0,25
+2020-03-26,Utah,396,0,1
+2020-03-26,Montana,90,0,0
+2020-03-26,New Hampshire,137,0,1
+2020-03-26,New Mexico,113,0,1
+2020-03-26,Rhode Island,165,0,0
+2020-03-26,Nevada,420,0,10
+2020-03-26,District of Columbia,231,0,3
+2020-03-26,Connecticut,1012,0,21
+2020-03-26,Hawaii,95,0,0
+2020-03-26,Delaware,130,0,1
+2020-03-26,American Samoa,0,0,0
+2020-03-26,Diamond Princess,49,0,0
+2020-03-26,Grand Princess,28,0,1
+2020-03-26,Guam,45,0,1
+2020-03-26,Northern Mariana Islands,0,0,0
+2020-03-26,Puerto Rico,64,0,2
+2020-03-26,Recovered,0,681,0
+2020-03-26,Virgin Islands,17,0,0

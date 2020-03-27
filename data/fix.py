@@ -43,6 +43,10 @@ for file in os.listdir(basepath):
             else:
                 d = datetime.datetime.strptime(d, '%m/%d/%y')
             d = d.strftime('%Y-%M-%d')
+        #if d == "2020-00-22": d = "2020-03-22"
+
+        d = file[:-4].split('-')
+        d = d[2] + '-' + d[0] + '-' + d[1]
 
         state = line[key_province]
         if state == "US": continue
@@ -58,6 +62,9 @@ for file in os.listdir(basepath):
         if d not in datedict: datedict[d] = {}
         if state not in datedict[d]:
             datedict[d][state] = statedict[state]
+
+for date in datedict:
+	print(date)
 
 for date in datedict:
     for state in datedict[date]:
