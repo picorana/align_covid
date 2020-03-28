@@ -945,10 +945,10 @@ let useLogScale = (val) => {
     curslidervalue = translatenum
 
     //fileCases = 'data/time_series_19-covid-Confirmed.csv'
-    fileCases = 'data/time_series_covid19_confirmed_global.csv'
-    fileRecovered = 'data/time_series_covid19_recovered_global.csv'
+    fileCases = './data/daily_reports/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_global.csv'
+    fileRecovered = './data/daily_reports/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_recovered_global.csv'
     //fileDeaths = 'data/time_series_19-covid-Deaths.csv'
-    fileDeaths = 'data/time_series_covid19_deaths_global.csv'
+    fileDeaths = './data/daily_reports/csse_covid_19_data/csse_covid_19_time_series//time_series_covid19_deaths_global.csv'
     draw(fileCases, fileRecovered, fileDeaths, translatenum, cutoffnum, linearScale, "Country/Region")
   }
 
