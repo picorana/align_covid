@@ -172,7 +172,9 @@ let getInfected = (data, groupbyname, filterbyname, datacolumn = "Confirmed") =>
     for (let elem in datedict){
       let num = datedict[elem]
       if (num < 50 && datacolumn == "Confirmed") continue
-      countryobj["Infected"].push({"Date":elem, "Num":num, "Country":country, "NumNormalized" : Math.round(1000*100*num/pop_vals[country])/1000})
+      let numnormalized = Math.round(1000*100*num/pop_vals[country])/1000
+      //if (numnormalized > 10) numnormalized = 0
+      countryobj["Infected"].push({"Date":elem, "Num":num, "Country":country, "NumNormalized" : numnormalized})
     }
     if (countryobj["Infected"].length == 0) continue
     tmplist.push(countryobj)
@@ -570,9 +572,9 @@ let filterUS2 = (data, groupbyname, filterbyname) => {
       let tmpinf = d["Infected"]
       //if (filterbyname == undefined) tmpinf = d["Infected"].slice(0, d["Infected"].length - 2)
       for (let e in tmpinf){
-        //if (d["Country"] == "US") console.log(tmpinf[e]["Date"], getEntryFromArr(recoveredlist, d["Infected"][e], entryname))
+        if (d["Country"] == "US") console.log(tmpinf[e]["Date"], getEntryFromArr(recoveredlist, d["Infected"][e], entryname))
         if (tmpinf[e]["Date"] == "3/23/20") {
-          let interpolaterec = getEntryFromArr(recoveredlist, d["Infected"][e-1])
+          let interpolaterec = getEntryFromArr(recoveredlist, d["Infected"][e-1], entryname)
           pathlist.push([rectsize + (e)*rectsize, scale(getEntryFromArr(deathlist, d["Infected"][e], entryname) + interpolaterec)])
         }
         else pathlist.push([rectsize + (e)*rectsize, scale(getEntryFromArr(deathlist, d["Infected"][e], entryname) + getEntryFromArr(recoveredlist, d["Infected"][e], entryname))])
