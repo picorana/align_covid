@@ -64,7 +64,9 @@ let events = {
     "2/24" : "Declared CDC level 3"
   },
   "US" : {
-    "3/9" : "first school closures"
+    "3/9" : "First school closures",
+    "3/12" : "Travel restrictions",
+    "3/13" : "Declared national emergency"
   },
   "Switzerland":{
     "2/28" : "Events with > 1000 cancelled"
@@ -931,9 +933,9 @@ let useLogScale = (val) => {
 
     curslidervalue = translatenum
 
-    fileCases = 'data/dpc-covid19-ita-regioni.csv'
-    fileRecovered = 'data/dpc-covid19-ita-regioni.csv'
-    fileDeaths = 'data/dpc-covid19-ita-regioni.csv'
+    fileCases = 'data/COVID-19/dati-regioni/dpc-covid19-ita-regioni.csv'
+    fileRecovered = 'data/COVID-19/dati-regioni/dpc-covid19-ita-regioni.csv'
+    fileDeaths = 'data/COVID-19/dati-regioni/dpc-covid19-ita-regioni.csv'
     draw(fileCases, fileRecovered, fileDeaths, translatenum, cutoffnum, linearScale, "", "Italy")
   }
 
