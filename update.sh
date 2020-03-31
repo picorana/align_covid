@@ -10,4 +10,5 @@ cd ../..
 d=$(date '+%Y-%m-%d')
 
 git add .
-echo "update ${d}"
+git commit -am "update ${d}"
+git push
