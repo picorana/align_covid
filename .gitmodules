@@ -1,3 +1,6 @@
 [submodule "data/daily_reports"]
 	path = data/daily_reports
 	url = https://github.com/CSSEGISandData/COVID-19
+[submodule "COVID-19"]
+	path = data/COVID-19
+	url = https://github.com/pcm-dpc/COVID-19

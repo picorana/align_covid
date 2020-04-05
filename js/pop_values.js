@@ -708,7 +708,7 @@ let pop_v = [
         "population": "19679306"
     },
     {
-        "country": "Russian Federation",
+        "country": "Russia",
         "population": "143989754"
     },
     {
@@ -758,6 +758,10 @@ let pop_v = [
     {
         "country": "Senegal",
         "population": "15850567"
+    },
+    {
+        "country": "Serbia",
+        "population": "6963764"
     },
     {
         "country": "Seychelles",

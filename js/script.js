@@ -348,7 +348,7 @@ let filterUS2 = (data, groupbyname, filterbyname) => {
       recoveredlist = getInfected(datarecovered, groupbyname, filterbyname, "Recovered")
     }
 
-    tmplist = tmplist.filter(d => d["Country"] != "Others" && d["Country"] != "Cruise Ship")
+    tmplist = tmplist.filter(d => d["Country"] != "Others" && d["Country"] != "Cruise Ship" && d["Country"] != "Diamond Princess")
     tmplist = tmplist.filter(d => d["Infected"][d["Infected"].length - 1]["Num"] > cutoffnum)
     tmplist = tmplist.sort((a, b) => a["Infected"][a["Infected"].length - 1]["Num"] < b["Infected"][b["Infected"].length - 1]["Num"]? 1: -1)
     //tmplist = tmplist.slice(0,3)
