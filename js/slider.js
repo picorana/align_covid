@@ -16,7 +16,7 @@ let addconfirmedslider = (scale, translatenum) => {
 
     gSimple.call(sliderSimple);
 
-    tickvaluearray = [1, 10, 100, 1000, 10000, 10000]
+    tickvaluearray = [1, 10, 100, 1000, 10000, 10000, 100000, 1000000]
 
     gSimple.selectAll('.tick').filter(d => tickvaluearray.indexOf(d) == -1).attr('opacity', 0)
 }

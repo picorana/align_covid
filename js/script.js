@@ -951,7 +951,7 @@ let useLogScale = (val) => {
     let translatenum = 400
     let cutoffnum = 400
     let linearScale = d3.scaleLinear()
-    .domain([0, 100000])
+    .domain([0, 1000000])
     .range([0, cellheight*0.7])
 
     curslidervalue = translatenum
