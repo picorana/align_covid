@@ -1530,7 +1530,7 @@ Date,State,Confirmed,Recovered,Deaths
 2020-03-21,Arizona,118,0,1
 2020-03-21,Oregon,114,0,5
 2020-03-21,Kentucky,87,0,3
-2020-03-21,District of Columbia,77,0,1
+2020-03-21,District of Columbia,98,0,1
 2020-03-21,Missouri,74,0,3
 2020-03-21,Maine,70,0,0
 2020-03-21,Iowa,68,0,0
@@ -1611,7 +1611,7 @@ Date,State,Confirmed,Recovered,Deaths
 2020-03-22,West Virginia,16,0,0
 2020-03-22,Virgin Islands,6,0,0
 2020-03-22,Wuhan Evacuee,4,0,0
-2020-03-22,District of Columbia,102,0,2
+2020-03-22,District of Columbia,204,0,2
 2020-03-22,American Samoa,0,0,0
 2020-03-22,Northern Mariana Islands,0,0,0
 2020-03-23,South Carolina,298,0,5
@@ -2027,7 +2027,7 @@ Date,State,Confirmed,Recovered,Deaths
 2020-03-29,Northern Mariana Islands,0,0,0
 2020-03-29,Puerto Rico,127,0,3
 2020-03-29,Recovered,0,2665,0
-2020-03-29,Virgin Islands,0,0,0
+2020-03-29,Virgin Islands,23,0,0
 2020-03-30,South Carolina,925,0,18
 2020-03-30,Louisiana,4025,0,185
 2020-03-30,Virginia,1020,0,15
@@ -2086,7 +2086,7 @@ Date,State,Confirmed,Recovered,Deaths
 2020-03-30,Northern Mariana Islands,0,0,0
 2020-03-30,Puerto Rico,174,0,6
 2020-03-30,Recovered,0,5644,0
-2020-03-30,Virgin Islands,0,0,0
+2020-03-30,Virgin Islands,30,0,0
 2020-03-31,South Carolina,1083,0,22
 2020-03-31,Louisiana,5237,0,239
 2020-03-31,Virginia,1249,0,27
@@ -2460,7 +2460,7 @@ Date,State,Confirmed,Recovered,Deaths
 2020-04-06,Wyoming,210,0,0
 2020-04-06,Michigan,17221,0,727
 2020-04-06,Maryland,4045,0,91
-2020-04-06,Alaska,137,0,6
+2020-04-06,Alaska,190,0,6
 2020-04-06,Kansas,849,0,25
 2020-04-06,Tennessee,3802,0,65
 2020-04-06,Texas,8043,0,150
@@ -2493,3 +2493,61 @@ Date,State,Confirmed,Recovered,Deaths
 2020-04-06,Puerto Rico,513,0,21
 2020-04-06,Recovered,0,19581,0
 2020-04-06,Virgin Islands,43,0,1
+2020-04-07,South Carolina,2417,0,51
+2020-04-07,Louisiana,16284,0,582
+2020-04-07,Virginia,3335,0,66
+2020-04-07,Idaho,1170,0,13
+2020-04-07,Iowa,1046,0,25
+2020-04-07,Kentucky,1149,0,65
+2020-04-07,Missouri,3130,0,65
+2020-04-07,Oklahoma,1474,0,67
+2020-04-07,Colorado,5429,0,179
+2020-04-07,Illinois,12271,0,308
+2020-04-07,Indiana,5510,0,173
+2020-04-07,Mississippi,1915,0,60
+2020-04-07,Nebraska,447,0,10
+2020-04-07,Ohio,4782,0,167
+2020-04-07,Pennsylvania,14853,0,247
+2020-04-07,Washington,8692,0,400
+2020-04-07,Wisconsin,2578,0,92
+2020-04-07,Vermont,575,0,23
+2020-04-07,Florida,14545,0,283
+2020-04-07,North Carolina,3299,0,53
+2020-04-07,California,17351,0,432
+2020-04-07,New York,139875,0,5489
+2020-04-07,Wyoming,216,0,0
+2020-04-07,Michigan,18970,0,845
+2020-04-07,Maryland,4371,0,103
+2020-04-07,Alaska,213,0,6
+2020-04-07,Kansas,912,0,29
+2020-04-07,Tennessee,4139,0,72
+2020-04-07,Texas,8925,0,160
+2020-04-07,Maine,519,0,12
+2020-04-07,Minnesota,1069,0,34
+2020-04-07,Arizona,2870,0,73
+2020-04-07,Georgia,8822,0,329
+2020-04-07,Arkansas,946,0,18
+2020-04-07,New Jersey,44416,0,1232
+2020-04-07,South Dakota,320,0,6
+2020-04-07,Alabama,2169,0,64
+2020-04-07,West Virginia,412,0,4
+2020-04-07,North Dakota,237,0,4
+2020-04-07,Massachusetts,15202,0,356
+2020-04-07,Montana,319,0,6
+2020-04-07,New Hampshire,715,0,9
+2020-04-07,Oregon,1132,0,29
+2020-04-07,New Mexico,876,0,13
+2020-04-07,Utah,1746,0,13
+2020-04-07,Rhode Island,1229,0,30
+2020-04-07,Nevada,2124,0,72
+2020-04-07,District of Columbia,1211,0,22
+2020-04-07,Connecticut,7781,0,277
+2020-04-07,Hawaii,410,0,5
+2020-04-07,Delaware,928,0,16
+2020-04-07,Northern Mariana Islands,8,0,2
+2020-04-07,Diamond Princess,49,0,0
+2020-04-07,Grand Princess,103,0,3
+2020-04-07,Guam,121,0,4
+2020-04-07,Puerto Rico,573,0,23
+2020-04-07,Recovered,0,21763,0
+2020-04-07,Virgin Islands,43,0,1
