@@ -1915,7 +1915,7 @@ Date,State,Confirmed,Recovered,Deaths
 2020-03-28,Virginia,740,0,13
 2020-03-28,Idaho,234,0,4
 2020-03-28,Iowa,298,0,3
-2020-03-28,Kentucky,393,0,9
+2020-03-28,Kentucky,380,0,9
 2020-03-28,Missouri,836,0,10
 2020-03-28,Oklahoma,377,0,15
 2020-03-28,Colorado,1740,0,31
@@ -2069,7 +2069,7 @@ Date,State,Confirmed,Recovered,Deaths
 2020-03-30,Oregon,606,0,16
 2020-03-30,West Virginia,145,0,1
 2020-03-30,Massachusetts,5752,0,56
-2020-03-30,Utah,804,0,4
+2020-03-30,Utah,798,0,4
 2020-03-30,Montana,171,0,5
 2020-03-30,New Hampshire,314,0,3
 2020-03-30,New Mexico,237,0,2
@@ -2204,7 +2204,7 @@ Date,State,Confirmed,Recovered,Deaths
 2020-04-01,Recovered,0,8474,0
 2020-04-01,Virgin Islands,30,0,0
 2020-04-02,South Carolina,1554,0,31
-2020-04-02,Louisiana,9159,0,310
+2020-04-02,Louisiana,9149,0,310
 2020-04-02,Virginia,1706,0,41
 2020-04-02,Idaho,776,0,9
 2020-04-02,Iowa,614,0,11
@@ -2230,7 +2230,7 @@ Date,State,Confirmed,Recovered,Deaths
 2020-04-02,Ohio,2901,0,81
 2020-04-02,Alaska,143,0,3
 2020-04-02,Kansas,553,0,12
-2020-04-02,Tennessee,2845,0,36
+2020-04-02,Tennessee,3013,0,36
 2020-04-02,Texas,5069,0,77
 2020-04-02,Maine,376,0,7
 2020-04-02,Minnesota,742,0,18
@@ -2247,7 +2247,7 @@ Date,State,Confirmed,Recovered,Deaths
 2020-04-02,Oregon,826,0,21
 2020-04-02,New Mexico,388,0,6
 2020-04-02,Utah,1092,0,7
-2020-04-02,Rhode Island,657,0,12
+2020-04-02,Rhode Island,645,0,12
 2020-04-02,Montana,241,0,6
 2020-04-02,Nevada,1463,0,38
 2020-04-02,District of Columbia,653,0,12
@@ -2337,7 +2337,7 @@ Date,State,Confirmed,Recovered,Deaths
 2020-04-04,Washington,7247,0,315
 2020-04-04,Wisconsin,2030,0,54
 2020-04-04,Vermont,461,0,20
-2020-04-04,Florida,11545,0,195
+2020-04-04,Florida,11537,0,195
 2020-04-04,North Carolina,2486,0,34
 2020-04-04,California,12837,0,289
 2020-04-04,New York,113833,0,3565
@@ -2346,7 +2346,7 @@ Date,State,Confirmed,Recovered,Deaths
 2020-04-04,Maryland,3125,0,54
 2020-04-04,Alaska,171,0,5
 2020-04-04,Tennessee,3322,0,50
-2020-04-04,Texas,6556,0,116
+2020-04-04,Texas,6567,0,116
 2020-04-04,Maine,456,0,10
 2020-04-04,Minnesota,865,0,24
 2020-04-04,Arizona,2187,0,52
@@ -2609,3 +2609,61 @@ Date,State,Confirmed,Recovered,Deaths
 2020-04-08,Puerto Rico,620,0,24
 2020-04-08,Recovered,0,23559,0
 2020-04-08,Virgin Islands,45,0,1
+2020-04-09,South Carolina,2793,0,67
+2020-04-09,Louisiana,18283,0,702
+2020-04-09,Virginia,4042,0,109
+2020-04-09,Idaho,1232,0,18
+2020-04-09,Iowa,1270,0,29
+2020-04-09,Kentucky,1341,0,73
+2020-04-09,Missouri,3432,0,93
+2020-04-09,Oklahoma,1686,0,80
+2020-04-09,Colorado,5655,0,193
+2020-04-09,Illinois,15079,0,462
+2020-04-09,Indiana,6351,0,245
+2020-04-09,Mississippi,2260,0,76
+2020-04-09,Nebraska,568,0,14
+2020-04-09,Ohio,5512,0,213
+2020-04-09,Pennsylvania,18300,0,345
+2020-04-09,Washington,9639,0,456
+2020-04-09,Wisconsin,2886,0,111
+2020-04-09,Vermont,628,0,23
+2020-04-09,Florida,16364,0,354
+2020-04-09,North Carolina,3736,0,76
+2020-04-09,California,19710,0,544
+2020-04-09,New York,161779,0,7067
+2020-04-09,Wyoming,230,0,0
+2020-04-09,Michigan,21504,0,1076
+2020-04-09,Maryland,6185,0,138
+2020-04-09,Alaska,235,0,7
+2020-04-09,Kansas,1116,0,42
+2020-04-09,Tennessee,4634,0,94
+2020-04-09,Texas,11208,0,210
+2020-04-09,Maine,560,0,16
+2020-04-09,Minnesota,1240,0,50
+2020-04-09,Arizona,3018,0,89
+2020-04-09,Georgia,10566,0,379
+2020-04-09,Arkansas,1119,0,21
+2020-04-09,New Jersey,51027,0,1709
+2020-04-09,South Dakota,447,0,6
+2020-04-09,Alabama,2703,0,70
+2020-04-09,West Virginia,514,0,5
+2020-04-09,North Dakota,269,0,5
+2020-04-09,Massachusetts,18941,0,503
+2020-04-09,Montana,354,0,6
+2020-04-09,New Hampshire,819,0,21
+2020-04-09,Oregon,1321,0,44
+2020-04-09,New Mexico,865,0,16
+2020-04-09,Utah,1856,0,13
+2020-04-09,Rhode Island,1727,0,43
+2020-04-09,Nevada,2456,0,81
+2020-04-09,District of Columbia,1523,0,32
+2020-04-09,Connecticut,9784,0,380
+2020-04-09,Hawaii,442,0,6
+2020-04-09,Delaware,1209,0,23
+2020-04-09,Northern Mariana Islands,11,0,2
+2020-04-09,Diamond Princess,49,0,0
+2020-04-09,Grand Princess,103,0,3
+2020-04-09,Guam,128,0,4
+2020-04-09,Puerto Rico,683,0,33
+2020-04-09,Recovered,0,25410,0
+2020-04-09,Virgin Islands,45,0,1
