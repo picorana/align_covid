@@ -1665,7 +1665,6 @@ Date,State,Confirmed,Recovered,Deaths
 2020-03-23,Connecticut,415,0,10
 2020-03-23,Hawaii,56,0,0
 2020-03-23,Delaware,68,0,0
-2020-03-23,Wuhan Evacuee,4,0,0
 2020-03-23,American Samoa,0,0,0
 2020-03-23,Diamond Princess,49,0,0
 2020-03-23,Grand Princess,28,0,1
@@ -1724,7 +1723,6 @@ Date,State,Confirmed,Recovered,Deaths
 2020-03-24,Connecticut,618,0,12
 2020-03-24,Hawaii,90,0,1
 2020-03-24,Delaware,104,0,0
-2020-03-24,Wuhan Evacuee,4,0,0
 2020-03-24,American Samoa,0,0,0
 2020-03-24,Diamond Princess,49,0,0
 2020-03-24,Grand Princess,28,0,1
@@ -3015,3 +3013,61 @@ Date,State,Confirmed,Recovered,Deaths
 2020-04-15,Puerto Rico,974,0,51
 2020-04-15,Recovered,0,52096,0
 2020-04-15,Virgin Islands,51,0,1
+2020-04-16,South Carolina,3931,0,111
+2020-04-16,Louisiana,22532,0,1156
+2020-04-16,Virginia,6889,0,208
+2020-04-16,Idaho,1587,0,41
+2020-04-16,Iowa,2141,0,60
+2020-04-16,Kentucky,2435,0,129
+2020-04-16,Missouri,5174,0,169
+2020-04-16,Oklahoma,2357,0,131
+2020-04-16,Colorado,8286,0,355
+2020-04-16,Illinois,25734,0,1072
+2020-04-16,Indiana,9542,0,477
+2020-04-16,Mississippi,3624,0,129
+2020-04-16,Nebraska,952,0,21
+2020-04-16,Ohio,8414,0,407
+2020-04-16,Pennsylvania,28258,0,841
+2020-04-16,Washington,11057,0,579
+2020-04-16,Wisconsin,3875,0,197
+2020-04-16,Vermont,774,0,33
+2020-04-16,Florida,23343,0,668
+2020-04-16,North Carolina,5639,0,150
+2020-04-16,California,27677,0,957
+2020-04-16,New York,223691,0,14832
+2020-04-16,Wyoming,296,0,2
+2020-04-16,Michigan,28809,0,1996
+2020-04-16,Maryland,10784,0,319
+2020-04-16,Alaska,300,0,9
+2020-04-16,Kansas,1615,0,80
+2020-04-16,Tennessee,6375,0,136
+2020-04-16,Texas,16876,0,414
+2020-04-16,Maine,796,0,27
+2020-04-16,Minnesota,1809,0,87
+2020-04-16,Arizona,4237,0,150
+2020-04-16,Georgia,15669,0,587
+2020-04-16,Arkansas,1620,0,37
+2020-04-16,New Jersey,75317,0,3518
+2020-04-16,South Dakota,1311,0,7
+2020-04-16,Alabama,4345,0,133
+2020-04-16,West Virginia,728,0,12
+2020-04-16,North Dakota,393,0,9
+2020-04-16,Massachusetts,32181,0,1108
+2020-04-16,Montana,415,0,7
+2020-04-16,New Hampshire,1139,0,32
+2020-04-16,Oregon,1736,0,64
+2020-04-16,New Mexico,1484,0,36
+2020-04-16,Utah,2683,0,20
+2020-04-16,Rhode Island,3529,0,87
+2020-04-16,Nevada,3214,0,137
+2020-04-16,District of Columbia,2350,0,81
+2020-04-16,Connecticut,15884,0,971
+2020-04-16,Hawaii,530,0,9
+2020-04-16,Delaware,2070,0,55
+2020-04-16,Northern Mariana Islands,13,0,2
+2020-04-16,Diamond Princess,49,0,0
+2020-04-16,Grand Princess,103,0,0
+2020-04-16,Guam,135,0,5
+2020-04-16,Puerto Rico,1043,0,56
+2020-04-16,Recovered,0,54703,0
+2020-04-16,Virgin Islands,51,0,1
