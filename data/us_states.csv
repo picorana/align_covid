@@ -2310,10 +2310,10 @@ Date,State,Confirmed,Recovered,Deaths
 2020-04-03,Connecticut,4914,0,131
 2020-04-03,Hawaii,319,0,3
 2020-04-03,Delaware,450,0,14
-2020-04-03,Northern Mariana Islands,8,0,1
 2020-04-03,Diamond Princess,49,0,0
 2020-04-03,Grand Princess,103,0,3
 2020-04-03,Guam,84,0,4
+2020-04-03,Northern Mariana Islands,8,0,1
 2020-04-03,Puerto Rico,316,0,15
 2020-04-03,Recovered,0,9707,0
 2020-04-03,Virgin Islands,37,0,0
@@ -2368,10 +2368,10 @@ Date,State,Confirmed,Recovered,Deaths
 2020-04-04,Connecticut,5276,0,165
 2020-04-04,Hawaii,351,0,3
 2020-04-04,Delaware,593,0,14
-2020-04-04,Northern Mariana Islands,8,0,1
 2020-04-04,Diamond Princess,49,0,0
 2020-04-04,Grand Princess,103,0,3
 2020-04-04,Guam,93,0,4
+2020-04-04,Northern Mariana Islands,8,0,1
 2020-04-04,Puerto Rico,452,0,18
 2020-04-04,Recovered,0,14652,0
 2020-04-04,Virgin Islands,40,0,0
@@ -2426,10 +2426,10 @@ Date,State,Confirmed,Recovered,Deaths
 2020-04-05,Connecticut,5675,0,189
 2020-04-05,Hawaii,371,0,4
 2020-04-05,Delaware,673,0,14
-2020-04-05,Northern Mariana Islands,8,0,1
 2020-04-05,Diamond Princess,49,0,0
 2020-04-05,Grand Princess,103,0,3
 2020-04-05,Guam,112,0,4
+2020-04-05,Northern Mariana Islands,8,0,1
 2020-04-05,Puerto Rico,475,0,20
 2020-04-05,Recovered,0,17448,0
 2020-04-05,Virgin Islands,42,0,1
@@ -2484,10 +2484,10 @@ Date,State,Confirmed,Recovered,Deaths
 2020-04-06,Connecticut,6906,0,206
 2020-04-06,Hawaii,387,0,5
 2020-04-06,Delaware,783,0,15
-2020-04-06,Northern Mariana Islands,8,0,1
 2020-04-06,Diamond Princess,49,0,0
 2020-04-06,Grand Princess,103,0,3
 2020-04-06,Guam,113,0,4
+2020-04-06,Northern Mariana Islands,8,0,1
 2020-04-06,Puerto Rico,513,0,21
 2020-04-06,Recovered,0,19581,0
 2020-04-06,Virgin Islands,43,0,1
@@ -2542,10 +2542,10 @@ Date,State,Confirmed,Recovered,Deaths
 2020-04-07,Connecticut,7781,0,277
 2020-04-07,Hawaii,410,0,5
 2020-04-07,Delaware,928,0,16
-2020-04-07,Northern Mariana Islands,8,0,2
 2020-04-07,Diamond Princess,49,0,0
 2020-04-07,Grand Princess,103,0,3
 2020-04-07,Guam,121,0,4
+2020-04-07,Northern Mariana Islands,8,0,2
 2020-04-07,Puerto Rico,573,0,23
 2020-04-07,Recovered,0,21763,0
 2020-04-07,Virgin Islands,43,0,1
@@ -2600,10 +2600,10 @@ Date,State,Confirmed,Recovered,Deaths
 2020-04-08,Connecticut,7781,0,326
 2020-04-08,Hawaii,410,0,5
 2020-04-08,Delaware,1116,0,19
-2020-04-08,Northern Mariana Islands,11,0,2
 2020-04-08,Diamond Princess,49,0,0
 2020-04-08,Grand Princess,103,0,3
 2020-04-08,Guam,121,0,4
+2020-04-08,Northern Mariana Islands,11,0,2
 2020-04-08,Puerto Rico,620,0,24
 2020-04-08,Recovered,0,23559,0
 2020-04-08,Virgin Islands,45,0,1
@@ -2658,10 +2658,10 @@ Date,State,Confirmed,Recovered,Deaths
 2020-04-09,Connecticut,9784,0,380
 2020-04-09,Hawaii,442,0,6
 2020-04-09,Delaware,1209,0,23
-2020-04-09,Northern Mariana Islands,11,0,2
 2020-04-09,Diamond Princess,49,0,0
 2020-04-09,Grand Princess,103,0,3
 2020-04-09,Guam,128,0,4
+2020-04-09,Northern Mariana Islands,11,0,2
 2020-04-09,Puerto Rico,683,0,33
 2020-04-09,Recovered,0,25410,0
 2020-04-09,Virgin Islands,45,0,1
@@ -2716,10 +2716,10 @@ Date,State,Confirmed,Recovered,Deaths
 2020-04-10,Connecticut,10538,0,448
 2020-04-10,Hawaii,442,0,6
 2020-04-10,Delaware,1326,0,32
-2020-04-10,Northern Mariana Islands,11,0,2
 2020-04-10,Diamond Princess,49,0,0
 2020-04-10,Grand Princess,103,0,3
 2020-04-10,Guam,130,0,4
+2020-04-10,Northern Mariana Islands,11,0,2
 2020-04-10,Puerto Rico,725,0,39
 2020-04-10,Recovered,0,28790,0
 2020-04-10,Virgin Islands,50,0,1
@@ -2743,7 +2743,7 @@ Date,State,Confirmed,Recovered,Deaths
 2020-04-11,Vermont,711,0,25
 2020-04-11,Florida,18494,0,438
 2020-04-11,North Carolina,4354,0,89
-2020-04-11,California,21706,0,605
+2020-04-11,California,21706,0,604
 2020-04-11,New York,181026,0,8627
 2020-04-11,Wyoming,261,0,0
 2020-04-11,Michigan,23605,0,1384
@@ -2774,10 +2774,10 @@ Date,State,Confirmed,Recovered,Deaths
 2020-04-11,Connecticut,11510,0,494
 2020-04-11,Hawaii,465,0,8
 2020-04-11,Delaware,1479,0,33
-2020-04-11,Northern Mariana Islands,11,0,2
 2020-04-11,Diamond Princess,49,0,0
 2020-04-11,Grand Princess,103,0,3
 2020-04-11,Guam,133,0,5
+2020-04-11,Northern Mariana Islands,11,0,2
 2020-04-11,Puerto Rico,788,0,42
 2020-04-11,Recovered,0,31270,0
 2020-04-11,Virgin Islands,51,0,1
@@ -2801,7 +2801,7 @@ Date,State,Confirmed,Recovered,Deaths
 2020-04-12,Vermont,727,0,27
 2020-04-12,Florida,19895,0,461
 2020-04-12,North Carolina,4570,0,89
-2020-04-12,California,22795,0,641
+2020-04-12,California,22795,0,640
 2020-04-12,New York,189033,0,9385
 2020-04-12,Wyoming,270,0,0
 2020-04-12,Michigan,24244,0,1479
@@ -2832,10 +2832,10 @@ Date,State,Confirmed,Recovered,Deaths
 2020-04-12,Connecticut,12035,0,554
 2020-04-12,Hawaii,499,0,9
 2020-04-12,Delaware,1625,0,35
-2020-04-12,Northern Mariana Islands,11,0,2
 2020-04-12,Diamond Princess,49,0,0
 2020-04-12,Grand Princess,103,0,0
 2020-04-12,Guam,133,0,5
+2020-04-12,Northern Mariana Islands,11,0,2
 2020-04-12,Puerto Rico,897,0,44
 2020-04-12,Recovered,0,32988,0
 2020-04-12,Virgin Islands,51,0,1
@@ -2859,7 +2859,7 @@ Date,State,Confirmed,Recovered,Deaths
 2020-04-13,Vermont,748,0,28
 2020-04-13,Florida,21019,0,499
 2020-04-13,North Carolina,4886,0,94
-2020-04-13,California,23931,0,715
+2020-04-13,California,23931,0,714
 2020-04-13,New York,195749,0,10058
 2020-04-13,Wyoming,275,0,1
 2020-04-13,Michigan,25635,0,1602
@@ -2890,10 +2890,10 @@ Date,State,Confirmed,Recovered,Deaths
 2020-04-13,Connecticut,13381,0,602
 2020-04-13,Hawaii,504,0,9
 2020-04-13,Delaware,1758,0,41
-2020-04-13,Northern Mariana Islands,11,0,2
 2020-04-13,Diamond Princess,49,0,0
 2020-04-13,Grand Princess,103,0,0
 2020-04-13,Guam,133,0,5
+2020-04-13,Northern Mariana Islands,11,0,2
 2020-04-13,Puerto Rico,903,0,45
 2020-04-13,Recovered,0,43482,0
 2020-04-13,Virgin Islands,51,0,1
@@ -2917,7 +2917,7 @@ Date,State,Confirmed,Recovered,Deaths
 2020-04-14,Vermont,752,0,29
 2020-04-14,Florida,21628,0,571
 2020-04-14,North Carolina,5113,0,112
-2020-04-14,California,25356,0,768
+2020-04-14,California,25356,0,767
 2020-04-14,New York,203020,0,10842
 2020-04-14,Wyoming,282,0,1
 2020-04-14,Michigan,27001,0,1768
@@ -2948,10 +2948,10 @@ Date,State,Confirmed,Recovered,Deaths
 2020-04-14,Connecticut,13989,0,671
 2020-04-14,Hawaii,511,0,9
 2020-04-14,Delaware,1926,0,43
-2020-04-14,Northern Mariana Islands,11,0,2
 2020-04-14,Diamond Princess,49,0,0
 2020-04-14,Grand Princess,103,0,0
 2020-04-14,Guam,133,0,5
+2020-04-14,Northern Mariana Islands,11,0,2
 2020-04-14,Puerto Rico,923,0,45
 2020-04-14,Recovered,0,47763,0
 2020-04-14,Virgin Islands,51,0,1
@@ -2975,7 +2975,7 @@ Date,State,Confirmed,Recovered,Deaths
 2020-04-15,Vermont,759,0,29
 2020-04-15,Florida,22511,0,596
 2020-04-15,North Carolina,5340,0,130
-2020-04-15,California,26686,0,861
+2020-04-15,California,26686,0,860
 2020-04-15,New York,214454,0,11617
 2020-04-15,Wyoming,287,0,1
 2020-04-15,Michigan,28059,0,1921
@@ -3006,10 +3006,10 @@ Date,State,Confirmed,Recovered,Deaths
 2020-04-15,Connecticut,14755,0,868
 2020-04-15,Hawaii,524,0,9
 2020-04-15,Delaware,2014,0,46
-2020-04-15,Northern Mariana Islands,13,0,2
 2020-04-15,Diamond Princess,49,0,0
 2020-04-15,Grand Princess,103,0,0
 2020-04-15,Guam,135,0,5
+2020-04-15,Northern Mariana Islands,13,0,2
 2020-04-15,Puerto Rico,974,0,51
 2020-04-15,Recovered,0,52096,0
 2020-04-15,Virgin Islands,51,0,1
@@ -3033,7 +3033,7 @@ Date,State,Confirmed,Recovered,Deaths
 2020-04-16,Vermont,774,0,33
 2020-04-16,Florida,23343,0,668
 2020-04-16,North Carolina,5639,0,150
-2020-04-16,California,27677,0,957
+2020-04-16,California,27677,0,956
 2020-04-16,New York,223691,0,14832
 2020-04-16,Wyoming,296,0,2
 2020-04-16,Michigan,28809,0,1996
@@ -3064,10 +3064,68 @@ Date,State,Confirmed,Recovered,Deaths
 2020-04-16,Connecticut,15884,0,971
 2020-04-16,Hawaii,530,0,9
 2020-04-16,Delaware,2070,0,55
-2020-04-16,Northern Mariana Islands,13,0,2
 2020-04-16,Diamond Princess,49,0,0
 2020-04-16,Grand Princess,103,0,0
 2020-04-16,Guam,135,0,5
+2020-04-16,Northern Mariana Islands,13,0,2
 2020-04-16,Puerto Rico,1043,0,56
 2020-04-16,Recovered,0,54703,0
 2020-04-16,Virgin Islands,51,0,1
+2020-04-17,South Carolina,4099,0,116
+2020-04-17,Louisiana,23118,0,1213
+2020-04-17,Virginia,7491,0,231
+2020-04-17,Idaho,1609,0,41
+2020-04-17,Iowa,2332,0,64
+2020-04-17,Kentucky,2522,0,137
+2020-04-17,Missouri,5371,0,184
+2020-04-17,Oklahoma,2465,0,136
+2020-04-17,Colorado,8691,0,372
+2020-04-17,Illinois,27578,0,1132
+2020-04-17,Indiana,10154,0,522
+2020-04-17,Mississippi,3793,0,140
+2020-04-17,Nebraska,1066,0,24
+2020-04-17,Ohio,9107,0,418
+2020-04-17,Pennsylvania,29888,0,921
+2020-04-17,Washington,11517,0,603
+2020-04-17,Wisconsin,4053,0,206
+2020-04-17,Vermont,779,0,35
+2020-04-17,Minnesota,2070,0,111
+2020-04-17,Florida,24759,0,725
+2020-04-17,North Carolina,6045,0,177
+2020-04-17,California,29157,0,1037
+2020-04-17,New York,230597,0,17131
+2020-04-17,Wyoming,305,0,2
+2020-04-17,Michigan,30023,0,2227
+2020-04-17,Maryland,11572,0,334
+2020-04-17,Alaska,309,0,9
+2020-04-17,Kansas,1730,0,82
+2020-04-17,Tennessee,6263,0,141
+2020-04-17,Texas,17849,0,451
+2020-04-17,Maine,827,0,29
+2020-04-17,Arizona,4511,0,169
+2020-04-17,Georgia,17194,0,650
+2020-04-17,Arkansas,1695,0,37
+2020-04-17,New Jersey,78467,0,3840
+2020-04-17,South Dakota,1411,0,7
+2020-04-17,Alabama,4571,0,148
+2020-04-17,West Virginia,775,0,16
+2020-04-17,North Dakota,393,0,9
+2020-04-17,Massachusetts,34402,0,1245
+2020-04-17,Montana,422,0,8
+2020-04-17,New Hampshire,1287,0,37
+2020-04-17,Oregon,1785,0,70
+2020-04-17,New Mexico,1597,0,44
+2020-04-17,Utah,2793,0,23
+2020-04-17,Rhode Island,4177,0,118
+2020-04-17,Nevada,3524,0,142
+2020-04-17,District of Columbia,2476,0,86
+2020-04-17,Connecticut,16809,0,1036
+2020-04-17,Hawaii,541,0,9
+2020-04-17,Delaware,2317,0,61
+2020-04-17,Diamond Princess,49,0,0
+2020-04-17,Grand Princess,103,0,0
+2020-04-17,Guam,136,0,5
+2020-04-17,Northern Mariana Islands,13,0,2
+2020-04-17,Puerto Rico,1068,0,58
+2020-04-17,Recovered,0,58545,0
+2020-04-17,Virgin Islands,51,0,2
